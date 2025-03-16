@@ -1,0 +1,129 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Light Mode */
+.light-mode {
+  background: #ffffff;
+  color: #333;
+}
+
+.light-mode .card {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.light-mode .btn-outline-light {
+  border-color: #333;
+  color: #333;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .card {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-mode .btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Profile Section */
+.profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.buttons .btn {
+  margin: 5px;
+}
+
+/* Tech Stack */
+.tech-icons .badge {
+  margin: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Experience Timeline */
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  padding: 10px;
+  border-left: 3px solid #007bff;
+  margin-bottom: 10px;
+}
+
+/* Recent Projects */
+.project-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+/* Toggle Switch */
+.toggle-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+  .project-list {
+      flex-direction: column;
+  }
+  .buttons .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
