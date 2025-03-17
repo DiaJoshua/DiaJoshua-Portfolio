@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   transition: background 0.3s ease, color 0.3s ease;
@@ -11,8 +11,6 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
 }
 
 /* Light Mode */
@@ -51,21 +49,15 @@ body {
 .profile {
   text-align: center;
   margin-bottom: 20px;
-  animation: fadeInUp 1s ease-out forwards;
 }
 
 .profile-img {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
 .buttons .btn {
@@ -73,76 +65,81 @@ body {
   transition: transform 0.3s ease;
 }
 
-.buttons .btn:hover {
-  transform: scale(1.05);
+/* Tech skill box */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
 }
 
-/* Tech Stack */
-.tech-icons .badge {
-  margin: 5px;
-  padding: 10px;
-  font-size: 14px;
-  opacity: 0;
-  animation: fadeIn 1.2s ease-out forwards;
+.tech-box {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: inherit;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out forwards;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Project Cards */
+.light-mode .tech-box {
+  background-color: #f4f4f4;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.dark-mode .tech-box {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+
+/* Project List */
 .project-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
+  gap: 15px;
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #333;
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
 }
 
 .project-card h4 {
-  font-size: 1.2rem;
+  margin: 0;
+  font-size: 1.2em;
 }
 
 .project-card p {
-  font-size: 1rem;
+  font-size: 0.9em;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+@media (max-width: 768px) {
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tech-box {
+    margin: 5px;
+  }
 }
 
 /* Animations */
-.wow {
-  visibility: hidden;
-}
-
-.wow.fadeInUp {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.wow.fadeIn {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-.wow.zoomIn {
-  animation: zoomIn 0.8s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -151,78 +148,3 @@ body {
     opacity: 1;
   }
 }
-
-@keyframes zoomIn {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Toggle Switch */
-.toggle-container {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.toggle-btn {
-  padding: 10px 20px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
-.toggle-btn:hover {
-  background-color: #3498db;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-      padding: 10px;
-  }
-  .project-list {
-      flex-direction: column;
-  }
-  .buttons .btn {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
-  }
-}
-
-/* Animation for Tech Stack and Project List */
-@keyframes fadeInDelay {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Tech Skills with staggered animation */
-.tech-box {
-  display: inline-block;
-  padding: 15px;
-  margin: 5px;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: bold;
-  animation: fadeInDelay 1.2s ease-out forwards;
-  opacity: 0;
-}
-
-.tech-box:nth-child(1) { background-color: #ff6347; animation-delay: 0.3s; }
-.tech-box:nth-child(2) { background-color: #4caf50; animation-delay: 0.4s; }
-.tech-box:nth-child(3) { background-color: #007bff; animation-delay: 0.5s; }
-.tech-box:nth-child(4) { background-color: #f39c12; animation-delay: 0.6s; }
-.tech-box:nth-child(5) { background-color: #8e44ad; animation-delay: 0.7s; }
-.tech-box:nth-child(6) { background-color: #e74c3c; animation-delay: 0.8s; }
-.tech-box:nth-child(7) { background-color: #3498db; animation-delay: 0.9s; }

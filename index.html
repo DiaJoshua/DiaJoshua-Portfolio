@@ -1,116 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joshua Dia - Portfolio</title>
-    
+
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="style.css" />
+
     <style>
-        /* Animation for loading */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      /* Dark Mode Styling */
+      body.dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
 
-        /* Tech skills boxes with color and animation */
-        .tech-box {
-            display: inline-block;
-            padding: 15px;
-            margin: 5px;
-            border-radius: 8px;
-            color: #fff;
-            font-weight: bold;
-            animation: fadeIn 1s ease-in-out;
-            opacity: 0;
-        }
+      body.light-mode {
+        background-color: #f4f4f4;
+        color: #333;
+      }
 
-        .tech-box:nth-child(1) { background-color: #ff6347; }
-        .tech-box:nth-child(2) { background-color: #4caf50; }
-        .tech-box:nth-child(3) { background-color: #007bff; }
-        .tech-box:nth-child(4) { background-color: #f39c12; }
-        .tech-box:nth-child(5) { background-color: #8e44ad; }
-        .tech-box:nth-child(6) { background-color: #e74c3c; }
-        .tech-box:nth-child(7) { background-color: #3498db; }
+      .dark-mode .card {
+        background-color: #1c1c1c;
+        color: #e0e0e0;
+      }
 
-        /* Delay animation for tech skills */
-        .tech-box:nth-child(1) { animation-delay: 0.2s; }
-        .tech-box:nth-child(2) { animation-delay: 0.4s; }
-        .tech-box:nth-child(3) { animation-delay: 0.6s; }
-        .tech-box:nth-child(4) { animation-delay: 0.8s; }
-        .tech-box:nth-child(5) { animation-delay: 1s; }
-        .tech-box:nth-child(6) { animation-delay: 1.2s; }
-        .tech-box:nth-child(7) { animation-delay: 1.4s; }
+      .light-mode .card {
+        background-color: #ffffff;
+        color: #333;
+      }
+
+      .dark-mode .project-card {
+        background-color: #333;
+        color: white;
+      }
+
+      .light-mode .project-card {
+        background-color: #f9f9f9;
+        color: black;
+      }
+
+      /* Dark Mode Toggle Styling */
+      #theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 4vw;
+        height: 4vh;
+        background: #333;
+        border-radius: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s scale 3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      .toggle-knob {
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+
+      #theme-toggle:hover {
+        transform: scale(1.05);
+      }
+
+      .dark-mode .toggle-knob {
+        transform: translateX(30px);
+      }
+
+      .light-mode .toggle-knob {
+        transform: translateX(2px);
+        background: #333;
+      }
+
+      .light-mode #theme-toggle {
+        background-color: #f9f9f9;
+      }
+
+      .dark-mode #theme-toggle {
+        box-shadow: #e0e0e0;
+      }
     </style>
-</head>
-<body class="dark-mode">
+  </head>
+
+  <body class="dark-mode">
     <div class="container mt-4">
-        <!-- Theme Toggle -->
-        <button id="theme-toggle" class="btn btn-secondary">
-            <i class="fas fa-sun"></i> Toggle Mode
-        </button>
+      <!-- Theme Toggle -->
+      <div id="theme-toggle">
+        <div class="toggle-knob"></div>
+      </div>
 
-        <!-- Profile Section -->
-        <div class="profile text-center" id="profile">
-            <img src="profile.jpg" alt="Profile Picture" class="profile-img">
-            <h1>Joshua Dia</h1>
-            <p class="subtitle">Web Developer & Software Engineer</p>
-            <div class="buttons">
-                <a href="mailto:your.email@example.com" class="btn btn-outline-light"><i class="fas fa-envelope"></i> Send Email</a>
-            </div>
+      <!-- Profile Section -->
+      <div class="profile text-center" id="profile">
+        <img src="profile.jpg" alt="Profile Picture" class="profile-img" />
+        <h1>Joshua Dia</h1>
+        <p class="subtitle">Computer Science Student | Specializing in Digital Forensics | Full-Stack Developer (MERN) | Data Analysis & Visualization | Systems Administration</p>
+        <div class="buttons">
+          <a href="mailto:your.email@example.com" class="btn btn-outline-light">
+            <i class="fas fa-envelope"></i> Send Email
+          </a>
         </div>
+      </div>
 
-        <!-- About Section -->
-        <div class="card mt-4 p-3" id="about-section">
-            <h2>About Me</h2>
-            <p>As a passionate web developer, I am constantly honing my skills and exploring new technologies to create seamless user experiences. From building responsive web applications to solving complex problems, I thrive on delivering solutions that are both efficient and user-friendly. Whether it's a full-stack web app or optimizing a website's performance, I am always up for the challenge. Let's connect and bring innovative ideas to life!</p>
+      <!-- About Section -->
+      <div class="card mt-4 p-3" id="about-section">
+        <h2>About Me</h2>
+        <p>
+          As a passionate web developer, I am constantly honing my skills and
+          exploring new technologies to create seamless user experiences. From
+          building responsive web applications to solving complex problems, I
+          thrive on delivering solutions that are both efficient and
+          user-friendly. Whether it's a full-stack web app or optimizing a
+          website's performance, I am always up for the challenge. Let's connect
+          and bring innovative ideas to life!
+        </p>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="card mt-4 p-3" id="skills-section">
+        <h2>Relevant Skills</h2>
+        <div class="tech-stack">
+          <div class="tech-box">JavaScript</div>
+          <div class="tech-box">Python</div>
+          <div class="tech-box">Java</div>
+          <div class="tech-box">React.js</div>
+          <div class="tech-box">Node.js</div>
+          <div class="tech-box">HTML & CSS</div>
+          <div class="tech-box">MongoDB</div>
         </div>
+      </div>
 
-        <!-- Skills Section -->
-        <div class="card mt-4 p-3" id="skills-section">
-            <h2>Relevant Skills</h2>
-            <div class="tech-stack">
-                <div class="tech-box">JavaScript</div>
-                <div class="tech-box">Python</div>
-                <div class="tech-box">Java</div>
-                <div class="tech-box">React.js</div>
-                <div class="tech-box">Node.js</div>
-                <div class="tech-box">HTML & CSS</div>
-                <div class="tech-box">MongoDB</div>
-            </div>
+      <!-- Education Section -->
+      <div class="card mt-4 p-3">
+        <h2>Education</h2>
+        <p>
+          <strong>Bachelor of Science in Computer Science</strong> - Digital
+          Forensics Specialization<br />
+          National University - Manila (August 2021 - September 2025)
+        </p>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="card mt-4 p-3">
+        <h2>Projects</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h4>Pesosense: Philippine Money Identifier</h4>
+            <p>
+              Developed a currency recognition model that identifies Philippine
+              pesos using machine learning and TensorFlow.
+            </p>
+          </div>
+          <div class="project-card">
+            <h4>Data Visualization Project</h4>
+            <p>
+              Created an interactive dashboard for analyzing complex datasets
+              with Python and Power BI, offering insightful visualizations.
+            </p>
+          </div>
+          <div class="project-card">
+            <h4>Online Shop (MERN Stack)</h4>
+            <p>
+              Designed and developed a full-stack e-commerce platform using
+              MongoDB, Express.js, React, and Node.js, with features like user
+              authentication and payment integration.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        
-        <!-- Custom JS -->
-        <script>
-            document.getElementById('theme-toggle').addEventListener('click', function() {
-                document.body.classList.toggle('dark-mode');
-                document.body.classList.toggle('light-mode');
-            });
-
-            // Add fade-in effect for profile and about sections
-            window.onload = function() {
-                document.getElementById('profile').style.animation = "fadeIn 1s ease-in-out";
-                document.getElementById('about-section').style.animation = "fadeIn 1s ease-in-out";
-                document.getElementById('skills-section').style.animation = "fadeIn 1s ease-in-out";
-            };
-        </script>
+      <!-- Contact Information Section -->
+      <div class="card mt-4 p-3">
+        <h2>Contact Me</h2>
+        <p>
+          <strong>Joshua Dia</strong><br />
+          3 Geronimo, Santa Monica, Novaliches, Quezon City<br />
+          0915-592-8415<br />
+          <a href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a><br />
+          <a target="_blank" href="https://www.linkedin.com/in/joshua-dia/">
+            LinkedIn Profile
+          </a>
+        </p>
+      </div>
     </div>
-</body>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+      // Toggle theme when the button is clicked
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", function () {
+          const icon = document.querySelector("#theme-toggle i");
+
+          // Toggle the theme
+          document.body.classList.toggle("dark-mode");
+          document.body.classList.toggle("light-mode");
+
+          // Change theme toggle button background based on mode
+          if (document.body.classList.contains("dark-mode")) {
+            document.getElementById("theme-toggle");
+          } else {
+            document.getElementById("theme-toggle");
+          }
+        });
+
+      // On page load, ensure the correct initial state
+      window.onload = function () {
+        if (document.body.classList.contains("dark-mode")) {
+          document.getElementById("theme-toggle");
+        } else {
+          document.getElementById("theme-toggle");
+        }
+      };
+    </script>
+  </body>
 </html>
