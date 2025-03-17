@@ -137,10 +137,11 @@ body {
 }
 
 .certification-card {
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Light Mode */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .certification-card h4 {
@@ -151,6 +152,17 @@ body {
   font-size: 0.95em;
   color: #555;
   margin-top: 10px;
+}
+
+/* Dark Mode Certifications Section */
+.dark-mode .certification-card {
+  background-color: #333; /* Dark Mode */
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .certification-card p {
+  color: #e0e0e0; /* Lighter text for dark mode */
 }
 
 /* Contact Section Styling */
