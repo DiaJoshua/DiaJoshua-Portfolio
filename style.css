@@ -129,6 +129,30 @@ body {
   font-size: 0.9em;
 }
 
+/* Certifications Section */
+.certification-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.certification-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.certification-card h4 {
+  font-weight: bold;
+}
+
+.certification-card p {
+  font-size: 0.95em;
+  color: #555;
+  margin-top: 10px;
+}
+
 /* Contact Section Styling */
 #contact-me-section {
   text-align: center;
