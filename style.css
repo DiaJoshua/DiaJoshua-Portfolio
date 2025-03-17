@@ -188,150 +188,18 @@ body {
 }
 
 
-/* Media Queries */
 
-/* For devices with max-width 768px (Tablets and small screens) */
+
 @media (max-width: 768px) {
-  .container {
-    padding: 15px;
-    max-width: 100%;
-  }
-
-  .profile-img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .profile {
-    margin-bottom: 15px;
-  }
-
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-
   .tech-box {
     margin: 5px;
-    padding: 8px 15px;
-  }
-
-  .project-list {
-    gap: 10px;
-  }
-
-  .project-card {
-    padding: 10px;
-  }
-
-  #contact-me-section {
-    padding: 20px;
-  }
-
-  #contact-me-section h2 {
-    font-size: 1.8rem;
-  }
-
-  #contact-me-section p {
-    font-size: 1rem;
-  }
-
-  .social-icon {
-    font-size: 1.6rem;
-  }
-
-  /* Theme Toggle */
-  #theme-toggle {
-    position: fixed;
-    width: 5vw;
-    height: 5vh;
-    top: 15px;
-    right: 15px;
-  }
-
-  .toggle-knob {
-    width: 20px;
-    height: 20px;
-  }
-
-  .dark-mode #theme-toggle {
-    background-color: #444;
-  }
-
-  .light-mode #theme-toggle {
-    background-color: #f9f9f9;
   }
 }
-
-/* For smaller devices (Mobile screens) */
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
-
-  .profile-img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .profile {
-    margin-bottom: 10px;
-  }
-
-  .tech-stack {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .tech-box {
-    margin: 5px;
-    padding: 5px 10px;
-  }
-
-  .project-card {
-    padding: 8px;
-  }
-
-  #contact-me-section {
-    padding: 15px;
-  }
-
-  #contact-me-section h2 {
-    font-size: 1.6rem;
-  }
-
-  #contact-me-section p {
-    font-size: 0.95rem;
-  }
-
-  .social-icon {
-    font-size: 1.4rem;
-  }
-
-  /* Theme Toggle */
-  #theme-toggle {
-    position: fixed;
-    width: 6vw;
-    height: 6vh;
-    top: 10px;
-    right: 10px;
-  }
-
-  .toggle-knob {
-    width: 22px;
-    height: 22px;
-  }
-
-  .dark-mode #theme-toggle {
-    background-color: #444;
-  }
-
-  .light-mode #theme-toggle {
-    background-color: #f9f9f9;
-  }
-}
-
 
 /* Animations */
 @keyframes fadeIn {
