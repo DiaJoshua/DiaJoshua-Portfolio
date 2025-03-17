@@ -56,6 +56,11 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
 }
 
 .buttons .btn {
@@ -69,34 +74,72 @@ body {
   font-size: 14px;
 }
 
-/* Experience Timeline */
-.timeline {
-  list-style: none;
-  padding: 0;
-}
-
-.timeline li {
-  padding: 10px;
-  border-left: 3px solid #007bff;
-  margin-bottom: 10px;
-}
-
-/* Recent Projects */
+/* Project Cards */
 .project-list {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .project-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  margin: 10px 0;
+  padding: 20px;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h4 {
+  font-size: 1.2rem;
+}
+
+.project-card p {
+  font-size: 1rem;
+}
+
+/* Animations */
+.wow {
+  visibility: hidden;
+}
+
+.wow.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.wow.fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.wow.zoomIn {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Toggle Switch */
