@@ -243,6 +243,7 @@ body {
 
   /* Theme Toggle */
   #theme-toggle {
+    position: fixed;
     width: 5vw;
     height: 5vh;
     top: 15px;
@@ -310,6 +311,7 @@ body {
 
   /* Theme Toggle */
   #theme-toggle {
+    position: fixed;
     width: 6vw;
     height: 6vh;
     top: 10px;
