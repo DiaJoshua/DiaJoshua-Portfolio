@@ -137,7 +137,7 @@ body {
 }
 
 .certification-card {
-  background-color: #f9f9f9; /* Light Mode */
+  background-color: #f9f9f9; 
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -156,42 +156,47 @@ body {
 
 /* Dark Mode Certifications Section */
 .dark-mode .certification-card {
-  background-color: #333; /* Dark Mode */
+  background-color: #333; 
   color: #fff;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .certification-card p {
-  color: #e0e0e0; /* Lighter text for dark mode */
+  color: #e0e0e0; 
 }
 
 /* Resume Section Styling */
-.resume-container {
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-
 .resume-section {
-  background: #1e1e1e;
-  padding: 20px;
+  background: #1e1e1e; 
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.resume-section h2 {
+.light-mode .resume-section {
+  background: #ffffff; 
+}
+
+.resume-title {
   font-size: 2rem;
+  font-weight: bold;
 }
 
-.resume-section p {
-  color: #ddd;
+.resume-frame {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.resume-section .btn {
-  margin-top: 10px;
+.btn-primary {
+  background-color: #1e90ff; 
+  border: none;
+  transition: all 0.3s ease-in-out;
 }
+
+.btn-primary:hover {
+  background-color: #1565c0; 
+}
+
 
 
 /* Contact Section Styling */
