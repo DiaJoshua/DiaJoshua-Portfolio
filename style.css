@@ -181,11 +181,6 @@ body {
   font-weight: bold;
 }
 
-.resume-frame {
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
 
 .btn-primary {
   background-color: #1e90ff; 
@@ -196,7 +191,6 @@ body {
 .btn-primary:hover {
   background-color: #1565c0; 
 }
-
 
 
 /* Contact Section Styling */
