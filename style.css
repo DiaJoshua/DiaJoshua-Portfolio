@@ -129,6 +129,19 @@ body {
   font-size: 0.9em;
 }
 
+.project-link {
+  color: #1e90ff;  /* Highlighted blue */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.project-link:hover {
+  color: #0b6bcf; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+
 /* Certifications Section */
 .certification-list {
   display: grid;
