@@ -130,16 +130,23 @@ body {
 }
 
 .project-link {
-  color: #1e90ff;  /* Highlighted blue */
-  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  color: #1e90ff;
   font-weight: bold;
+  text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
+.project-link i {
+  margin-left: 5px;
+}
+
 .project-link:hover {
-  color: #0b6bcf; /* Darker blue on hover */
+  color: #0b6bcf;
   text-decoration: underline;
 }
+
 
 
 /* Certifications Section */
