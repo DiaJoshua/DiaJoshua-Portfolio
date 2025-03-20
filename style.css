@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
 }
 
+h2 {
+  font-weight: bold;
+}
+
 /* Container */
 .container {
   max-width: 900px;
@@ -146,7 +150,6 @@ p {
 .project-card h4 {
   margin: 0;
   font-size: 1.2em;
-  font-weight: bold;
 }
 
 .project-card p {
@@ -186,10 +189,6 @@ p {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.certification-card h4 {
-  font-weight: bold;
 }
 
 .certification-card p {
