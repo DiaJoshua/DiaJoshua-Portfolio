@@ -1,8 +1,18 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* General Styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 /* Container */
@@ -12,20 +22,27 @@ body {
   padding: 20px;
 }
 
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+}
+
 /* Light Mode */
 .light-mode {
   background: #ffffff;
-  color: #333;
+  color: #222;
 }
 
 .light-mode .card {
-  background: #f8f9fa;
-  color: #333;
+  background: #f9f9f9;
+  color: #222;
 }
 
 .light-mode .btn-outline-light {
-  border-color: #333;
-  color: #333;
+  border-color: #222;
+  color: #222;
+  font-weight: 500;
 }
 
 /* Dark Mode */
@@ -60,6 +77,12 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.btn {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 10px 15px;
+}
+
 .buttons .btn {
   margin: 5px;
   transition: transform 0.3s ease;
@@ -76,8 +99,10 @@ body {
 .tech-box {
   padding: 10px 20px;
   border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   color: inherit;
-  font-weight: bold;
   text-align: center;
   animation: fadeIn 1s ease-in-out forwards;
   transition: transform 0.3s ease-in-out;
