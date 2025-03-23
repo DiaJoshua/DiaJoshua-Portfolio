@@ -158,7 +158,7 @@ p {
   color: #1e90ff;
   font-weight: bold;
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .project-link i {
@@ -168,6 +168,7 @@ p {
 .project-link:hover {
   color: #0b6bcf;
   text-decoration: underline;
+  transform: scale(1.05);
 }
 
 
@@ -187,11 +188,6 @@ p {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   overflow: hidden;
-}
-
-.certification-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .certification-card h4 {
@@ -221,14 +217,13 @@ p {
 .certification-card a:hover {
   color: #0b6bcf;
   text-decoration: underline;
-  transform: translateX(5px);
+  transform: scale(1.05);
 }
 
 /* Dark Mode Certifications Section */
 .dark-mode .certification-card {
   background-color: #333;
   color: #fff;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .certification-card h4 {
@@ -317,7 +312,7 @@ p {
 
 /* Dark Mode Enhancements */
 .dark-mode #contact-me-section {
-  background-color: #333;
+  background-color: #1e1e1e;
   color: #e0e0e0;
 }
 
