@@ -308,6 +308,7 @@ p {
 
 .social-icon:hover {
   color: #1a7bc7 ; 
+  transform: scale(0.97);
 }
 
 /* Dark Mode Enhancements */
