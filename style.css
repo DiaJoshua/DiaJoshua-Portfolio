@@ -299,8 +299,22 @@ p {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .tech-box {
     margin: 5px;
+  }
+
+  .certification-list {
+    grid-template-columns: 1fr 1fr; 
+  }
+
+  .certification-card {
+    padding: 12px;
+    font-size: 0.9em; 
+  }
+
+  .certification-card p {
+    font-size: 0.85em; 
   }
 }
 
