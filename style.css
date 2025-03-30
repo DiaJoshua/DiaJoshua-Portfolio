@@ -223,6 +223,7 @@ p {
 
 /* Dark Mode Certifications Section */
 .dark-mode .certification-card {
+  transition: background-color 0s ease;
   background-color: #333;
   color: #fff;
 }
@@ -235,12 +236,10 @@ p {
   color: #e0e0e0;
 }
 
-.dark-mode .certification-card a {
-  color: #1e90ff;
-}
-
-.dark-mode .certification-card a:hover {
-  color: #0b6bcf;
+.light-mode .certification-card {
+  transition: background-color 0s ease;
+  background-color: #f9f9f9;
+  color: #fff;
 }
 
 /* Resume Section Styling */
