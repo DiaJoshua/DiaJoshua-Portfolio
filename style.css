@@ -57,6 +57,7 @@ p {
 .dark-mode .btn-outline-light {
   border-color: #ffffff;
   color: #ffffff;
+  font-weight: 500;
 }
 
 /* Profile Section */
