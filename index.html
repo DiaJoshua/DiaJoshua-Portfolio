@@ -110,6 +110,11 @@
         <div class="toggle-knob"></div>
       </div>
 
+      <button id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+      
+
       <!-- Profile Section -->
       <div class="profile text-center" id="profile">
         <img src="profile.jpg" alt="Profile Picture" class="profile-img" />
@@ -326,6 +331,26 @@
           document.getElementById("theme-toggle");
         }
       };
+
+      // Get the button
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // Show button after scrolling down 300px
+    window.onscroll = function () {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollToTopBtn.style.display = "block";
+      } else {
+        scrollToTopBtn.style.display = "none";
+      }
+    };
+
+    // Scroll to top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
     </script>
   </body>
 </html>
