@@ -169,7 +169,6 @@ p {
 .project-link:hover {
   color: #0b6bcf;
   text-decoration: underline;
-  transform: scale(1.05);
 }
 
 
@@ -210,7 +209,7 @@ p {
   margin-top: 10px;
   font-size: 1rem;
   color: #1e90ff;
-  font-weight: 500;
+  font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -218,7 +217,6 @@ p {
 .certification-card a:hover {
   color: #0b6bcf;
   text-decoration: underline;
-  transform: scale(1.05);
 }
 
 /* Dark Mode Certifications Section */
@@ -307,7 +305,7 @@ p {
 }
 
 .social-icon:hover {
-  color: #1a7bc7 ; 
+  color: #0077b5 ; 
   transform: scale(0.97);
 }
 
