@@ -561,7 +561,8 @@ body,
 .project-card,
 .experience-item,
 .certification-card,
-.nested-card {
+.nested-card,
+.tech-stack {
   transition: background-color 0s ease, color 0s ease;
 }
 
