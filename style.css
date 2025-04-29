@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Container */
 .container {
+  position: relative;
   max-width: 900px;
   margin: auto;
   padding: 20px;
@@ -63,9 +64,11 @@ p {
 
       /* Dark Mode Toggle Styling */
       #theme-toggle {
-        position: fixed;
+        position: absolute;
         top: 20px;
         right: 20px;
+        margin-left: auto;
+        margin-right: 0;
         width: 60px;
         height: 30px;
         background: #333;
@@ -75,9 +78,9 @@ p {
         align-items: center;
         cursor: pointer;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
         z-index: 1000;
       }
+      
 
       .toggle-knob {
         width: 25px;
