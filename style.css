@@ -130,6 +130,21 @@ p {
 }
 
 /* =================================================== */
+/* ================= Logo ================== */
+.logo-img {
+  width: 5%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+.logo-img:hover {
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+
+/* =================================================== */
 /* ================= Box Shadow ================== */
 .card, .project-card, .experience-card, .certification-card {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -463,5 +478,14 @@ body.dark-mode {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes floatLogo {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }
