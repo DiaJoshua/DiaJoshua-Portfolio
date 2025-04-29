@@ -120,8 +120,8 @@ p {
   background-color: #333;
   color: white;
   border: none;
-  width: 40px;
-  height: 40px;
+  padding: 10px 15px;
+  box-sizing: border-box;
   border-radius: 50%;
   font-size: 18px;
   display: none;
