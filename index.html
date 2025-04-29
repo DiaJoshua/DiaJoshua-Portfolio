@@ -3,50 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css">
+    <title>Joshua Dia - Portfolio</title>
+
+    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" type="image/png" sizes="32x32" href="Logo_DJ/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Logo_DJ/favicon-16x16.png">
-    <title>Joshua Dia - Portfolio</title>
 
     <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <!-- FontAwesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
-
   </head>
 
   <body class="light-mode">
     <div class="container mt-4">
+
       <!-- Theme Toggle -->
       <div id="theme-toggle">
         <div class="toggle-knob"></div>
       </div>
 
+      <!-- Scroll to Top Button -->
       <button id="scrollToTopBtn" title="Go to top">
         <i class="fas fa-chevron-up"></i>
       </button>
-      
 
       <!-- Profile Section -->
       <div class="profile text-center" id="profile">
         <img src="profile.jpg" alt="Profile Picture" class="profile-img" />
         <h1>Joshua Dia</h1>
         <p class="subtitle">
-          Computer Science Student | Specializing in Digital Forensics |
-          Full-Stack Developer (MERN) | Backend Developer Intern @Kapiton
+          Computer Science Student | Digital Forensics | Full-Stack (MERN) |
+          Backend Developer Intern @Kapiton
         </p>
         <div class="buttons">
-          <a href="mailto:diajoshua05@gmail.com" class="btn btn-outline-light">
+          <a href="mailto:diajoshua05@gmail.com" class="btn">
             <i class="fa fa-envelope"></i> Send Email
           </a>
         </div>
@@ -54,22 +51,15 @@
 
       <!-- About Section -->
       <div class="card mt-4 p-3" id="about-section">
-        <h2 class="about-heading">About Me</h2>
-        <p class="about-description">
-          As a passionate Computer Science student specializing in Digital
-          Forensics, I have developed a strong skill set in full-stack web
-          development, data analysis, and systems administration. I am
-          experienced in the MERN stack, machine learning, and have worked with
-          various programming languages. I thrive in environments that challenge
-          me to grow and push the boundaries of innovation. I am always eager to
-          tackle new challenges, and I am dedicated to delivering solutions that
-          are both efficient and user-friendly. Feel free to reach out—I'd love to collaborate or share ideas!
+        <h2>About Me</h2>
+        <p>
+          I'm a CS student specializing in Digital Forensics with a passion for full-stack development, data analysis, and machine learning. I thrive in tech challenges, love pushing boundaries, and I’m always up for collaboration!
         </p>
       </div>
 
       <!-- Skills Section -->
       <div class="card mt-4 p-3" id="skills-section">
-        <h2>Relevant Skills</h2>
+        <h2>Skills</h2>
         <div class="tech-stack">
           <div class="tech-box">JavaScript</div>
           <div class="tech-box">Python</div>
@@ -79,227 +69,171 @@
           <div class="tech-box">HTML & CSS</div>
           <div class="tech-box">PHP</div>
           <div class="tech-box">MongoDB</div>
-          <div class="tech-box">Machine Learning (TensorFlow)</div>
-          <div class="tech-box">Version Control (Git & GitHub)</div>
+          <div class="tech-box">TensorFlow</div>
+          <div class="tech-box">Git & GitHub</div>
         </div>
       </div>
 
       <!-- Education Section -->
       <div class="card mt-4 p-3">
         <h2>Education</h2>
-        <p>
-          <strong>Bachelor of Science in Computer Science</strong> - Digital
-          Forensics Specialization<br />
-          National University - Manila (August 2021 - September 2025)
-        </p>
-        <p>
-          <strong>Senior High School Grade 11</strong><br />
-          FEU Diliman (2019 - 2020)
-        </p>
-        <p>
-          <strong>High School</strong><br />
-          St. Theresa's School of Novaliches (2014 - 2021)
-        </p>
+        <p><strong>BS Computer Science</strong> - National University, Manila (2021–2025)<br />Specialization: Digital Forensics</p>
+        <p><strong>Senior High</strong> - FEU Diliman (2019–2020)</p>
+        <p><strong>High School</strong> - St. Theresa's School of Novaliches (2014–2021)</p>
       </div>
 
       <!-- Projects Section -->
       <div class="card mt-4 p-3">
         <h2>Projects</h2>
         <div class="project-list">
+
+          <!-- You could convert these into <article> elements for better semantics -->
           <div class="project-card">
             <h4>Pesosense: Philippine Money Identifier</h4>
-            <p>
-              Developed a real-time currency recognition model using TensorFlow to identify Philippine pesos through machine learning.
-            </p>
+            <p>Real-time ML model using TensorFlow to identify Philippine currency.</p>
           </div>
+
           <div class="project-card">
             <h4>Data Visualization Project</h4>
-            <p>
-              Created interactive visualizations and analytical reports with Python (Pandas, Matplotlib, NumPy) and Power BI, helping to generate insights from complex datasets.
-            </p>
+            <p>Built dashboards and visualizations using Python (Pandas, Matplotlib) and Power BI.</p>
           </div>
+
           <div class="project-card">
-            <h4>E-commerce Web Application (MERN Stack)</h4>
-            <p>
-              Developed a full-stack e-commerce web application using MongoDB, Express.js, React, and Node.js. Implemented user authentication, payment integration, and other essential features.
-            </p>
+            <h4>MERN E-commerce App</h4>
+            <p>Full-stack app with user auth, payments, and product management.</p>
           </div>
+
           <div class="project-card">
-            <h4>ClickSmart (AI-Chatbot Supported Cybercrime Awareness Website)</h4>
-            <p>
-                Developed a cybercrime awareness website with an AI chatbot using Python and TensorFlow, fine-tuning a GPT-2 model with a custom dataset on Philippine cyber laws for accurate responses.
-            </p>
-            <a href="https://clicksmart-frontend.onrender.com/" target="_blank" class="project-link">
-                Visit Website</i>
-            </a>
-        </div>              
+            <h4>ClickSmart: AI Chatbot for Cybercrime Awareness</h4>
+            <p>Fine-tuned GPT-2 model with Philippine cyber law data. Includes chatbot UI.</p>
+            <a href="https://clicksmart-frontend.onrender.com/" target="_blank" class="project-link">Visit Website</a>
+          </div>
+
           <div class="project-card">
             <h4>Facial Recognition System</h4>
-            <p>
-              Built a facial recognition system using TensorFlow to identify faces, training the model with personal data for real-time identification.
-            </p>
+            <p>TensorFlow-powered model trained for real-time facial identification.</p>
           </div>
+
           <div class="project-card">
-            <h4>Art Gallery Web Application</h4>
-            <p>
-              Developed a web application using HTML, CSS, JavaScript, PHP, and SQL to showcase and categorize artwork. Implemented a robust database for image storage and retrieval.
-            </p>
+            <h4>Art Gallery App</h4>
+            <p>Image catalog site using PHP, JS, SQL; supports image uploads and browsing.</p>
           </div>
+
           <div class="project-card">
-            <h4>New Tech Pest Control Record Keeping System</h4>
-            <p>
-              Contributed to the front-end development of a pest control record management system, focusing on creating a seamless and user-friendly interface with React and Tailwind CSS.
-            </p>
+            <h4>Pest Control Record System</h4>
+            <p>Front-end UI in React & Tailwind for a custom record management platform.</p>
           </div>
         </div>
       </div>
 
       <!-- Experience Section -->
-      <section id="experience">
-          <div class="container">
-            <div class="experience-list">
-              <!-- Experience Card 1 -->
-              <div class="experience-card card">
-                <h2>Experience</h2>
-                <!-- Nested Card -->
-                <div class="nested-card">
-                <div class="experience-content">
-                  <h3>Back End Developer Intern</h3>
-                  <h4>Kapiton · Internship</h4>
-                  <div class="date-location">Mar 2025 - Present · 2 mos | Quezon City, Metro Manila · Remote</div>
-                  <ul>
-                    <li>Developed and maintained backend systems using Laravel and Docker.</li>
-                    <li>Collaborated with the team to implement new features and improve existing ones.</li>
-                    <li>Managed version control and code deployment using GitHub.</li>
-                  </ul>
-                    <h4>Tech Stack Used:</h4>
-                    <div class="tech-stack">
-                      <div class="tech-box">Laravel</div>
-                      <div class="tech-box">Docker</div>
-                      <div class="tech-box">GitHub</div>
-                  </div>
-                </div>
+      <section id="experience" class="mt-4">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-list">
+          <div class="experience-card card">
+            <div class="experience-header">
+              <h3>Backend Developer Intern</h3>
+              <h4>Kapiton · Internship</h4>
+              <p class="date-location">Mar 2025 – Present | Remote, Quezon City</p>
+            </div>
+            <div class="experience-content">
+              <ul>
+                <li>Built and maintained Laravel/Docker-based systems.</li>
+                <li>Collaborated on feature rollouts and improvements.</li>
+                <li>Handled GitHub version control and deployments.</li>
+              </ul>
+              <h4>Tech Stack:</h4>
+              <div class="tech-stack">
+                <div class="tech-box">Laravel</div>
+                <div class="tech-box">Docker</div>
+                <div class="tech-box">GitHub</div>
               </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- Certifications Section -->
+      <!-- Certifications -->
       <div class="card mt-4 p-3">
         <h2>Certifications</h2>
         <div class="certification-list">
           <div class="certification-card">
-            <h4>TOEIC Certification</h4>
-            <p>
-              TOEIC score of 850, demonstrating strong English proficiency in listening and reading.
-            </p>
+            <h4>TOEIC</h4>
+            <p>Score: 850 — Proficient in English communication.</p>
           </div>
           <div class="certification-card">
             <h4>IBM Cloud Essentials V3</h4>
             <p>
-              Completed the IBM Cloud Essentials V3 course on cognitiveclass.ai, covering cloud fundamentals. </br>
-              <a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank">View Certificate</a>
+              Completed on CognitiveClass.ai
+              <br /><a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank">View Certificate</a>
             </p>
           </div>
           <div class="certification-card">
-            <h4>Getting Started with Data Analytics on AWS</h4>
+            <h4>Data Analytics on AWS (Coursera)</h4>
             <p>
-              Successfully completed the Coursera course authorized by Amazon Web Services, covering data analytics fundamentals. </br>
-              <a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank">View Certificate</a>
+              Fundamentals of analytics with AWS.
+              <br /><a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank">View Certificate</a>
             </p>
           </div>
         </div>
       </div>
 
-
-      <!-- Resume Section -->
+      <!-- Resume -->
       <div class="card resume-section text-center mt-4 p-4">
-        <h2 class="resume-title">My Resume</h2>
-        <p class="mt-3">You can download my resume below:</p>
-        <a href="JOSHUA DIA - RESUME 2025.pdf" download class="btn btn-primary btn-lg mt-2">
-            <i class="fas fa-file-download"></i> Download Resume
+        <h2>My Resume</h2>
+        <p>You can download my resume below:</p>
+        <a href="JOSHUA DIA - RESUME 2025.pdf" download class="btn-primary mt-2">
+          <i class="fas fa-file-download"></i> Download Resume
         </a>
       </div>
-      
-      <!-- Contact Information Section -->
-      <div class="card mt-4 p-3" id="contact-me-section">
-          <h2>Contact Me</h2>
-          <p>
-            <strong>Joshua Dia</strong><br /> Quezon City, Philippines<br /> 0915-592-8415<br />
-            <a href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a>
-          </p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" class="social-icon" title="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/DiaJoshua" target="_blank" class="social-icon" title="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.facebook.com/diajoshh" target="_blank" class="social-icon" title="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/diajoshh/" target="_blank" class="social-icon" title="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
 
-          <footer>
-            <div style="text-align: center; padding: 10px; font-size: 14px; color: #666;">
-              &copy; 2025 Joshua Dia. All Rights Reserved.
-            </div>
-          </footer>          
+      <!-- Contact -->
+      <div class="card mt-4 p-3" id="contact-me-section">
+        <h2>Contact Me</h2>
+        <p>
+          <strong>Joshua Dia</strong><br />
+          Quezon City, Philippines<br />
+          <a href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a>
+        </p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" class="social-icon" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/DiaJoshua" target="_blank" class="social-icon" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.facebook.com/diajoshh" target="_blank" class="social-icon" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/diajoshh/" target="_blank" class="social-icon" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
-  
+        <footer class="mt-3 text-center text-muted">
+          &copy; 2025 Joshua Dia. All Rights Reserved.
+        </footer>
+      </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
     <script>
-      // Toggle theme when the button is clicked
-      document
-        .getElementById("theme-toggle")
-        .addEventListener("click", function () {
-          const icon = document.querySelector("#theme-toggle i");
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-          // Toggle the theme
-          document.body.classList.toggle("dark-mode");
-          document.body.classList.toggle("light-mode");
-
-          // Change theme toggle button background based on mode
-          if (document.body.classList.contains("dark-mode")) {
-            document.getElementById("theme-toggle");
-          } else {
-            document.getElementById("theme-toggle");
-          }
-        });
-
-      // On page load, ensure the correct initial state
-      window.onload = function () {
-        if (document.body.classList.contains("dark-mode")) {
-          document.getElementById("theme-toggle");
-        } else {
-          document.getElementById("theme-toggle");
-        }
+      window.onscroll = () => {
+        scrollToTopBtn.style.display = (window.scrollY > 300) ? "block" : "none";
       };
 
-      // Get the button
-  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-    // Show button after scrolling down 300px
-    window.onscroll = function () {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollToTopBtn.style.display = "block";
-      } else {
-        scrollToTopBtn.style.display = "none";
-      }
-    };
-
-    // Scroll to top smoothly
-    scrollToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
-    });
+
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        document.body.classList.toggle("light-mode");
+      });
     </script>
   </body>
 </html>
