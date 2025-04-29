@@ -190,6 +190,7 @@ p {
 /* =================================================== */
 /* ================= Project List =================== */
 .project-list {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
