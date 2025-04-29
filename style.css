@@ -132,10 +132,10 @@ p {
 /* =================================================== */
 /* ================= Logo ================== */
 .logo-img {
-  width: 6%;
+  width: 7%;
   height: auto;
   margin-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 50%;
   animation: floatLogo 4s ease-in-out infinite;
 }
 
