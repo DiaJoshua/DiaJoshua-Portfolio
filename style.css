@@ -30,6 +30,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
 }
 
+h2 {
+  font-weight: 600;
+}
+
 p {
   font-size: 1rem;
   font-weight: 400;
@@ -304,7 +308,7 @@ p {
 
 .certification-card h4{
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
@@ -353,13 +357,23 @@ p {
 
 .social-icon {
   font-size: 2rem;
-  color: #333;
+  color: #222;
   transition: color 0.3s, transform 0.3s ease-in-out;
+}
+
+.dark-mode .social-icon{
+  color: #555;
 }
 
 .social-icon:hover {
   color: #1e90ff;
   transform: scale(0.95);
+}
+
+footer {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
 }
 
 /* =================================================== */
