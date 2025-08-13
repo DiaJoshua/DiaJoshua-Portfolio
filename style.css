@@ -141,9 +141,6 @@ p {
   animation: floatLogo 4s ease-in-out infinite;
 }
 
-.logo-img:hover {
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
-}
 
 
 /* =================================================== */
