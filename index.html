@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Joshua Dia portfolio - full-stack developer, digital forensics specialist, and data analyst." />
+    <meta
+      name="description"
+      content="Joshua Dia — Computer Science graduate, full-stack developer, digital forensics specialist, and data analyst based in Quezon City."
+    />
+    <meta name="theme-color" content="#080a12" />
     <title>Joshua Dia | Portfolio</title>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -17,181 +21,347 @@
   </head>
 
   <body class="dark-mode">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-bg" aria-hidden="true">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="orb orb-c"></div>
+      <div class="grid-glow"></div>
+      <div class="noise-overlay"></div>
+    </div>
     <div class="cursor-glow" aria-hidden="true"></div>
-    <div class="noise-overlay" aria-hidden="true"></div>
 
-    <nav class="top-nav glass-panel">
-      <a href="#profile" class="brand-mark">
+    <header class="top-nav glass-panel" data-animate>
+      <a href="#profile" class="brand-mark" aria-label="Joshua Dia home">
         <img src="./Logo_DJ/android-chrome-512x512.png" alt="Joshua Dia Logo" />
-        <span>JD</span>
+        <span>Joshua Dia</span>
       </a>
-      <div class="nav-links">
+
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about-section">About</a>
         <a href="#skills-section">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#contact-me-section">Contact</a>
-      </div>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme">
+      </nav>
+
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" type="button">
         <i class="fa-solid fa-sun"></i>
         <span class="toggle-knob"></span>
         <i class="fa-solid fa-moon"></i>
       </button>
-    </nav>
+    </header>
 
-    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">
+    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top" type="button">
       <i class="fas fa-chevron-up"></i>
     </button>
 
-    <main class="page-shell">
-      <section class="hero-section reveal" id="profile">
+    <main class="page-shell" id="main-content">
+      <section class="hero-section" id="profile" data-animate>
         <div class="hero-copy">
-          <span class="eyebrow"><i class="fa-solid fa-bolt"></i> Available for exciting builds</span>
-          <h1>Joshua Dia</h1>
-          <p class="subtitle">
-            Computer Science Student · Digital Forensics · Full-Stack MERN · Data Analyst
-          </p>
+          <p class="eyebrow"><i class="fa-solid fa-location-dot"></i> Quezon City, Philippines · Open to dev roles</p>
+          <h1>Full-stack builder with a forensics mindset.</h1>
+          <p class="subtitle">Hi, I’m Joshua — I build useful web apps, AI tools, and dashboards that stay clean under pressure.</p>
           <p class="hero-description">
-            I build clean, useful digital products with a security-minded edge — from AI chatbots and data dashboards to full-stack apps that feel fast, polished, and effortless to use.
+            My work sits at the intersection of software engineering, cybersecurity, and data. I like turning messy requirements into calm interfaces, reliable systems, and tools people can actually use without a manual.
           </p>
+
           <div class="hero-actions">
             <a href="mailto:diajoshua05@gmail.com" class="btn btn-glow">
               <i class="fa fa-envelope"></i> Send Email
             </a>
             <a href="#projects" class="btn btn-ghost">
-              <i class="fa-solid fa-sparkles"></i> View Projects
+              <i class="fa-solid fa-layer-group"></i> View Work
+            </a>
+            <a href="RESUME UPDATED 2025 - JOSHUA DIA.pdf" download class="btn btn-quiet">
+              <i class="fas fa-file-download"></i> Resume
             </a>
           </div>
-          <div class="hero-stats">
-            <div><strong>7+</strong><span>Projects</span></div>
-            <div><strong>850</strong><span>TOEIC Score</span></div>
-            <div><strong>2025</strong><span>CS Graduate</span></div>
+
+          <div class="hero-stats" aria-label="Portfolio highlights">
+            <div><strong>7+</strong><span>shipped builds</span></div>
+            <div><strong>850</strong><span>TOEIC score</span></div>
+            <div><strong>2025</strong><span>BSCS graduate</span></div>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <img src="Grad Pic - Josh.jpg" alt="Joshua Dia profile picture" class="profile-img" />
+
+        <div class="hero-visual" aria-label="Joshua Dia profile visual">
+          <div class="portrait-frame">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <img src="Grad Pic - Josh.jpg" alt="Joshua Dia profile picture" class="profile-img" />
+            <span class="scan-line"></span>
+          </div>
           <div class="floating-badge badge-top"><i class="fa-solid fa-shield-halved"></i> Digital Forensics</div>
+          <div class="floating-badge badge-left"><i class="fa-solid fa-chart-line"></i> Data Analytics</div>
           <div class="floating-badge badge-bottom"><i class="fa-solid fa-code"></i> Full-Stack Dev</div>
         </div>
       </section>
 
-      <section class="card glass-panel reveal" id="about-section">
+      <section class="card glass-panel section-card" id="about-section" data-animate>
         <div class="section-heading">
           <span>01</span>
-          <h2>About Me</h2>
+          <div>
+            <p class="section-kicker">About</p>
+            <h2>Practical, curious, and detail-obsessed.</h2>
+          </div>
         </div>
         <p class="about-description">
-          I’m a driven Computer Science student with a specialization in Digital Forensics, passionate about turning complex challenges into elegant, functional solutions. My experience spans full-stack web development (MERN), data analysis, and systems administration, with additional strengths in machine learning and a variety of programming languages. I thrive in dynamic environments where innovation and growth are at the forefront. Whether it's building intuitive user interfaces, optimizing backend systems, or training ML models, I bring curiosity, precision, and a collaborative spirit to every project. Let's connect — I'm always open to new ideas and opportunities to build something impactful.
+          I’m a Computer Science graduate specializing in Digital Forensics. I enjoy building full-stack products, working with data, and exploring security-focused systems. My strongest work usually starts with one question: “How can this be simpler, faster, and harder to break?”
         </p>
+        <div class="value-grid">
+          <article>
+            <i class="fa-solid fa-compass-drafting"></i>
+            <h3>Clean interfaces</h3>
+            <p>I care about layouts, spacing, responsiveness, and the little details that make a site feel intentional.</p>
+          </article>
+          <article>
+            <i class="fa-solid fa-lock"></i>
+            <h3>Security-aware thinking</h3>
+            <p>Digital forensics trained me to think in traces, evidence, edge cases, and systems behavior.</p>
+          </article>
+          <article>
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h3>Hands-on delivery</h3>
+            <p>I’m comfortable jumping between frontend, backend, data work, GitHub workflows, and deployment tasks.</p>
+          </article>
+        </div>
       </section>
 
-      <section class="card glass-panel reveal" id="skills-section">
+      <section class="card glass-panel section-card" id="skills-section" data-animate>
         <div class="section-heading">
           <span>02</span>
-          <h2>Skills</h2>
+          <div>
+            <p class="section-kicker">Skills</p>
+            <h2>Tools I use to build, debug, and ship.</h2>
+          </div>
         </div>
-        <div class="tech-stack marquee-stack">
-          <div class="tech-box">JavaScript</div>
-          <div class="tech-box">Python</div>
-          <div class="tech-box">Java</div>
-          <div class="tech-box">React.js</div>
-          <div class="tech-box">Node.js</div>
-          <div class="tech-box">HTML & CSS</div>
-          <div class="tech-box">PHP</div>
-          <div class="tech-box">MongoDB</div>
-          <div class="tech-box">TensorFlow</div>
-          <div class="tech-box">Git</div>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Frontend</h3>
+            <div class="tech-stack">
+              <div class="tech-box">React.js</div>
+              <div class="tech-box">JavaScript</div>
+              <div class="tech-box">HTML & CSS</div>
+              <div class="tech-box">Tailwind CSS</div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Backend & Data</h3>
+            <div class="tech-stack">
+              <div class="tech-box">Node.js</div>
+              <div class="tech-box">PHP</div>
+              <div class="tech-box">Laravel</div>
+              <div class="tech-box">MongoDB</div>
+              <div class="tech-box">SQL</div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>AI, Security & Workflow</h3>
+            <div class="tech-stack">
+              <div class="tech-box">Python</div>
+              <div class="tech-box">TensorFlow</div>
+              <div class="tech-box">OpenCV</div>
+              <div class="tech-box">Docker</div>
+              <div class="tech-box">Git</div>
+              <div class="tech-box">Java</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="card glass-panel reveal">
+      <section class="card glass-panel section-card" data-animate>
         <div class="section-heading">
           <span>03</span>
-          <h2>Education</h2>
+          <div>
+            <p class="section-kicker">Education</p>
+            <h2>Where the foundation was built.</h2>
+          </div>
         </div>
         <div class="timeline">
-          <div class="timeline-item"><strong>BS Computer Science</strong><span>National University, Manila · 2021–2025 · Digital Forensics</span></div>
-          <div class="timeline-item"><strong>Senior High</strong><span>FEU Diliman · 2019–2020</span></div>
-          <div class="timeline-item"><strong>High School</strong><span>St. Theresa's School of Novaliches · 2014–2021</span></div>
+          <article class="timeline-item">
+            <strong>BS Computer Science</strong>
+            <span>National University, Manila · 2021–2025 · Specialization in Digital Forensics</span>
+          </article>
+          <article class="timeline-item">
+            <strong>Senior High School</strong>
+            <span>FEU Diliman · 2019–2020</span>
+          </article>
+          <article class="timeline-item">
+            <strong>High School</strong>
+            <span>St. Theresa's School of Novaliches · 2014–2021</span>
+          </article>
         </div>
       </section>
 
-      <section class="card glass-panel reveal" id="projects">
+      <section class="card glass-panel section-card" id="projects" data-animate>
         <div class="section-heading">
           <span>04</span>
-          <h2>Projects</h2>
+          <div>
+            <p class="section-kicker">Projects</p>
+            <h2>Things I’ve built and learned from.</h2>
+          </div>
         </div>
         <div class="project-list">
-          <article class="project-card"><h4>Pesosense: Philippine Money Identifier</h4><p>A machine learning project that uses TensorFlow and computer vision to identify Philippine peso bills in real time via uploaded images.</p></article>
-          <article class="project-card"><h4>Data Visualization Project</h4><p>Created interactive dashboards and analytical reports using Python, Pandas, Matplotlib, NumPy, and Power BI to extract insights from datasets.</p></article>
-          <article class="project-card"><h4>MERN E-commerce App</h4><p>Developed a full-stack e-commerce platform using MongoDB, Express.js, React, and Node.js with authentication, product catalog, cart, seller dashboard, and admin tools.</p></article>
-          <article class="project-card featured-project"><h4>ClickSmart: AI Chatbot for Cybercrime Awareness</h4><p>Developed a cybercrime awareness site with an AI-powered chatbot using Python and TensorFlow. Fine-tuned a GPT-2 model with local cyber law data for accurate, localized answers.</p><a href="https://clicksmart-frontend.onrender.com/" target="_blank" class="project-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a></article>
-          <article class="project-card"><h4>Facial Recognition System</h4><p>Built a facial recognition system using OpenCV and TensorFlow, trained on personal datasets to recognize faces in real time.</p></article>
-          <article class="project-card"><h4>Art Gallery App</h4><p>Designed and developed a dynamic web app using HTML, CSS, JavaScript, PHP, and SQL to manage and showcase artwork.</p></article>
-          <article class="project-card"><h4>Pest Control Record System</h4><p>Contributed to the React and Tailwind CSS front end for logging, filtering, and exporting treatment data.</p></article>
+          <article class="project-card featured-project">
+            <div class="project-meta"><span>Capstone</span><span>AI · Cybercrime Awareness</span></div>
+            <h3>ClickSmart: AI Chatbot for Cybercrime Awareness</h3>
+            <p>Built a cybercrime awareness platform with an AI chatbot trained around local cyber law context, designed to make safety information easier to understand.</p>
+            <div class="project-tags"><span>Python</span><span>TensorFlow</span><span>GPT-2</span><span>Web App</span></div>
+            <a href="https://clicksmart-frontend.onrender.com/" target="_blank" class="project-link" rel="noopener">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Machine Learning</span></div>
+            <h3>Pesosense: Philippine Money Identifier</h3>
+            <p>Created an image-based Philippine peso bill identifier using TensorFlow and computer vision for real-time classification.</p>
+            <div class="project-tags"><span>TensorFlow</span><span>Computer Vision</span></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Analytics</span></div>
+            <h3>Data Visualization Project</h3>
+            <p>Built dashboards and reports using Python and Power BI to clean, analyze, and communicate patterns from datasets.</p>
+            <div class="project-tags"><span>Pandas</span><span>Power BI</span><span>Matplotlib</span></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Full Stack</span></div>
+            <h3>MERN E-commerce App</h3>
+            <p>Developed an e-commerce platform with authentication, product catalog, shopping cart, seller dashboard, and admin tools.</p>
+            <div class="project-tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node</span></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>AI / Vision</span></div>
+            <h3>Facial Recognition System</h3>
+            <p>Built a facial recognition prototype using OpenCV and TensorFlow, trained on personal datasets for live recognition.</p>
+            <div class="project-tags"><span>OpenCV</span><span>TensorFlow</span></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Web App</span></div>
+            <h3>Art Gallery App</h3>
+            <p>Designed and developed an artwork management app with upload flows, browsing, and category-based organization.</p>
+            <div class="project-tags"><span>PHP</span><span>SQL</span><span>JavaScript</span></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Frontend</span></div>
+            <h3>Pest Control Record System</h3>
+            <p>Contributed to a record-keeping interface for logging, filtering, and exporting pest control treatment data.</p>
+            <div class="project-tags"><span>React</span><span>Tailwind CSS</span></div>
+          </article>
         </div>
       </section>
 
-      <section id="experience" class="reveal">
+      <section id="experience" class="section-card" data-animate>
         <div class="section-heading">
           <span>05</span>
-          <h2>Experience</h2>
-        </div>
-        <div class="experience-card glass-panel">
-          <div class="experience-header">
-            <h3>Fullstack Developer Intern</h3>
-            <h4>Kapiton · Internship</h4>
-            <p class="date-location">Mar 2025 – Present | Remote, Quezon City</p>
+          <div>
+            <p class="section-kicker">Experience</p>
+            <h2>Real work, sharper instincts.</h2>
           </div>
-          <ul>
-            <li>Built and maintained Laravel/Docker-based systems.</li>
-            <li>Collaborated on feature rollouts and improvements.</li>
-            <li>Handled GitHub version control and deployments.</li>
-          </ul>
+        </div>
+
+        <article class="experience-card glass-panel">
+          <div class="experience-topline">
+            <div>
+              <h3>Fullstack Developer Intern</h3>
+              <h4>Kapiton · Internship</h4>
+            </div>
+            <p class="date-pill">Mar 2025 – Present · Remote</p>
+          </div>
+          <p class="experience-summary">
+            Worked on Laravel and Docker-based systems, supporting feature development, maintenance, version control, and deployment workflows in a remote team setup.
+          </p>
+          <div class="experience-grid">
+            <div>
+              <h5><i class="fa-solid fa-code-branch"></i> Development</h5>
+              <ul>
+                <li>Built and maintained features across Laravel-based systems.</li>
+                <li>Improved existing flows with cleaner implementation and better structure.</li>
+                <li>Worked with Docker environments to keep development more consistent.</li>
+              </ul>
+            </div>
+            <div>
+              <h5><i class="fa-solid fa-people-group"></i> Collaboration</h5>
+              <ul>
+                <li>Coordinated on feature rollouts, fixes, and day-to-day improvements.</li>
+                <li>Used GitHub for version control, reviews, and deployment coordination.</li>
+                <li>Communicated progress clearly in a remote internship environment.</li>
+              </ul>
+            </div>
+          </div>
           <div class="tech-stack justify-content-start">
             <div class="tech-box">Laravel</div>
             <div class="tech-box">Docker</div>
-            <div class="tech-box">Git</div>
+            <div class="tech-box">GitHub</div>
+            <div class="tech-box">PHP</div>
           </div>
-        </div>
+        </article>
       </section>
 
-      <section class="card glass-panel reveal">
+      <section class="card glass-panel section-card" data-animate>
         <div class="section-heading">
           <span>06</span>
-          <h2>Certifications</h2>
+          <div>
+            <p class="section-kicker">Certifications</p>
+            <h2>Extra proof of practice.</h2>
+          </div>
         </div>
         <div class="certification-list">
-          <div class="certification-card"><h4>TOEIC</h4><p>Score: 850 — Proficient in English communication.</p></div>
-          <div class="certification-card"><h4>IBM Cloud Essentials V3</h4><p>Completed the course for cloud fundamentals.</p><a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank">View Certificate</a></div>
-          <div class="certification-card"><h4>Data Analytics on AWS</h4><p>Fundamentals of data analytics with AWS.</p><a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank">View Certificate</a></div>
-          <div class="certification-card"><h4>Intermediate SQL</h4><p>Practiced data filtering, aggregation, comparison operators, and query limiting.</p><a href="Intermediate SQL-Cert.pdf" target="_blank">View Certificate</a></div>
-          <div class="certification-card"><h4>Trend Micro CTF</h4><p>Participated in cybersecurity puzzles and security exploitation challenges under timed conditions.</p><a href="joshua_dia_uctf_certificate_20240930085210.pdf" target="_blank">View Certificate</a></div>
+          <article class="certification-card">
+            <h3>TOEIC</h3>
+            <p>Score: 850 — strong professional English communication.</p>
+          </article>
+          <article class="certification-card">
+            <h3>IBM Cloud Essentials V3</h3>
+            <p>Cloud fundamentals and core IBM Cloud concepts.</p>
+            <a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank" rel="noopener">View Certificate</a>
+          </article>
+          <article class="certification-card">
+            <h3>Data Analytics on AWS</h3>
+            <p>Fundamentals of data analytics using AWS services.</p>
+            <a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank" rel="noopener">View Certificate</a>
+          </article>
+          <article class="certification-card">
+            <h3>Intermediate SQL</h3>
+            <p>Filtering, sorting, aggregation, comparison operators, functions, and query limiting.</p>
+            <a href="Intermediate SQL-Cert.pdf" target="_blank">View Certificate</a>
+          </article>
+          <article class="certification-card">
+            <h3>Trend Micro CTF</h3>
+            <p>Cybersecurity puzzles and exploitation challenges completed in a timed team environment.</p>
+            <a href="joshua_dia_uctf_certificate_20240930085210.pdf" target="_blank">View Certificate</a>
+          </article>
         </div>
       </section>
 
-      <section class="resume-section glass-panel reveal">
-        <h2>Ready to work together?</h2>
-        <p>Grab my resume or send a message — I’m always open to building something useful, polished, and impactful.</p>
+      <section class="resume-section glass-panel" data-animate>
+        <p class="section-kicker">Next step</p>
+        <h2>Have a role, idea, or problem worth building?</h2>
+        <p>Send a message or grab my resume. I’m interested in full-stack work, data-heavy products, and security-minded teams.</p>
         <div class="hero-actions justify-content-center">
           <a href="RESUME UPDATED 2025 - JOSHUA DIA.pdf" download class="btn btn-glow"><i class="fas fa-file-download"></i> Download Resume</a>
           <a href="mailto:diajoshua05@gmail.com" class="btn btn-ghost"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
         </div>
       </section>
 
-      <section class="card glass-panel reveal" id="contact-me-section">
+      <section class="card glass-panel section-card" id="contact-me-section" data-animate>
         <div class="section-heading justify-content-center">
           <span>07</span>
-          <h2>Contact Me</h2>
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2>Let’s connect.</h2>
+          </div>
         </div>
         <p><strong>Joshua Dia</strong><br />Quezon City, Philippines<br /><a href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a></p>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/DiaJoshua" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.facebook.com/diajoshh" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/diajoshh/" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" rel="noopener" class="social-icon" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/DiaJoshua" target="_blank" rel="noopener" class="social-icon" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.facebook.com/diajoshh" target="_blank" rel="noopener" class="social-icon" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/diajoshh/" target="_blank" rel="noopener" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
         <footer class="mt-4">&copy; 2025 Joshua Dia. All Rights Reserved.</footer>
       </section>
@@ -202,9 +372,10 @@
       const scrollToTopBtn = document.getElementById("scrollToTopBtn");
       const themeToggle = document.getElementById("theme-toggle");
       const cursorGlow = document.querySelector(".cursor-glow");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       window.addEventListener("scroll", () => {
-        scrollToTopBtn.classList.toggle("show", window.scrollY > 300);
+        scrollToTopBtn.classList.toggle("show", window.scrollY > 360);
       });
 
       scrollToTopBtn.addEventListener("click", () => {
@@ -216,17 +387,31 @@
         document.body.classList.toggle("light-mode");
       });
 
-      window.addEventListener("pointermove", (event) => {
-        cursorGlow.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-      });
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
+      if (!prefersReducedMotion && cursorGlow) {
+        window.addEventListener("pointermove", (event) => {
+          cursorGlow.animate(
+            { transform: `translate(${event.clientX}px, ${event.clientY}px)` },
+            { duration: 450, fill: "forwards", easing: "cubic-bezier(.2,.8,.2,1)" }
+          );
         });
-      }, { threshold: 0.15 });
+      }
 
-      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -70px 0px" }
+      );
+
+      document.querySelectorAll("[data-animate]").forEach((element, index) => {
+        element.style.setProperty("--delay", `${Math.min(index * 70, 420)}ms`);
+        observer.observe(element);
+      });
     </script>
   </body>
 </html>
