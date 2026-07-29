@@ -1,0 +1,57 @@
+<svg width="1584" height="396" viewBox="0 0 1584 396" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0A1120"/>
+      <stop offset="0.55" stop-color="#0E1A30"/>
+      <stop offset="1" stop-color="#12233F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#155E75" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#155E75" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M 44 0 L 0 0 0 44" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.22"/>
+    </pattern>
+  </defs>
+
+  <rect width="1584" height="396" fill="url(#bg)"/>
+  <rect width="1584" height="396" fill="url(#grid)"/>
+  <rect width="1584" height="396" fill="url(#glow)"/>
+
+  <!-- circuit traces, bottom-left (sits behind avatar) -->
+  <g stroke="#2C7A9B" stroke-width="1.6" fill="none" opacity="0.35">
+    <path d="M -10 330 H 150 L 190 290 H 330"/>
+    <path d="M -10 366 H 220 L 260 326 H 420 L 450 356 H 560"/>
+    <path d="M 60 396 V 350 L 100 310"/>
+  </g>
+  <g fill="#38BDF8" opacity="0.5">
+    <circle cx="330" cy="290" r="4"/>
+    <circle cx="560" cy="356" r="4"/>
+    <circle cx="100" cy="310" r="4"/>
+  </g>
+
+  <!-- hex cluster, right -->
+  <g stroke="#2DD4BF" fill="none">
+    <path d="M1400 60 L1450 88 L1450 144 L1400 172 L1350 144 L1350 88 Z" stroke-width="2" opacity="0.30"/>
+    <path d="M1490 120 L1540 148 L1540 204 L1490 232 L1440 204 L1440 148 Z" stroke-width="2" opacity="0.20"/>
+    <path d="M1400 180 L1450 208 L1450 264 L1400 292 L1350 264 L1350 208 Z" stroke-width="2" opacity="0.14"/>
+    <path d="M1310 110 L1340 127 L1340 161 L1310 178 L1280 161 L1280 127 Z" stroke-width="1.5" opacity="0.18"/>
+  </g>
+  <circle cx="1400" cy="60" r="3.5" fill="#2DD4BF" opacity="0.55"/>
+  <circle cx="1490" cy="232" r="3.5" fill="#2DD4BF" opacity="0.4"/>
+
+  <!-- faint top-right nodes -->
+  <g stroke="#38BDF8" stroke-width="1.2" opacity="0.25" fill="none">
+    <path d="M1150 40 L1230 74 L1310 44"/>
+  </g>
+  <g fill="#7DD3FC" opacity="0.45">
+    <circle cx="1150" cy="40" r="3"/>
+    <circle cx="1230" cy="74" r="3"/>
+    <circle cx="1310" cy="44" r="3"/>
+  </g>
+
+  <!-- text block -->
+  <text x="900" y="182" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="62" font-weight="bold" letter-spacing="13" fill="#EAF3FB">CYBERSECURITY</text>
+  <rect x="640" y="210" width="520" height="3" rx="1.5" fill="#2DD4BF" opacity="0.85"/>
+  <text x="900" y="256" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" letter-spacing="3" fill="#8FD6F5">SOC &amp; SECURITY ANALYSIS  ·  DIGITAL FORENSICS  ·  CLOUD &amp; NETWORKING</text>
+</svg>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Joshua Dia — LinkedIn Banners</title>
+<style>
+  body { background:#0d1421; color:#e8f1fa; font-family:Segoe UI, Arial, sans-serif; margin:0; padding:32px; }
+  h1 { font-size:22px; font-weight:600; }
+  p.hint { color:#8aa8c0; font-size:14px; max-width:760px; }
+  .card { background:#131e30; border:1px solid #22314e; border-radius:12px; padding:20px; margin:24px 0; max-width:1100px; }
+  .card h2 { font-size:16px; margin:0 0 12px; font-weight:600; color:#9bdcf9; }
+  .preview { width:100%; border-radius:8px; display:block; border:1px solid #2a3b5c; }
+  button { margin-top:14px; background:#2dd4bf; color:#06222b; border:none; padding:10px 22px; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; }
+  button:hover { background:#5eead4; }
+</style>
+</head>
+<body>
+<h1>Your LinkedIn banners</h1>
+<p class="hint">Click a download button to save the banner as a 1584&times;396 PNG (LinkedIn's exact banner size). Then on LinkedIn: profile &rarr; pencil icon on the banner &rarr; upload. Text is positioned to stay clear of your profile photo.</p>
+
+<div class="card">
+  <h2>Variant 1 — Keywords (no name, works even if you change your headline)</h2>
+  <div class="preview" id="p1"></div>
+  <button onclick="downloadPNG('svg1','joshua-dia-linkedin-banner-v1.png')">Download PNG — Variant 1</button>
+</div>
+
+<div class="card">
+  <h2>Variant 2 — Name + shield</h2>
+  <div class="preview" id="p2"></div>
+  <button onclick="downloadPNG('svg2','joshua-dia-linkedin-banner-v2.png')">Download PNG — Variant 2</button>
+</div>
+
+<script>
+const svgs = {
+svg1: `<svg width="1584" height="396" viewBox="0 0 1584 396" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0A1120"/>
+      <stop offset="0.55" stop-color="#0E1A30"/>
+      <stop offset="1" stop-color="#12233F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#155E75" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#155E75" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M 44 0 L 0 0 0 44" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bg)"/>
+  <rect width="1584" height="396" fill="url(#grid)"/>
+  <rect width="1584" height="396" fill="url(#glow)"/>
+  <g stroke="#2C7A9B" stroke-width="1.6" fill="none" opacity="0.35">
+    <path d="M -10 330 H 150 L 190 290 H 330"/>
+    <path d="M -10 366 H 220 L 260 326 H 420 L 450 356 H 560"/>
+    <path d="M 60 396 V 350 L 100 310"/>
+  </g>
+  <g fill="#38BDF8" opacity="0.5">
+    <circle cx="330" cy="290" r="4"/><circle cx="560" cy="356" r="4"/><circle cx="100" cy="310" r="4"/>
+  </g>
+  <g stroke="#2DD4BF" fill="none">
+    <path d="M1400 60 L1450 88 L1450 144 L1400 172 L1350 144 L1350 88 Z" stroke-width="2" opacity="0.30"/>
+    <path d="M1490 120 L1540 148 L1540 204 L1490 232 L1440 204 L1440 148 Z" stroke-width="2" opacity="0.20"/>
+    <path d="M1400 180 L1450 208 L1450 264 L1400 292 L1350 264 L1350 208 Z" stroke-width="2" opacity="0.14"/>
+    <path d="M1310 110 L1340 127 L1340 161 L1310 178 L1280 161 L1280 127 Z" stroke-width="1.5" opacity="0.18"/>
+  </g>
+  <circle cx="1400" cy="60" r="3.5" fill="#2DD4BF" opacity="0.55"/>
+  <circle cx="1490" cy="232" r="3.5" fill="#2DD4BF" opacity="0.4"/>
+  <g stroke="#38BDF8" stroke-width="1.2" opacity="0.25" fill="none"><path d="M1150 40 L1230 74 L1310 44"/></g>
+  <g fill="#7DD3FC" opacity="0.45">
+    <circle cx="1150" cy="40" r="3"/><circle cx="1230" cy="74" r="3"/><circle cx="1310" cy="44" r="3"/>
+  </g>
+  <text x="900" y="182" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="bold" letter-spacing="13" fill="#EAF3FB">CYBERSECURITY</text>
+  <rect x="640" y="210" width="520" height="3" rx="1.5" fill="#2DD4BF" opacity="0.85"/>
+  <text x="900" y="256" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="21" letter-spacing="3" fill="#8FD6F5">SOC &amp; SECURITY ANALYSIS  &#183;  DIGITAL FORENSICS  &#183;  CLOUD &amp; NETWORKING</text>
+</svg>`,
+svg2: `<svg width="1584" height="396" viewBox="0 0 1584 396" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070D18"/>
+      <stop offset="0.6" stop-color="#0C1830"/>
+      <stop offset="1" stop-color="#0F2440"/>
+    </linearGradient>
+    <radialGradient id="glow2" cx="0.62" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#0E7490" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#0E7490" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bg2)"/>
+  <rect width="1584" height="396" fill="url(#glow2)"/>
+  <g stroke="#1F4E6E" stroke-width="1.3" fill="none" opacity="0.55">
+    <path d="M120 70 L300 130 L470 60 L640 110"/>
+    <path d="M300 130 L360 260 L540 330"/>
+    <path d="M640 110 L820 50 L1000 96 L1180 40 L1360 90 L1520 60"/>
+    <path d="M1000 96 L1080 240 L1260 300 L1440 250 L1560 310"/>
+    <path d="M1080 240 L940 330"/>
+    <path d="M360 260 L200 320"/>
+    <path d="M1360 90 L1440 250"/>
+  </g>
+  <g fill="#38BDF8">
+    <circle cx="120" cy="70" r="3.5" opacity="0.6"/><circle cx="300" cy="130" r="4.5" opacity="0.75"/>
+    <circle cx="470" cy="60" r="3.5" opacity="0.6"/><circle cx="640" cy="110" r="4" opacity="0.7"/>
+    <circle cx="820" cy="50" r="3.5" opacity="0.6"/><circle cx="1000" cy="96" r="4.5" opacity="0.8"/>
+    <circle cx="1180" cy="40" r="3.5" opacity="0.6"/><circle cx="1360" cy="90" r="4" opacity="0.7"/>
+    <circle cx="1520" cy="60" r="3" opacity="0.5"/><circle cx="360" cy="260" r="4" opacity="0.65"/>
+    <circle cx="540" cy="330" r="3.5" opacity="0.55"/><circle cx="1080" cy="240" r="4.5" opacity="0.75"/>
+    <circle cx="1260" cy="300" r="3.5" opacity="0.6"/><circle cx="1440" cy="250" r="4" opacity="0.65"/>
+    <circle cx="200" cy="320" r="3" opacity="0.5"/><circle cx="940" cy="330" r="3" opacity="0.5"/>
+    <circle cx="1560" cy="310" r="3" opacity="0.45"/>
+  </g>
+  <g opacity="0.5">
+    <path d="M1330 118 L1330 210 Q1330 268 1395 300 Q1460 268 1460 210 L1460 118 L1395 96 Z" fill="none" stroke="#2DD4BF" stroke-width="2.5"/>
+    <path d="M1368 200 L1390 224 L1428 172" fill="none" stroke="#2DD4BF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="820" y="168" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="bold" letter-spacing="6" fill="#F0F6FC">JOSHUA DIA</text>
+  <rect x="605" y="194" width="430" height="3" rx="1.5" fill="#38BDF8" opacity="0.9"/>
+  <text x="820" y="240" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="23" letter-spacing="3.5" fill="#9BDCF9">CYBERSECURITY  &#183;  CLOUD  &#183;  NETWORKING</text>
+  <text x="820" y="282" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="2.5" fill="#5E88A8">BS COMPUTER SCIENCE &#8212; DIGITAL FORENSICS</text>
+</svg>`
+};
+
+document.getElementById('p1').innerHTML = svgs.svg1;
+document.getElementById('p2').innerHTML = svgs.svg2;
+for (const el of document.querySelectorAll('.preview svg')) { el.removeAttribute('width'); el.removeAttribute('height'); el.style.width='100%'; el.style.height='auto'; }
+
+function downloadPNG(key, filename) {
+  const img = new Image();
+  img.onload = function () {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1584; canvas.height = 396;
+    canvas.getContext('2d').drawImage(img, 0, 0, 1584, 396);
+    canvas.toBlob(function (blob) {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    }, 'image/png');
+  };
+  img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgs[key]);
+}
+</script>
+</body>
+</html>
