@@ -3,24 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Joshua Dia — cybersecurity professional in Metro Manila. Enterprise security support, log analysis, and root-cause investigation, with a Digital Forensics background." />
+  <meta name="description" content="Joshua Dia, cybersecurity professional in Metro Manila. Enterprise security support, log analysis, and root-cause investigation, with a Digital Forensics background." />
   <title>Joshua Dia — Cybersecurity</title>
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <link rel="icon" href="portfolio_logo_update_package/Logo_DJ/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="portfolio_logo_update_package/Logo_DJ/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="portfolio_logo_update_package/Logo_DJ/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="portfolio_logo_update_package/Logo_DJ/favicon-16x16.png" />
+  <script>
+    /* apply saved theme before paint to avoid flash */
+    try { if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark"); } catch (e) {}
+  </script>
 
   <style>
     :root {
+      --bg: #fafafa;
+      --text: #191919;
+      --muted: #575757;
+      --faint: #8a8a8a;
+      --line: #e5e5e5;
+      --chip: #f0f0f0;
+      --chip-border: #dcdcdc;
+      --nav: rgba(250, 250, 250, 0.85);
+      --hover: rgba(0, 0, 0, 0.03);
+    }
+    html[data-theme="dark"] {
       --bg: #0a0a0a;
       --text: #e9e9e9;
-      --muted: #929292;
-      --faint: #6b6b6b;
+      --muted: #999999;
+      --faint: #6f6f6f;
       --line: #1e1e1e;
-      --chip: #131313;
-      --chip-border: #262626;
+      --chip: #141414;
+      --chip-border: #282828;
+      --nav: rgba(10, 10, 10, 0.85);
+      --hover: rgba(255, 255, 255, 0.035);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -31,61 +45,85 @@
       font-size: 15.5px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.25s ease, color 0.25s ease;
     }
+    .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
     .wrap { max-width: 700px; margin: 0 auto; padding: 0 24px; }
     a { color: var(--text); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
     section { padding: 44px 0 8px; scroll-margin-top: 80px; }
 
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
     /* nav */
     nav {
       position: sticky; top: 0; z-index: 10;
-      background: rgba(10,10,10,0.85); backdrop-filter: blur(8px);
+      background: var(--nav); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
     .nav-inner {
-      max-width: 700px; margin: 0 auto; padding: 14px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      max-width: 700px; margin: 0 auto; padding: 13px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
     }
     .nav-name { font-weight: 600; font-size: 15px; }
-    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
-    .nav-links a { color: var(--muted); font-size: 13.5px; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .nav-right a { color: var(--muted); font-size: 13.5px; }
+    .nav-right a:hover { color: var(--text); }
+    .theme-btn {
+      background: none; border: 1px solid var(--chip-border); border-radius: 50%;
+      width: 30px; height: 30px; cursor: pointer; color: var(--muted);
+      font-size: 14px; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .theme-btn:hover { color: var(--text); border-color: var(--faint); }
 
     /* hero */
-    header.hero { padding: 72px 0 20px; }
-    .avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 1px solid var(--chip-border); display: block; }
+    header.hero { padding: 68px 0 20px; }
+    .avatar { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 1px solid var(--chip-border); outline: 4px solid var(--chip); display: block; }
     .avatar-fallback {
-      width: 84px; height: 84px; border-radius: 50%; border: 1px solid var(--chip-border);
+      width: 88px; height: 88px; border-radius: 50%; border: 1px solid var(--chip-border); outline: 4px solid var(--chip);
       display: none; align-items: center; justify-content: center;
       background: var(--chip); font-weight: 600; font-size: 26px; color: var(--muted); letter-spacing: 1px;
     }
-    .eyebrow { margin-top: 22px; font-size: 12px; letter-spacing: 2.5px; color: var(--faint); text-transform: uppercase; }
+    .eyebrow { margin-top: 24px; font-size: 11.5px; letter-spacing: 3px; color: var(--faint); text-transform: uppercase; }
     h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; margin-top: 6px; }
-    .lede { margin-top: 14px; color: var(--text); }
+    .cursor { display: inline-block; margin-left: 4px; color: var(--faint); animation: blink 1.15s steps(1) infinite; font-weight: 400; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+    .lede { margin-top: 14px; }
     .sub { margin-top: 10px; color: var(--muted); }
-    .status { margin-top: 14px; font-size: 13.5px; color: var(--faint); }
-    .status .dot { color: #d4d4d4; }
-    .links { margin-top: 22px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    .status { margin-top: 16px; font-size: 12.5px; color: var(--faint); }
+    .status .ok { color: #2f9e44; }
+    html[data-theme="dark"] .status .ok { color: #69db7c; }
+    .stats { display: flex; gap: 34px; margin-top: 24px; flex-wrap: wrap; }
+    .stats b { display: block; font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .stats span { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); }
+    .links { margin-top: 24px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
     .links a { color: var(--muted); font-size: 14px; }
     .links a:hover { color: var(--text); }
     .btn {
       border: 1px solid var(--chip-border); border-radius: 8px;
       padding: 7px 14px; font-size: 14px; color: var(--text) !important; background: var(--chip);
     }
-    .btn:hover { border-color: #3a3a3a; text-decoration: none; }
+    .btn:hover { border-color: var(--faint); text-decoration: none; }
 
     /* section headings */
-    .sh { font-size: 13px; color: var(--faint); letter-spacing: 1px; margin-bottom: 22px; }
-    .sh b { color: var(--muted); font-weight: 500; }
+    .sh { font-size: 12.5px; color: var(--faint); letter-spacing: 1.5px; margin-bottom: 20px; text-transform: uppercase; }
+    .sh b { color: var(--text); font-weight: 600; margin-right: 8px; }
 
     /* experience */
-    .job { padding: 18px 0; border-top: 1px solid var(--line); }
+    .job { padding: 18px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; border-radius: 8px; }
+    .job:hover { background: var(--hover); }
     .job:last-of-type { border-bottom: 1px solid var(--line); }
     .job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
     .job-head h3 { font-size: 16px; font-weight: 600; }
     .job-head .co { color: var(--muted); font-weight: 400; }
-    .job-head .dates { font-size: 13px; color: var(--faint); white-space: nowrap; }
+    .job-head .dates { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
     .job ul { margin: 10px 0 0 18px; color: var(--muted); font-size: 14.5px; }
     .job li { margin-top: 5px; }
     .job li::marker { color: var(--faint); }
@@ -94,49 +132,54 @@
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chips span {
       background: var(--chip); border: 1px solid var(--chip-border); border-radius: 6px;
-      padding: 4px 10px; font-size: 13px; color: #c9c9c9;
+      padding: 4px 10px; font-size: 13px; color: var(--muted);
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
+    .chips span:hover { border-color: var(--faint); color: var(--text); }
     .chips.mini { margin-top: 12px; }
-    .chips.mini span { font-size: 12px; padding: 3px 8px; color: var(--muted); }
+    .chips.mini span { font-size: 11.5px; padding: 3px 8px; }
 
     /* toggle buttons */
     .more-btn {
       margin-top: 16px; background: none; border: 1px solid var(--chip-border); border-radius: 8px;
       color: var(--muted); font-size: 13px; padding: 6px 14px; cursor: pointer; font-family: inherit;
     }
-    .more-btn:hover { color: var(--text); border-color: #3a3a3a; }
+    .more-btn:hover { color: var(--text); border-color: var(--faint); }
     .hidden-block { display: none; }
     .hidden-block.open { display: block; }
     .chips .extra { display: none; }
     .chips.open .extra { display: inline-block; }
 
     /* projects & certs */
-    .row { padding: 16px 0; border-top: 1px solid var(--line); }
+    .rows, .certs { border-bottom: 1px solid var(--line); }
+    .row { padding: 16px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; border-radius: 8px; }
+    .row:hover { background: var(--hover); }
     .row h3 { font-size: 15.5px; font-weight: 600; display: inline; }
-    .row .tag { font-size: 12px; color: var(--faint); margin-left: 8px; letter-spacing: 0.5px; }
+    .row .tag { font-size: 11.5px; color: var(--faint); margin-left: 8px; letter-spacing: 0.5px; }
     .row p { color: var(--muted); font-size: 14px; margin-top: 4px; }
     .row .ext { font-size: 13px; color: var(--muted); }
-    .rows, .certs { border-bottom: 1px solid var(--line); }
-    .cert-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--line); }
+    .cert-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; padding: 11px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; }
+    .cert-row:hover { background: var(--hover); }
     .cert-row .c-name { font-size: 14.5px; }
-    .cert-row .c-meta { font-size: 13px; color: var(--faint); white-space: nowrap; }
+    .cert-row .c-meta { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
     .cert-row .c-meta a { color: var(--muted); }
 
     /* education */
-    .edu { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .edu { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .edu p { color: var(--muted); font-size: 14px; }
-    .edu .dates { font-size: 13px; color: var(--faint); }
+    .edu .dates { font-size: 12.5px; color: var(--faint); }
 
     /* contact */
     .contact-email { font-size: 20px; font-weight: 600; }
     .contact-note { color: var(--muted); margin-top: 6px; font-size: 14.5px; }
 
-    footer { padding: 48px 0 40px; color: var(--faint); font-size: 12.5px; }
+    footer { padding: 48px 0 40px; color: var(--faint); font-size: 12px; }
 
     @media (max-width: 560px) {
       h1 { font-size: 28px; }
-      .nav-links { gap: 12px; }
+      .nav-right { gap: 12px; }
       section { padding-top: 36px; }
+      .stats { gap: 24px; }
     }
   </style>
 </head>
@@ -145,40 +188,47 @@
   <nav>
     <div class="nav-inner">
       <a href="#top" class="nav-name">Joshua Dia</a>
-      <div class="nav-links">
+      <div class="nav-right">
         <a href="#experience">experience</a>
         <a href="#skills">skills</a>
         <a href="#projects">projects</a>
         <a href="#certifications">certifications</a>
         <a href="#contact">contact</a>
+        <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
       </div>
     </div>
   </nav>
 
   <main class="wrap" id="top">
 
-    <header class="hero">
+    <header class="hero reveal visible">
       <img class="avatar" src="profile.jpg" alt="Joshua Dia"
            onerror="this.style.display='none'; document.getElementById('avatar-fb').style.display='flex';" />
       <div class="avatar-fallback" id="avatar-fb">JD</div>
 
-      <p class="eyebrow">Cybersecurity · Cloud · Networking</p>
-      <h1>Joshua Dia</h1>
+      <p class="eyebrow mono">Cybersecurity · Cloud · Networking</p>
+      <h1>Joshua Dia<span class="cursor">▌</span></h1>
 
       <p class="lede">
         I like taking problems apart. At Trend Micro, I resolve platform and security
-        support cases for enterprise customers — digging through Windows event logs, tracing
+        support cases for enterprise customers: digging through Windows event logs, tracing
         network failures across proxies and firewalls, and running root-cause analysis until
         the real answer surfaces.
       </p>
       <p class="sub">
         BS Computer Science, specialized in Digital Forensics. I learn fast on the job,
         stay composed under pressure, and do my best work with other people. Currently
-        growing in cybersecurity — SOC, security analysis, incident response — with cloud
-        and networking alongside.
+        growing in cybersecurity, focused on SOC, security analysis, and incident response,
+        with cloud and networking alongside.
       </p>
 
-      <p class="status">Quezon City, Philippines <span class="dot">·</span> Open to cybersecurity roles</p>
+      <p class="status mono"><span class="ok">●</span> Open to cybersecurity roles · Quezon City, Philippines</p>
+
+      <div class="stats">
+        <div><b>12+</b><span class="mono">credentials</span></div>
+        <div><b>7+</b><span class="mono">projects</span></div>
+        <div><b>850</b><span class="mono">TOEIC</span></div>
+      </div>
 
       <div class="links">
         <a class="btn" href="Joshua-Dia-CV.pdf" download>Download CV</a>
@@ -188,20 +238,20 @@
       </div>
     </header>
 
-    <section id="experience">
-      <p class="sh"><b>01</b> — experience</p>
+    <section id="experience" class="reveal">
+      <p class="sh"><b class="mono">01</b> experience</p>
 
       <div class="job">
         <div class="job-head">
           <h3>DevOps Platform Engineer <span class="co">· Trend Micro</span></h3>
-          <span class="dates">Oct 2025 – Present</span>
+          <span class="dates mono">Oct 2025 – Present</span>
         </div>
         <ul>
           <li>Resolve platform and security support cases daily for enterprise customers under time-sensitive conditions.</li>
-          <li>Troubleshoot customer Windows environments using system/application logs, Grafana dashboards, and AI-assisted tooling — reducing repeat escalations.</li>
-          <li>Diagnose network issues across enterprise deployments: agent-to-console connectivity, proxy and firewall configuration.</li>
+          <li>Troubleshoot customer Windows environments using system and application logs, Grafana dashboards, and AI-assisted tooling, reducing repeat escalations.</li>
+          <li>Diagnose network issues across enterprise deployments, from agent-to-console connectivity to proxy and firewall configuration.</li>
           <li>Identify security vulnerabilities and recommend hardening aligned with industry best practices.</li>
-          <li>Completed the New Engineering Program (NEP); own closed-case quality review and root-cause documentation.</li>
+          <li>Completed the New Engineering Program (NEP) and own closed-case quality review and root-cause documentation.</li>
         </ul>
         <div class="chips mini">
           <span>EDR/XDR</span><span>Log Analysis</span><span>Windows</span><span>Networking</span><span>Grafana</span>
@@ -211,12 +261,12 @@
       <div class="job">
         <div class="job-head">
           <h3>Full Stack Developer Intern <span class="co">· Kapiton Solutions</span></h3>
-          <span class="dates">Mar 2025 – Aug 2025</span>
+          <span class="dates mono">Mar 2025 – Aug 2025</span>
         </div>
         <ul>
           <li>Developed and maintained backend systems with Laravel in Dockerized environments, contributing to feature rollouts and reliability improvements.</li>
           <li>Assisted with containerized deployment pipelines, keeping releases consistent across environments.</li>
-          <li>Managed collaborative GitHub workflows — pull requests, issue tracking, deployment handoffs — on a remote team.</li>
+          <li>Managed collaborative GitHub workflows on a remote team, from pull requests and issue tracking to deployment handoffs.</li>
         </ul>
         <div class="chips mini">
           <span>Laravel</span><span>Docker</span><span>GitHub</span><span>CI/CD</span>
@@ -224,8 +274,8 @@
       </div>
     </section>
 
-    <section id="skills">
-      <p class="sh"><b>02</b> — skills</p>
+    <section id="skills" class="reveal">
+      <p class="sh"><b class="mono">02</b> skills</p>
       <div class="chips" id="skill-chips">
         <span>EDR/XDR</span>
         <span>SIEM &amp; Log Analysis</span>
@@ -256,37 +306,37 @@
       <button class="more-btn" data-chips="skill-chips">+ 13 more</button>
     </section>
 
-    <section id="projects">
-      <p class="sh"><b>03</b> — projects</p>
+    <section id="projects" class="reveal">
+      <p class="sh"><b class="mono">03</b> projects</p>
       <div class="rows">
         <div class="row">
-          <h3>ClickSmart</h3><span class="tag">AI · Cybersecurity · Capstone</span>
-          <p>Cybercrime awareness site with an AI chatbot — fine-tuned GPT-2 on Philippine cyber law data using Python and TensorFlow.</p>
+          <h3>ClickSmart</h3><span class="tag mono">AI · CYBERSECURITY · CAPSTONE</span>
+          <p>Cybercrime awareness site with an AI chatbot. Fine-tuned a GPT-2 model on Philippine cyber law data using Python and TensorFlow.</p>
           <a class="ext" href="https://clicksmart-frontend.onrender.com/" target="_blank" rel="noopener">visit ↗</a>
         </div>
         <div class="row">
-          <h3>Tienda</h3><span class="tag">Full Stack</span>
-          <p>MERN e-commerce platform — product catalog, cart, authentication, seller tools, and admin dashboard.</p>
+          <h3>Tienda</h3><span class="tag mono">FULL STACK</span>
+          <p>MERN e-commerce platform with product catalog, cart, authentication, seller tools, and an admin dashboard.</p>
         </div>
         <div class="row">
-          <h3>Pesosense</h3><span class="tag">Machine Learning</span>
+          <h3>Pesosense</h3><span class="tag mono">MACHINE LEARNING</span>
           <p>Philippine peso bill identifier using TensorFlow and computer vision.</p>
         </div>
         <div class="hidden-block" id="more-projects">
           <div class="row">
-            <h3>Facial Recognition System</h3><span class="tag">Computer Vision</span>
+            <h3>Facial Recognition System</h3><span class="tag mono">COMPUTER VISION</span>
             <p>Real-time recognition system trained and tested on personal datasets with OpenCV and TensorFlow.</p>
           </div>
           <div class="row">
-            <h3>Data Visualization Project</h3><span class="tag">Data</span>
+            <h3>Data Visualization Project</h3><span class="tag mono">DATA</span>
             <p>Dashboards and reports with Python, Pandas, Matplotlib, NumPy, and Power BI.</p>
           </div>
           <div class="row">
-            <h3>Art Gallery App</h3><span class="tag">Web App</span>
+            <h3>Art Gallery App</h3><span class="tag mono">WEB APP</span>
             <p>Artwork management and showcase app built with PHP, JavaScript, and SQL.</p>
           </div>
           <div class="row">
-            <h3>Pest Control Record System</h3><span class="tag">Frontend</span>
+            <h3>Pest Control Record System</h3><span class="tag mono">FRONTEND</span>
             <p>React and Tailwind CSS interface for logging, filtering, and exporting treatment records.</p>
           </div>
         </div>
@@ -294,56 +344,56 @@
       <button class="more-btn" data-block="more-projects">+ 4 more projects</button>
     </section>
 
-    <section id="certifications">
-      <p class="sh"><b>04</b> — certifications</p>
+    <section id="certifications" class="reveal">
+      <p class="sh"><b class="mono">04</b> certifications</p>
       <div class="certs">
         <div class="cert-row">
           <span class="c-name">Apex One Certified Professional</span>
-          <span class="c-meta">Trend Micro · 2025</span>
+          <span class="c-meta">Trend Micro · 2025 · <a href="certs/apex-one-certified-professional.pdf" target="_blank">view ↗</a></span>
         </div>
         <div class="cert-row">
-          <span class="c-name">Vision One™ Platform Foundation</span>
-          <span class="c-meta">TrendAI University · 2026</span>
+          <span class="c-name">Vision One Platform Foundation</span>
+          <span class="c-meta">TrendAI University · 2026 · <a href="certs/vision-one-platform-foundation.pdf" target="_blank">view ↗</a></span>
         </div>
         <div class="cert-row">
           <span class="c-name">Apex Central Certified Master (ILT, 20 hrs)</span>
-          <span class="c-meta">Trend Micro · 2026</span>
+          <span class="c-meta">Trend Micro · 2026 · <a href="certs/apex-central-certified-master.pdf" target="_blank">view ↗</a></span>
         </div>
         <div class="cert-row">
-          <span class="c-name">Threat Intelligence Analyst — Foundation</span>
-          <span class="c-meta">arcX · 2026</span>
+          <span class="c-name">Threat Intelligence Analyst (Foundation)</span>
+          <span class="c-meta">arcX · 2026 · <a href="certs/arcx-threat-intelligence-analyst.pdf" target="_blank">view ↗</a></span>
         </div>
         <div class="cert-row">
           <span class="c-name">Endpoint Security</span>
-          <span class="c-meta">Cisco Networking Academy · 2026</span>
+          <span class="c-meta">Cisco Academy · 2026 · <a href="certs/cisco-endpoint-security.pdf" target="_blank">view ↗</a></span>
         </div>
         <div class="cert-row">
           <span class="c-name">ISO/IEC 27001:2022 Information Security Associate</span>
-          <span class="c-meta">SkillFront · 2025</span>
+          <span class="c-meta">SkillFront · 2025 · <a href="certs/iso-27001-information-security-associate.pdf" target="_blank">view ↗</a></span>
         </div>
         <div class="hidden-block" id="more-certs">
           <div class="cert-row">
-            <span class="c-name">Trend Micro CTF — exploitation challenges</span>
-            <span class="c-meta">Trend Micro · 2024</span>
+            <span class="c-name">Trend Micro Capture the Flag</span>
+            <span class="c-meta">Trend Micro · 2024 · <a href="joshua_dia_uctf_certificate_20240930085210.pdf" target="_blank">view ↗</a></span>
           </div>
           <div class="cert-row">
             <span class="c-name">IBM Cloud Essentials V3</span>
-            <span class="c-meta"><a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank" rel="noopener">IBM · verify ↗</a></span>
+            <span class="c-meta">IBM · 2025 · <a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank" rel="noopener">verify ↗</a></span>
           </div>
           <div class="cert-row">
             <span class="c-name">Data Analytics on AWS</span>
-            <span class="c-meta"><a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank" rel="noopener">AWS/Coursera · verify ↗</a></span>
+            <span class="c-meta">AWS / Coursera · <a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank" rel="noopener">verify ↗</a></span>
           </div>
           <div class="cert-row">
             <span class="c-name">Intermediate SQL</span>
-            <span class="c-meta">DataCamp · 2025</span>
+            <span class="c-meta">DataCamp · 2025 · <a href="Intermediate%20SQL-Cert.pdf" target="_blank">view ↗</a></span>
           </div>
           <div class="cert-row">
             <span class="c-name">Certified Lean Six Sigma White Belt</span>
-            <span class="c-meta">SkillFront · 2025</span>
+            <span class="c-meta">SkillFront · 2025 · <a href="certs/lean-six-sigma-white-belt.pdf" target="_blank">view ↗</a></span>
           </div>
           <div class="cert-row">
-            <span class="c-name">TOEIC — 850</span>
+            <span class="c-name">TOEIC 850</span>
             <span class="c-meta">English proficiency</span>
           </div>
         </div>
@@ -351,19 +401,19 @@
       <button class="more-btn" data-block="more-certs">+ 6 more</button>
     </section>
 
-    <section id="education">
-      <p class="sh"><b>05</b> — education</p>
+    <section id="education" class="reveal">
+      <p class="sh"><b class="mono">05</b> education</p>
       <div class="edu">
         <div>
-          <h3 style="font-size:15.5px;">BS Computer Science — Digital Forensics</h3>
+          <h3 style="font-size:15.5px;">BS Computer Science, Digital Forensics</h3>
           <p>National University, Manila</p>
         </div>
-        <span class="dates">2021 – 2025</span>
+        <span class="dates mono">2021 – 2025</span>
       </div>
     </section>
 
-    <section id="contact">
-      <p class="sh"><b>06</b> — contact</p>
+    <section id="contact" class="reveal">
+      <p class="sh"><b class="mono">06</b> contact</p>
       <a class="contact-email" href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a>
       <p class="contact-note">For roles, collaborations, and everything else. Based in Quezon City, PH.</p>
       <div class="links">
@@ -373,20 +423,42 @@
       </div>
     </section>
 
-    <footer>© 2026 Joshua Dia</footer>
+    <footer class="mono">© 2026 Joshua Dia · updated Jul 2026</footer>
   </main>
 
   <script>
+    /* theme toggle */
+    var toggleBtn = document.getElementById("theme-toggle");
+    function syncIcon() {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      toggleBtn.textContent = dark ? "☀" : "☾";
+    }
+    toggleBtn.addEventListener("click", function () {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      if (dark) document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", "dark");
+      try { localStorage.setItem("theme", dark ? "light" : "dark"); } catch (e) {}
+      syncIcon();
+    });
+    syncIcon();
+
+    /* show more toggles */
     document.querySelectorAll(".more-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var chipsId = btn.getAttribute("data-chips");
-        var blockId = btn.getAttribute("data-block");
-        var target = document.getElementById(chipsId || blockId);
+        var target = document.getElementById(btn.getAttribute("data-chips") || btn.getAttribute("data-block"));
         var open = target.classList.toggle("open");
         if (!btn.dataset.label) btn.dataset.label = btn.textContent;
         btn.textContent = open ? "show less" : btn.dataset.label;
       });
     });
+
+    /* reveal on scroll */
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });
   </script>
 </body>
 </html>
