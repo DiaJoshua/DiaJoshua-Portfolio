@@ -1,436 +1,478 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Joshua Dia portfolio - Computer Science, digital forensics, full-stack development, and data analysis."
-    />
-    <title>Joshua Dia | Portfolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joshua Dia, cybersecurity professional in Metro Manila. Enterprise security support, log analysis, and root-cause investigation, with a Digital Forensics background." />
+  <title>Joshua Dia — Cybersecurity</title>
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-    <link
-      rel="icon"
-      href="portfolio_logo_update_package/Logo_DJ/favicon.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="portfolio_logo_update_package/Logo_DJ/favicon.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="portfolio_logo_update_package/Logo_DJ/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="portfolio_logo_update_package/Logo_DJ/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="portfolio_logo_update_package/Logo_DJ/favicon-16x16.png"
-    />
-    <link rel="manifest" href="site.webmanifest" />
+  <script>
+    /* apply saved theme before paint to avoid flash */
+    try { if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark"); } catch (e) {}
+  </script>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #191919;
+      --muted: #575757;
+      --faint: #8a8a8a;
+      --line: #e5e5e5;
+      --chip: #f0f0f0;
+      --chip-border: #dcdcdc;
+      --nav: rgba(250, 250, 250, 0.85);
+      --hover: rgba(0, 0, 0, 0.03);
+    }
+    html[data-theme="dark"] {
+      --bg: #0a0a0a;
+      --text: #e9e9e9;
+      --muted: #999999;
+      --faint: #6f6f6f;
+      --line: #1e1e1e;
+      --chip: #141414;
+      --chip-border: #282828;
+      --nav: rgba(10, 10, 10, 0.85);
+      --hover: rgba(255, 255, 255, 0.035);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+    .wrap { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--text); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    section { padding: 44px 0 8px; scroll-margin-top: 80px; }
 
-  <body class="dark-mode">
-    <div class="page-bg" aria-hidden="true"></div>
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
 
-    <nav class="top-nav">
-      <a href="#profile" class="brand-mark" aria-label="Joshua Dia home">
-        <img
-          src="portfolio_logo_update_package/Logo_DJ/android-chrome-512x512.png"
-          alt="Joshua Dia logo"
-        />
-        <span>Joshua Dia</span>
-      </a>
+    /* nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--nav); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 700px; margin: 0 auto; padding: 13px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    }
+    .nav-name { font-weight: 600; font-size: 15px; }
+    .nav-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .nav-right a { color: var(--muted); font-size: 13.5px; }
+    .nav-right a:hover { color: var(--text); }
+    .theme-btn {
+      background: none; border: 1px solid var(--chip-border); border-radius: 50%;
+      width: 30px; height: 30px; cursor: pointer; color: var(--muted);
+      font-size: 14px; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .theme-btn:hover { color: var(--text); border-color: var(--faint); }
 
-      <div class="nav-links" aria-label="Main navigation">
-        <a href="#about-section">About</a>
-        <a href="#skills-section">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact-me-section">Contact</a>
+    /* hero */
+    header.hero { padding: 68px 0 20px; text-align: center; }
+    .avatar-wrap { position: relative; width: 136px; height: 136px; margin: 0 auto; }
+    .avatar-wrap::before {
+      content: ""; position: absolute; inset: 0; border-radius: 26px;
+      border: 1px solid var(--chip-border); transform: rotate(7deg);
+      transition: transform 0.35s ease;
+    }
+    .avatar, .avatar-fallback {
+      position: relative; width: 136px; height: 136px; border-radius: 26px;
+      border: 1px solid var(--chip-border); background: var(--chip);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      transition: transform 0.35s ease;
+    }
+    html[data-theme="dark"] .avatar, html[data-theme="dark"] .avatar-fallback { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55); }
+    .avatar { object-fit: cover; object-position: center 28%; display: block; }
+    .avatar-fallback { display: none; align-items: center; justify-content: center; font-weight: 600; font-size: 36px; color: var(--muted); letter-spacing: 1px; }
+    .avatar-wrap:hover .avatar, .avatar-wrap:hover .avatar-fallback { transform: rotate(-3deg) scale(1.04); }
+    .avatar-wrap:hover::before { transform: rotate(11deg); }
+    .eyebrow { margin-top: 24px; font-size: 11.5px; letter-spacing: 3px; color: var(--faint); text-transform: uppercase; }
+    h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; margin-top: 6px; }
+    .cursor { display: inline-block; margin-left: 4px; color: var(--faint); animation: blink 1.15s steps(1) infinite; font-weight: 400; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+    .lede { margin: 14px auto 0; max-width: 580px; }
+    .sub { margin: 10px auto 0; max-width: 580px; color: var(--muted); }
+    .status { margin-top: 16px; font-size: 12.5px; color: var(--faint); }
+    .status .ok { color: #2f9e44; }
+    html[data-theme="dark"] .status .ok { color: #69db7c; }
+    .stats { display: flex; gap: 34px; margin-top: 24px; flex-wrap: wrap; justify-content: center; }
+    .stats b { display: block; font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .stats span { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); }
+    .links { margin-top: 24px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    header.hero .links { justify-content: center; }
+    .links a { color: var(--muted); font-size: 14px; }
+    .links a:hover { color: var(--text); }
+    .btn {
+      border: 1px solid var(--chip-border); border-radius: 8px;
+      padding: 7px 14px; font-size: 14px; color: var(--text) !important; background: var(--chip);
+    }
+    .btn:hover { border-color: var(--faint); text-decoration: none; }
+
+    /* section headings */
+    .sh { font-size: 12.5px; color: var(--faint); letter-spacing: 1.5px; margin-bottom: 20px; text-transform: uppercase; }
+    .sh b { color: var(--text); font-weight: 600; margin-right: 8px; }
+
+    /* experience */
+    .job { padding: 18px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; border-radius: 8px; }
+    .job:hover { background: var(--hover); }
+    .job:last-of-type { border-bottom: 1px solid var(--line); }
+    .job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+    .job-head h3 { font-size: 16px; font-weight: 600; }
+    .job-head .co { color: var(--muted); font-weight: 400; }
+    .job-head .dates { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
+    .job ul { margin: 10px 0 0 18px; color: var(--muted); font-size: 14.5px; }
+    .job li { margin-top: 5px; }
+    .job li::marker { color: var(--faint); }
+
+    /* chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips span {
+      background: var(--chip); border: 1px solid var(--chip-border); border-radius: 6px;
+      padding: 4px 10px; font-size: 13px; color: var(--muted);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .chips span:hover { border-color: var(--faint); color: var(--text); }
+    .chips.mini { margin-top: 12px; }
+    .chips.mini span { font-size: 11.5px; padding: 3px 8px; }
+
+    /* toggle buttons */
+    .more-btn {
+      margin-top: 16px; background: none; border: 1px solid var(--chip-border); border-radius: 8px;
+      color: var(--muted); font-size: 13px; padding: 6px 14px; cursor: pointer; font-family: inherit;
+    }
+    .more-btn:hover { color: var(--text); border-color: var(--faint); }
+    .hidden-block { display: none; }
+    .hidden-block.open { display: block; }
+    .chips .extra { display: none; }
+    .chips.open .extra { display: inline-block; }
+
+    /* projects & certs */
+    .rows, .certs { border-bottom: 1px solid var(--line); }
+    .row { padding: 16px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; border-radius: 8px; }
+    .row:hover { background: var(--hover); }
+    .row h3 { font-size: 15.5px; font-weight: 600; display: inline; }
+    .row .tag { font-size: 11.5px; color: var(--faint); margin-left: 8px; letter-spacing: 0.5px; }
+    .row p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+    .row .ext { font-size: 13px; color: var(--muted); }
+    .cert-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; padding: 11px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; }
+    .cert-row:hover { background: var(--hover); }
+    .cert-row .c-name { font-size: 14.5px; }
+    .cert-row .c-meta { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
+    .cert-row .c-meta a { color: var(--muted); }
+
+    /* education */
+    .edu { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .edu p { color: var(--muted); font-size: 14px; }
+    .edu .dates { font-size: 12.5px; color: var(--faint); }
+
+    /* contact */
+    .contact-email { font-size: 20px; font-weight: 600; }
+    .contact-note { color: var(--muted); margin-top: 6px; font-size: 14.5px; }
+
+    footer { padding: 48px 0 40px; color: var(--faint); font-size: 12px; }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 28px; }
+      .nav-right { gap: 12px; }
+      section { padding-top: 36px; }
+      .stats { gap: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="nav-name">Joshua Dia</a>
+      <div class="nav-right">
+        <a href="#experience">experience</a>
+        <a href="#skills">skills</a>
+        <a href="#projects">projects</a>
+        <a href="#certifications">certifications</a>
+        <a href="#contact">contact</a>
+        <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+
+    <header class="hero reveal visible">
+      <div class="avatar-wrap">
+        <img class="avatar" src="NU%20Graduation%20Pictorial%20Day%205-%20-1404.JPG" alt="Joshua Dia"
+             onerror="this.style.display='none'; document.getElementById('avatar-fb').style.display='flex';" />
+        <div class="avatar-fallback" id="avatar-fb">JD</div>
       </div>
 
-      <button
-        id="theme-toggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="Toggle color theme"
-      >
-        <span class="theme-icon"><i class="fa-solid fa-sun"></i></span>
-        <span class="toggle-track"><span class="toggle-knob"></span></span>
-        <span class="theme-icon"><i class="fa-solid fa-moon"></i></span>
-      </button>
-    </nav>
+      <p class="eyebrow mono">Cybersecurity · Cloud · Networking</p>
+      <h1>Joshua Dia<span class="cursor">▌</span></h1>
 
-    <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">
-      <i class="fas fa-chevron-up"></i>
-    </button>
+      <p class="lede">
+        I like taking problems apart. At Trend Micro, I resolve platform and security
+        support cases for enterprise customers: digging through Windows event logs, tracing
+        network failures across proxies and firewalls, and running root-cause analysis until
+        the real answer surfaces.
+      </p>
+      <p class="sub">
+        BS Computer Science, specialized in Digital Forensics. I learn fast on the job,
+        stay composed under pressure, and do my best work with other people. Currently
+        growing in cybersecurity, focused on SOC, security analysis, and incident response,
+        with cloud and networking alongside.
+      </p>
 
-    <main class="page-shell">
-      <section class="hero-section reveal" id="profile">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            Computer Science • Digital Forensics • Web Development
-          </p>
-          <h1>Hi, I’m Joshua.</h1>
-          <p class="subtitle">
-            I build practical, polished web apps with a security-minded
-            approach.
-          </p>
-          <p class="hero-description">
-            I’m a Computer Science student focused on digital forensics,
-            full-stack development, and data analysis. I like building things
-            that are clear, fast, and useful — from dashboards and MERN apps to
-            AI-assisted tools for cybercrime awareness.
-          </p>
-          <div class="hero-actions">
-            <a
-              href="mailto:diajoshua05@gmail.com"
-              class="btn btn-primary-custom"
-              ><i class="fa fa-envelope"></i> Email Me</a
-            >
-            <a href="#projects" class="btn btn-secondary-custom"
-              ><i class="fa-solid fa-folder-open"></i> See Work</a
-            >
+      <p class="status mono"><span class="ok">●</span> Open to cybersecurity roles · Quezon City, Philippines</p>
+
+      <div class="stats">
+        <div><b>12+</b><span class="mono">credentials</span></div>
+        <div><b>7+</b><span class="mono">projects</span></div>
+        <div><b>850</b><span class="mono">TOEIC</span></div>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="CV%20DIA%2C%20JOSHUA%20MALIKSI%20JULY%202026.pdf" download="Joshua-Dia-CV.pdf">Download CV</a>
+        <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" rel="noopener">linkedin ↗</a>
+        <a href="https://github.com/DiaJoshua" target="_blank" rel="noopener">github ↗</a>
+        <a href="mailto:diajoshua05@gmail.com">email</a>
+      </div>
+    </header>
+
+    <section id="experience" class="reveal">
+      <p class="sh"><b class="mono">01</b> experience</p>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>DevOps Platform Engineer <span class="co">· Trend Micro</span></h3>
+          <span class="dates mono">Oct 2025 – Present</span>
+        </div>
+        <ul>
+          <li>Resolve platform and security support cases daily for enterprise customers under time-sensitive conditions.</li>
+          <li>Troubleshoot customer Windows environments using system and application logs, Grafana dashboards, and AI-assisted tooling, reducing repeat escalations.</li>
+          <li>Diagnose network issues across enterprise deployments, from agent-to-console connectivity to proxy and firewall configuration.</li>
+          <li>Identify security vulnerabilities and recommend hardening aligned with industry best practices.</li>
+          <li>Completed the New Engineering Program (NEP) and own closed-case quality review and root-cause documentation.</li>
+        </ul>
+        <div class="chips mini">
+          <span>EDR/XDR</span><span>Log Analysis</span><span>Windows</span><span>Networking</span><span>Grafana</span>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Full Stack Developer Intern <span class="co">· Kapiton Solutions</span></h3>
+          <span class="dates mono">Mar 2025 – Aug 2025</span>
+        </div>
+        <ul>
+          <li>Developed and maintained backend systems with Laravel in Dockerized environments, contributing to feature rollouts and reliability improvements.</li>
+          <li>Assisted with containerized deployment pipelines, keeping releases consistent across environments.</li>
+          <li>Managed collaborative GitHub workflows on a remote team, from pull requests and issue tracking to deployment handoffs.</li>
+        </ul>
+        <div class="chips mini">
+          <span>Laravel</span><span>Docker</span><span>GitHub</span><span>CI/CD</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <p class="sh"><b class="mono">02</b> skills</p>
+      <div class="chips" id="skill-chips">
+        <span>EDR/XDR</span>
+        <span>SIEM &amp; Log Analysis</span>
+        <span>Root-Cause Analysis</span>
+        <span>Network Troubleshooting</span>
+        <span>Digital Forensics</span>
+        <span>Windows Troubleshooting</span>
+        <span>AWS</span>
+        <span>Azure</span>
+        <span>Linux</span>
+        <span>Docker</span>
+        <span>Python</span>
+        <span>SQL</span>
+        <span class="extra">Endpoint Protection</span>
+        <span class="extra">Vulnerability Assessment</span>
+        <span class="extra">Threat Intelligence</span>
+        <span class="extra">Jenkins</span>
+        <span class="extra">Grafana</span>
+        <span class="extra">Git &amp; CI/CD</span>
+        <span class="extra">Java</span>
+        <span class="extra">PHP / Laravel</span>
+        <span class="extra">JavaScript (React, Node)</span>
+        <span class="extra">MongoDB / MySQL</span>
+        <span class="extra">TensorFlow</span>
+        <span class="extra">Power BI</span>
+        <span class="extra">AI-assisted workflows</span>
+      </div>
+      <button class="more-btn" data-chips="skill-chips">+ 13 more</button>
+    </section>
+
+    <section id="projects" class="reveal">
+      <p class="sh"><b class="mono">03</b> projects</p>
+      <div class="rows">
+        <div class="row">
+          <h3>ClickSmart</h3><span class="tag mono">AI · CYBERSECURITY · CAPSTONE</span>
+          <p>Cybercrime awareness site with an AI chatbot. Fine-tuned a GPT-2 model on Philippine cyber law data using Python and TensorFlow.</p>
+          <a class="ext" href="https://clicksmart-frontend.onrender.com/" target="_blank" rel="noopener">visit ↗</a>
+        </div>
+        <div class="row">
+          <h3>Tienda</h3><span class="tag mono">FULL STACK</span>
+          <p>MERN e-commerce platform with product catalog, cart, authentication, seller tools, and an admin dashboard.</p>
+        </div>
+        <div class="row">
+          <h3>Pesosense</h3><span class="tag mono">MACHINE LEARNING</span>
+          <p>Philippine peso bill identifier using TensorFlow and computer vision.</p>
+        </div>
+        <div class="hidden-block" id="more-projects">
+          <div class="row">
+            <h3>Facial Recognition System</h3><span class="tag mono">COMPUTER VISION</span>
+            <p>Real-time recognition system trained and tested on personal datasets with OpenCV and TensorFlow.</p>
+          </div>
+          <div class="row">
+            <h3>Data Visualization Project</h3><span class="tag mono">DATA</span>
+            <p>Dashboards and reports with Python, Pandas, Matplotlib, NumPy, and Power BI.</p>
+          </div>
+          <div class="row">
+            <h3>Art Gallery App</h3><span class="tag mono">WEB APP</span>
+            <p>Artwork management and showcase app built with PHP, JavaScript, and SQL.</p>
+          </div>
+          <div class="row">
+            <h3>Pest Control Record System</h3><span class="tag mono">FRONTEND</span>
+            <p>React and Tailwind CSS interface for logging, filtering, and exporting treatment records.</p>
           </div>
         </div>
+      </div>
+      <button class="more-btn" data-block="more-projects">+ 4 more projects</button>
+    </section>
 
-        <aside class="hero-card" aria-label="Profile summary">
-          <img
-            src="Grad Pic - Josh.jpg"
-            alt="Joshua Dia profile picture"
-            class="profile-img"
-          />
-          <div class="hero-card-content">
-            <h2>Joshua Dia</h2>
-            <p>Fullstack Developer Intern at Kapiton</p>
-            <div class="quick-stats">
-              <span><strong>7+</strong> Projects</span>
-              <span><strong>850</strong> TOEIC</span>
-              <span><strong>2025</strong> CS</span>
-            </div>
+    <section id="certifications" class="reveal">
+      <p class="sh"><b class="mono">04</b> certifications</p>
+      <div class="certs">
+        <div class="cert-row">
+          <span class="c-name">Apex One Certified Professional</span>
+          <span class="c-meta">Trend Micro · 2025 · <a href="16_5_480302_1764595581__LEGACY%20%20Certified%20Professional%20Certificate%20-%20Apex%20One.pdf" target="_blank">view ↗</a></span>
+        </div>
+        <div class="cert-row">
+          <span class="c-name">Vision One Platform Foundation</span>
+          <span class="c-meta">TrendAI University · 2026 · <a href="lp_154_144_480302_1773567469_2026%20STANDARD%20Achievement%20-%20Foundation%20-%20Generic.pdf" target="_blank">view ↗</a></span>
+        </div>
+        <div class="cert-row">
+          <span class="c-name">Apex Central Certified Master (ILT, 20 hrs)</span>
+          <span class="c-meta">Trend Micro · 2026 · <a href="Apex%20Central_772_12_480302_1772186417__LEGACY%20%20Certificate%20of%20Attendance%20-%20ILT.pdf" target="_blank">view ↗</a></span>
+        </div>
+        <div class="cert-row">
+          <span class="c-name">Threat Intelligence Analyst (Foundation)</span>
+          <span class="c-meta">arcX · 2026 · <a href="certificate.pdf" target="_blank">view ↗</a></span>
+        </div>
+        <div class="cert-row">
+          <span class="c-name">Endpoint Security</span>
+          <span class="c-meta">Cisco Academy · 2026 · <a href="EndpointSecurityUpdate20260210-32-hgm5dc.pdf" target="_blank">view ↗</a></span>
+        </div>
+        <div class="cert-row">
+          <span class="c-name">ISO/IEC 27001:2022 Information Security Associate</span>
+          <span class="c-meta">SkillFront · 2025 · <a href="SkillFront-INFORMATION%20SECURITY%20ASSOCIATE%20SKILLFRONT.pdf" target="_blank">view ↗</a></span>
+        </div>
+        <div class="hidden-block" id="more-certs">
+          <div class="cert-row">
+            <span class="c-name">Trend Micro Capture the Flag</span>
+            <span class="c-meta">Trend Micro · 2024 · <a href="joshua_dia_uctf_certificate_20240930085210.pdf" target="_blank">view ↗</a></span>
           </div>
-        </aside>
-      </section>
-
-      <section class="content-card reveal" id="about-section">
-        <div class="section-heading">
-          <span>01</span>
-          <h2>About</h2>
-        </div>
-        <p class="about-description">
-          I’m a driven Computer Science student specializing in Digital
-          Forensics. My work sits between software development, security, and
-          data — building interfaces, improving backend flows, working with
-          datasets, and experimenting with machine learning. I care about clean
-          structure, reliable systems, and making technical tools easier for
-          people to use.
-        </p>
-      </section>
-
-      <section class="content-card reveal" id="skills-section">
-        <div class="section-heading">
-          <span>02</span>
-          <h2>Skills</h2>
-        </div>
-        <div class="tech-stack">
-          <span>JavaScript</span><span>Python</span><span>Java</span
-          ><span>React.js</span><span>Node.js</span><span>HTML & CSS</span
-          ><span>PHP</span><span>MongoDB</span><span>TensorFlow</span
-          ><span>Git</span><span>Laravel</span><span>Docker</span>
-        </div>
-      </section>
-
-      <section class="content-card reveal">
-        <div class="section-heading">
-          <span>03</span>
-          <h2>Education</h2>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <strong>BS Computer Science</strong
-            ><span
-              >National University, Manila · 2021–2025 · Specialization: Digital
-              Forensics</span
-            >
+          <div class="cert-row">
+            <span class="c-name">IBM Cloud Essentials V3</span>
+            <span class="c-meta">IBM · 2025 · <a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank" rel="noopener">verify ↗</a></span>
           </div>
-          <div class="timeline-item">
-            <strong>Senior High</strong><span>FEU Diliman · 2019–2020</span>
+          <div class="cert-row">
+            <span class="c-name">Data Analytics on AWS</span>
+            <span class="c-meta">AWS / Coursera · <a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank" rel="noopener">verify ↗</a></span>
           </div>
-          <div class="timeline-item">
-            <strong>High School</strong
-            ><span>St. Theresa's School of Novaliches · 2014–2021</span>
+          <div class="cert-row">
+            <span class="c-name">Intermediate SQL</span>
+            <span class="c-meta">DataCamp · 2025 · <a href="Intermediate%20SQL-Cert.pdf" target="_blank">view ↗</a></span>
+          </div>
+          <div class="cert-row">
+            <span class="c-name">Certified Lean Six Sigma White Belt</span>
+            <span class="c-meta">SkillFront · 2025 · <a href="SkillFront-LEAN%20SIX%20SIGMA%20SKILLFRONT.pdf" target="_blank">view ↗</a></span>
+          </div>
+          <div class="cert-row">
+            <span class="c-name">TOEIC 850</span>
+            <span class="c-meta">English proficiency</span>
           </div>
         </div>
-      </section>
+      </div>
+      <button class="more-btn" data-block="more-certs">+ 6 more</button>
+    </section>
 
-      <section class="content-card reveal" id="projects">
-        <div class="section-heading">
-          <span>04</span>
-          <h2>Projects</h2>
+    <section id="education" class="reveal">
+      <p class="sh"><b class="mono">05</b> education</p>
+      <div class="edu">
+        <div>
+          <h3 style="font-size:15.5px;">BS Computer Science, Digital Forensics</h3>
+          <p>National University, Manila</p>
         </div>
-        <div class="project-list">
-          <article class="project-card featured-project">
-            <div class="project-meta">Capstone · AI · Cybersecurity</div>
-            <h3>ClickSmart: AI Chatbot for Cybercrime Awareness</h3>
-            <p>
-              Built a cybercrime awareness site with an AI chatbot using Python
-              and TensorFlow. Fine-tuned a GPT-2 model with local cyber law data
-              to support more relevant answers.
-            </p>
-            <a
-              href="https://clicksmart-frontend.onrender.com/"
-              target="_blank"
-              class="project-link"
-              >Visit Website
-              <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
-          </article>
-          <article class="project-card">
-            <div class="project-meta">Machine Learning</div>
-            <h3>Pesosense</h3>
-            <p>
-              Philippine money identifier using TensorFlow and computer vision
-              to recognize peso bills from uploaded images.
-            </p>
-          </article>
-          <article class="project-card">
-            <div class="project-meta">Full Stack</div>
-            <h3>MERN E-commerce App</h3>
-            <p>
-              Built product catalog, cart, authentication, seller tools, and
-              admin dashboard using MongoDB, Express, React, and Node.
-            </p>
-          </article>
-          <article class="project-card">
-            <div class="project-meta">Data</div>
-            <h3>Data Visualization Project</h3>
-            <p>
-              Created dashboards and reports using Python, Pandas, Matplotlib,
-              NumPy, and Power BI.
-            </p>
-          </article>
-          <article class="project-card">
-            <div class="project-meta">Computer Vision</div>
-            <h3>Facial Recognition System</h3>
-            <p>
-              Used OpenCV and TensorFlow to train and test a real-time
-              recognition system on personal datasets.
-            </p>
-          </article>
-          <article class="project-card">
-            <div class="project-meta">Web App</div>
-            <h3>Art Gallery App</h3>
-            <p>
-              Developed an artwork management and showcase app with HTML, CSS,
-              JavaScript, PHP, and SQL.
-            </p>
-          </article>
-          <article class="project-card">
-            <div class="project-meta">Frontend</div>
-            <h3>Pest Control Record System</h3>
-            <p>
-              Worked on a React and Tailwind CSS interface for logging,
-              filtering, and exporting treatment records.
-            </p>
-          </article>
-        </div>
-      </section>
+        <span class="dates mono">2021 – 2025</span>
+      </div>
+    </section>
 
-      <section class="content-card reveal" id="experience">
-        <div class="section-heading">
-          <span>05</span>
-          <h2>Experience</h2>
-        </div>
-        <div class="experience-card">
-          <div class="experience-header">
-            <div>
-              <h3>Fullstack Developer Intern</h3>
-              <p>Kapiton · Internship</p>
-            </div>
-            <span>Mar 2025 – Present · Remote</span>
-          </div>
-          <ul>
-            <li>Built and maintained Laravel and Docker-based systems.</li>
-            <li>
-              Supported feature updates, bug fixes, and workflow improvements.
-            </li>
-            <li>
-              Used GitHub for version control, collaboration, and deployment
-              handoffs.
-            </li>
-          </ul>
-          <div class="tech-stack compact">
-            <span>Laravel</span><span>Docker</span><span>Git</span>
-          </div>
-        </div>
-      </section>
+    <section id="contact" class="reveal">
+      <p class="sh"><b class="mono">06</b> contact</p>
+      <a class="contact-email" href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a>
+      <p class="contact-note">For roles, collaborations, and everything else. Based in Quezon City, PH.</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" rel="noopener">linkedin ↗</a>
+        <a href="https://github.com/DiaJoshua" target="_blank" rel="noopener">github ↗</a>
+        <a href="CV%20DIA%2C%20JOSHUA%20MALIKSI%20JULY%202026.pdf" download="Joshua-Dia-CV.pdf">download cv</a>
+      </div>
+    </section>
 
-      <section class="content-card reveal">
-        <div class="section-heading">
-          <span>06</span>
-          <h2>Certifications</h2>
-        </div>
-        <div class="certification-list">
-          <article>
-            <h3>TOEIC</h3>
-            <p>Score: 850 — proficient English communication.</p>
-          </article>
-          <article>
-            <h3>IBM Cloud Essentials V3</h3>
-            <p>Cloud fundamentals.</p>
-            <a
-              href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f"
-              target="_blank"
-              >View Certificate</a
-            >
-          </article>
-          <article>
-            <h3>Data Analytics on AWS</h3>
-            <p>Data analytics fundamentals with AWS.</p>
-            <a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank"
-              >View Certificate</a
-            >
-          </article>
-          <article>
-            <h3>Intermediate SQL</h3>
-            <p>
-              Filtering, aggregation, comparison operators, and query limiting.
-            </p>
-            <a href="Intermediate SQL-Cert.pdf" target="_blank"
-              >View Certificate</a
-            >
-          </article>
-          <article>
-            <h3>Trend Micro CTF</h3>
-            <p>
-              Cybersecurity puzzles and exploitation challenges under timed
-              conditions.
-            </p>
-            <a
-              href="joshua_dia_uctf_certificate_20240930085210.pdf"
-              target="_blank"
-              >View Certificate</a
-            >
-          </article>
-        </div>
-      </section>
+    <footer class="mono">© 2026 Joshua Dia · updated Jul 2026</footer>
+  </main>
 
-      <section class="resume-section reveal">
-        <h2>Want the full details?</h2>
-        <p>
-          Download my resume or send me a message. I’m open to junior developer
-          roles, internships, collaborations, and practical projects.
-        </p>
-        <div class="hero-actions justify-content-center">
-          <a
-            href="RESUME UPDATED 2025 - JOSHUA DIA.pdf"
-            download
-            class="btn btn-primary-custom"
-            ><i class="fas fa-file-download"></i> Download Resume</a
-          >
-          <a
-            href="mailto:diajoshua05@gmail.com"
-            class="btn btn-secondary-custom"
-            ><i class="fa-solid fa-paper-plane"></i> Contact Me</a
-          >
-        </div>
-      </section>
+  <script>
+    /* theme toggle */
+    var toggleBtn = document.getElementById("theme-toggle");
+    function syncIcon() {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      toggleBtn.textContent = dark ? "☀" : "☾";
+    }
+    toggleBtn.addEventListener("click", function () {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      if (dark) document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", "dark");
+      try { localStorage.setItem("theme", dark ? "light" : "dark"); } catch (e) {}
+      syncIcon();
+    });
+    syncIcon();
 
-      <section class="content-card reveal" id="contact-me-section">
-        <div class="section-heading centered">
-          <span>07</span>
-          <h2>Contact</h2>
-        </div>
-        <p>
-          <strong>Joshua Dia</strong><br />Quezon City, Philippines<br /><a
-            href="mailto:diajoshua05@gmail.com"
-            >diajoshua05@gmail.com</a
-          >
-        </p>
-        <div class="social-links">
-          <a
-            href="https://www.linkedin.com/in/joshua-dia/"
-            target="_blank"
-            title="LinkedIn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="https://github.com/DiaJoshua" target="_blank" title="GitHub"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/diajoshh"
-            target="_blank"
-            title="Facebook"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a
-            href="https://www.instagram.com/diajoshh/"
-            target="_blank"
-            title="Instagram"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </div>
-        <footer>&copy; 2025 Joshua Dia. All Rights Reserved.</footer>
-      </section>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-      const themeToggle = document.getElementById("theme-toggle");
-      const savedTheme = localStorage.getItem("theme");
-
-      if (savedTheme === "light") {
-        document.body.classList.remove("dark-mode");
-        document.body.classList.add("light-mode");
-      }
-
-      window.addEventListener("scroll", () => {
-        scrollToTopBtn.classList.toggle("show", window.scrollY > 300);
+    /* show more toggles */
+    document.querySelectorAll(".more-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = document.getElementById(btn.getAttribute("data-chips") || btn.getAttribute("data-block"));
+        var open = target.classList.toggle("open");
+        if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+        btn.textContent = open ? "show less" : btn.dataset.label;
       });
+    });
 
-      scrollToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    /* reveal on scroll */
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
       });
-
-      themeToggle.addEventListener("click", () => {
-        const isLight = document.body.classList.toggle("light-mode");
-        document.body.classList.toggle("dark-mode", !isLight);
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-      });
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-          });
-        },
-        { threshold: 0.12 },
-      );
-
-      document
-        .querySelectorAll(".reveal")
-        .forEach((element) => observer.observe(element));
-    </script>
-  </body>
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });
+  </script>
+</body>
 </html>
