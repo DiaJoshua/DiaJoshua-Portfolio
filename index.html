@@ -2,19 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Joshua Dia, cybersecurity professional in Metro Manila. Enterprise security support, log analysis, and root-cause investigation, with a Digital Forensics background." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joshua Dia, cybersecurity professional in Metro Manila. Enterprise security support, log analysis, and root cause investigation, with a Digital Forensics background." />
   <title>Joshua Dia — Cybersecurity</title>
-  <meta name="theme-color" content="#fbfbfa" />
-
-  <!-- app / pwa -->
-  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#fafafa" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Joshua Dia" />
 
   <script>
     /* apply saved theme before paint to avoid flash */
@@ -23,234 +15,232 @@
 
   <style>
     :root {
-      --bg: #fbfbfa;
-      --text: #17181a;
-      --muted: #55575c;
-      --faint: #8b8d93;
-      --line: #e7e7e4;
-      --chip: #f2f2ef;
-      --chip-border: #dededa;
-      --nav: rgba(251, 251, 250, 0.82);
-      --hover: rgba(0, 0, 0, 0.028);
-      --dot: rgba(0, 0, 0, 0.05);
-      --invert-bg: #17181a;
-      --invert-text: #fbfbfa;
+      --bg: #fafafa;
+      --text: #191919;
+      --muted: #575757;
+      --faint: #8a8a8a;
+      --line: #e5e5e5;
+      --chip: #f0f0f0;
+      --chip-border: #dcdcdc;
+      --nav: rgba(250, 250, 250, 0.85);
+      --hover: rgba(0, 0, 0, 0.03);
     }
     html[data-theme="dark"] {
-      --bg: #0b0c0d;
-      --text: #ebebe9;
-      --muted: #9d9fa5;
-      --faint: #6b6d73;
-      --line: #1e2023;
-      --chip: #121416;
-      --chip-border: #26282c;
-      --nav: rgba(11, 12, 13, 0.82);
+      --bg: #0a0a0a;
+      --text: #e9e9e9;
+      --muted: #999999;
+      --faint: #6f6f6f;
+      --line: #1e1e1e;
+      --chip: #141414;
+      --chip-border: #282828;
+      --nav: rgba(10, 10, 10, 0.85);
       --hover: rgba(255, 255, 255, 0.035);
-      --dot: rgba(255, 255, 255, 0.045);
-      --invert-bg: #ebebe9;
-      --invert-text: #0b0c0d;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
-      background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-      background-size: 26px 26px;
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
       font-size: 15.5px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      overflow-x: hidden;
+      transition: background 0.25s ease, color 0.25s ease;
     }
     .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
     a { color: var(--text); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    section { padding: 52px 0 8px; scroll-margin-top: 84px; }
-    ::selection { background: var(--text); color: var(--bg); }
-    :focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
     /* reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
       html { scroll-behavior: auto; }
     }
 
-    /* ── nav ── */
+    /* nav */
     nav {
       position: sticky; top: 0; z-index: 10;
-      background: var(--nav);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: var(--nav); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
-      padding-top: env(safe-area-inset-top);
     }
     .nav-inner {
-      max-width: 720px; margin: 0 auto;
-      padding: 13px calc(24px + env(safe-area-inset-right)) 13px calc(24px + env(safe-area-inset-left));
+      max-width: 880px; margin: 0 auto; padding: 13px 24px;
       display: flex; align-items: center; justify-content: space-between; gap: 14px;
     }
-    .nav-name { font-weight: 650; font-size: 15px; letter-spacing: -0.2px; }
-    .nav-name .mono { color: var(--faint); font-weight: 400; margin-right: 2px; }
-    .nav-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .nav-name { font-weight: 600; font-size: 15px; }
+    .nav-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
     .nav-right a { color: var(--muted); font-size: 13.5px; }
     .nav-right a:hover { color: var(--text); }
     .theme-btn {
-      background: none; border: 1px solid var(--chip-border); border-radius: 7px;
+      background: none; border: 1px solid var(--chip-border); border-radius: 50%;
       width: 30px; height: 30px; cursor: pointer; color: var(--muted);
-      font-size: 13px; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
-      transition: border-color 0.15s ease, color 0.15s ease;
+      font-size: 14px; line-height: 1; display: inline-flex; align-items: center; justify-content: center;
     }
     .theme-btn:hover { color: var(--text); border-color: var(--faint); }
 
-    /* ── hero ── */
-    header.hero { padding: 72px 0 24px; }
-    .hero-grid {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 32px;
+    /* hero */
+    header.hero { padding: 68px 0 56px; text-align: center; }
+
+    .avatar-wrap { position: relative; width: 150px; height: 150px; margin: 0 auto; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .avatar-wrap::before {
+      content: ""; position: absolute; inset: 0; border-radius: 28px;
+      transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.3s ease;
     }
-    .hero-main { max-width: 500px; }
-    .eyebrow { font-size: 11px; letter-spacing: 3px; color: var(--faint); text-transform: uppercase; }
-    h1 { font-size: 36px; font-weight: 750; letter-spacing: -0.8px; margin-top: 8px; line-height: 1.15; }
-    .cursor { display: inline-block; margin-left: 5px; color: var(--faint); animation: blink 1.15s steps(1) infinite; font-weight: 400; }
+    .avatar, .avatar-fallback {
+      position: relative; width: 150px; height: 150px; border-radius: 28px;
+      border: 1px solid var(--chip-border); background: var(--chip);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), border-radius 0.35s ease, box-shadow 0.35s ease;
+    }
+    html[data-theme="dark"] .avatar, html[data-theme="dark"] .avatar-fallback { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55); }
+    .avatar { object-fit: cover; object-position: center 28%; display: block; }
+    .avatar-fallback { display: none; align-items: center; justify-content: center; font-weight: 600; font-size: 38px; color: var(--muted); letter-spacing: 1px; }
+    .avatar-wrap:hover .avatar, .avatar-wrap:hover .avatar-fallback { transform: rotate(-3deg) scale(1.05); }
+
+    /* frame 0: tilted card */
+    .avatar-wrap.f0::before { background: var(--text); opacity: 0.07; transform: rotate(8deg); }
+    .avatar-wrap.f0:hover::before { transform: rotate(14deg) scale(1.02); opacity: 0.11; }
+    /* frame 1: circle + ring */
+    .avatar-wrap.f1 .avatar, .avatar-wrap.f1 .avatar-fallback { border-radius: 50%; }
+    .avatar-wrap.f1::before { inset: -10px; border-radius: 50%; border: 1px solid var(--chip-border); }
+    .avatar-wrap.f1:hover::before { transform: scale(1.06); }
+    /* frame 2: offset block */
+    .avatar-wrap.f2 .avatar, .avatar-wrap.f2 .avatar-fallback { border-radius: 18px; box-shadow: 10px 10px 0 var(--chip-border); }
+    .avatar-wrap.f2:hover .avatar, .avatar-wrap.f2:hover .avatar-fallback { transform: translate(-3px, -3px) scale(1.02) rotate(0deg); box-shadow: 14px 14px 0 var(--chip-border); }
+    /* frame 3: dashed orbit */
+    .avatar-wrap.f3::before { inset: -11px; border-radius: 34px; border: 1.5px dashed var(--faint); }
+    .avatar-wrap.f3:hover::before { transform: rotate(6deg); }
+
+    .eyebrow { margin-top: 24px; font-size: 11.5px; letter-spacing: 3px; color: var(--faint); text-transform: uppercase; }
+    h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; margin-top: 6px; }
+    .cursor { display: inline-block; margin-left: 4px; color: var(--faint); animation: blink 1.15s steps(1) infinite; font-weight: 400; }
     @keyframes blink { 50% { opacity: 0; } }
     @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
-
-    .portrait {
-      flex-shrink: 0;
-      width: 148px; height: 148px; border-radius: 18px;
-      object-fit: cover;
-      border: 1px solid var(--chip-border);
-      filter: grayscale(1) contrast(1.02);
-      transition: filter 0.45s ease, transform 0.45s ease;
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
-    }
-    html[data-theme="dark"] .portrait { box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55); }
-    .portrait:hover { filter: grayscale(0); transform: scale(1.02); }
-    .portrait-fallback {
-      flex-shrink: 0; width: 148px; height: 148px; border-radius: 18px;
-      border: 1px solid var(--chip-border); background: var(--chip);
-      display: none; align-items: center; justify-content: center;
-      font-weight: 650; font-size: 38px; color: var(--muted); letter-spacing: 1px;
-    }
-
-    .lede { margin-top: 18px; color: var(--text); }
-    .sub { margin-top: 12px; color: var(--muted); }
-
-    .status { margin-top: 18px; font-size: 12.5px; color: var(--faint); display: flex; align-items: center; gap: 8px; }
-    .status .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--text);
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
-    @media (prefers-reduced-motion: reduce) { .status .dot { animation: none; } }
-
-    .stats { display: flex; margin-top: 26px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; max-width: 420px; }
-    .stats > div { flex: 1; padding: 12px 16px; border-left: 1px solid var(--line); }
-    .stats > div:first-child { border-left: none; }
+    .lede { margin: 14px auto 0; max-width: 580px; }
+    .sub { margin: 10px auto 0; max-width: 580px; color: var(--muted); }
+    .status { margin-top: 16px; font-size: 12.5px; color: var(--faint); }
+    .status .ok { color: #2f9e44; }
+    html[data-theme="dark"] .status .ok { color: #69db7c; }
+    .stats { display: flex; gap: 34px; margin-top: 24px; flex-wrap: wrap; justify-content: center; }
     .stats b { display: block; font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
-    .stats span { font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); }
-
-    .links { margin-top: 26px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    .stats span { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); }
+    .links { margin-top: 24px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    header.hero .links { justify-content: center; }
     .links a { color: var(--muted); font-size: 14px; }
     .links a:hover { color: var(--text); }
     .btn {
-      border: 1px solid var(--text); border-radius: 8px;
-      padding: 8px 16px; font-size: 14px; font-weight: 550;
-      color: var(--text) !important; background: transparent;
-      transition: background 0.18s ease, color 0.18s ease;
+      border: 1px solid var(--chip-border); border-radius: 8px;
+      padding: 7px 14px; font-size: 14px; color: var(--text) !important; background: var(--chip);
     }
-    .btn:hover { background: var(--invert-bg); color: var(--invert-text) !important; text-decoration: none; }
+    .btn:hover { border-color: var(--faint); text-decoration: none; }
+    .btn.ghost { background: transparent; }
 
-    /* ── section headings ── */
-    .sh {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 12px; color: var(--faint); letter-spacing: 2px; margin-bottom: 22px; text-transform: uppercase;
+    /* ===== sections: label column + content column ===== */
+    section {
+      display: grid; grid-template-columns: 190px 1fr; gap: 10px 56px;
+      padding: 54px 0 14px; border-top: 1px solid var(--line);
+      scroll-margin-top: 90px;
     }
-    .sh b { color: var(--text); font-weight: 600; }
-    .sh::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .sh { position: sticky; top: 86px; align-self: start; }
+    .sh .num { display: block; font-size: 11px; letter-spacing: 2.5px; color: var(--faint); }
+    .sh h2 { font-size: 16.5px; font-weight: 650; letter-spacing: -0.2px; margin-top: 2px; }
 
-    /* ── experience timeline ── */
-    .timeline { border-left: 1px solid var(--line); margin-left: 6px; }
-    .job { position: relative; padding: 4px 12px 22px 26px; transition: background 0.2s ease; border-radius: 0 10px 10px 0; }
-    .job:hover { background: var(--hover); }
-    .job::before {
-      content: ""; position: absolute; left: -4.5px; top: 12px;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--bg); border: 1.5px solid var(--text);
+    /* experience timeline */
+    .titem { position: relative; border-left: 1px solid var(--line); margin-left: 8px; padding: 0 0 30px 26px; }
+    .titem:last-child { border-left-color: transparent; padding-bottom: 6px; }
+    .titem::before {
+      content: ""; position: absolute; left: -4.5px; top: 7px; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--bg); border: 1.5px solid var(--faint);
     }
     .job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
-    .job-head h3 { font-size: 16px; font-weight: 650; }
+    .job-head h3 { font-size: 16px; font-weight: 600; }
     .job-head .co { color: var(--muted); font-weight: 400; }
-    .job-head .dates { font-size: 12px; color: var(--faint); white-space: nowrap; }
-    .job ul { margin: 10px 0 0 18px; color: var(--muted); font-size: 14.5px; }
-    .job li { margin-top: 5px; }
-    .job li::marker { color: var(--faint); }
+    .job-head .dates { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
+    .titem ul { margin: 10px 0 0 18px; color: var(--muted); font-size: 14.5px; }
+    .titem li { margin-top: 5px; }
+    .titem li::marker { color: var(--faint); }
 
-    /* ── chips ── */
+    /* chips */
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chips span {
-      background: var(--chip); border: 1px solid var(--chip-border); border-radius: 7px;
-      padding: 4px 11px; font-size: 13px; color: var(--muted);
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      background: var(--chip); border: 1px solid var(--chip-border); border-radius: 6px;
+      padding: 4px 10px; font-size: 13px; color: var(--muted);
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
-    .chips span:hover { background: var(--invert-bg); color: var(--invert-text); border-color: var(--invert-bg); }
+    .chips span:hover { border-color: var(--faint); color: var(--text); }
     .chips.mini { margin-top: 12px; }
-    .chips.mini span { font-size: 11.5px; padding: 3px 9px; }
+    .chips.mini span { font-size: 11.5px; padding: 3px 8px; }
 
-    .skill-group { margin-bottom: 20px; }
-    .skill-group .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+    /* skills groups */
+    .sgroup { padding-bottom: 20px; }
+    .sgroup:last-child { padding-bottom: 6px; }
+    .sgroup h4 { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
 
-    /* ── toggle buttons ── */
+    /* projects grid */
+    .pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .pcard {
+      border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px;
+      transition: border-color 0.2s ease, transform 0.3s ease, background 0.2s ease;
+    }
+    .pcard:hover { border-color: var(--faint); background: var(--hover); transform: translateY(-2px); }
+    .pcard.wide { grid-column: 1 / -1; }
+    .pcard .tag { display: block; font-size: 10.5px; letter-spacing: 1px; color: var(--faint); margin-bottom: 6px; }
+    .pcard h3 { font-size: 15px; font-weight: 600; letter-spacing: -0.1px; }
+    .pcard p { color: var(--muted); font-size: 13.5px; margin-top: 5px; }
+    .pcard .ext { display: inline-block; margin-top: 8px; font-size: 12.5px; color: var(--muted); }
+
+    /* certifications */
+    .crow {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 12px 2px; border-bottom: 1px solid var(--line);
+    }
+    .crow:first-child { border-top: 1px solid var(--line); }
+    .cname { display: block; font-size: 14.5px; font-weight: 500; }
+    .cissuer { display: block; font-size: 12px; color: var(--faint); margin-top: 1px; }
+    .cview { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+    .hidden-block { display: none; }
+    .hidden-block.open { display: block; }
     .more-btn {
       margin-top: 16px; background: none; border: 1px solid var(--chip-border); border-radius: 8px;
       color: var(--muted); font-size: 13px; padding: 6px 14px; cursor: pointer; font-family: inherit;
-      transition: border-color 0.15s ease, color 0.15s ease;
     }
     .more-btn:hover { color: var(--text); border-color: var(--faint); }
-    .hidden-block { display: none; }
-    .hidden-block.open { display: block; }
 
-    /* ── projects & certs ── */
-    .rows, .certs { border-bottom: 1px solid var(--line); }
-    .row { padding: 16px 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; }
-    .row:hover { background: var(--hover); }
-    .row h3 { font-size: 15.5px; font-weight: 650; display: inline; }
-    .row .tag { font-size: 11px; color: var(--faint); margin-left: 8px; letter-spacing: 1px; }
-    .row p { color: var(--muted); font-size: 14px; margin-top: 4px; }
-    .row .ext { font-size: 13px; color: var(--muted); }
-    .cert-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; padding: 12px; border-top: 1px solid var(--line); transition: background 0.2s ease; }
-    .cert-row:hover { background: var(--hover); }
-    .cert-row .c-name { font-size: 14.5px; }
-    .cert-row .c-meta { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
-    .cert-row .c-meta a { color: var(--muted); }
-
-    /* ── education ── */
-    .edu { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    /* education */
+    .edu { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+    .edu h3 { font-size: 15.5px; font-weight: 600; }
     .edu p { color: var(--muted); font-size: 14px; }
-    .edu .dates { font-size: 12px; color: var(--faint); }
+    .edu .dates { font-size: 12.5px; color: var(--faint); }
 
-    /* ── contact ── */
-    .contact-email { font-size: 21px; font-weight: 650; letter-spacing: -0.3px; }
-    .contact-note { color: var(--muted); margin-top: 6px; font-size: 14.5px; }
+    /* contact closing */
+    #contact { display: block; text-align: center; padding: 84px 0 30px; }
+    .c-title { font-size: clamp(24px, 5vw, 30px); font-weight: 700; letter-spacing: -0.6px; }
+    .c-sub { color: var(--muted); margin: 12px auto 0; max-width: 480px; font-size: 14.5px; }
+    .c-actions { margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    #contact .links { justify-content: center; margin-top: 22px; }
 
-    footer {
-      padding: 52px 0 calc(44px + env(safe-area-inset-bottom));
-      color: var(--faint); font-size: 12px;
+    /* footer */
+    footer { border-top: 1px solid var(--line); margin-top: 56px; }
+    .f-inner {
+      max-width: 880px; margin: 0 auto; padding: 20px 24px 40px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap;
+      font-size: 12px; color: var(--faint);
     }
-    footer .sep { margin: 0 6px; opacity: 0.5; }
+    .f-inner a { color: var(--faint); }
+    .f-inner a:hover { color: var(--text); }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 29px; }
+    @media (max-width: 760px) {
+      h1 { font-size: 28px; }
       .nav-right { gap: 12px; }
-      section { padding-top: 42px; }
-      .hero-grid { flex-direction: column-reverse; gap: 24px; }
-      .portrait, .portrait-fallback { width: 116px; height: 116px; border-radius: 16px; }
-      .stats { max-width: none; }
+      section { grid-template-columns: 1fr; gap: 18px; padding: 42px 0 10px; }
+      .sh { position: static; display: flex; align-items: baseline; gap: 10px; }
+      .sh .num { font-size: 11px; }
+      .pgrid { grid-template-columns: 1fr; }
+      .stats { gap: 24px; }
     }
   </style>
 </head>
@@ -258,12 +248,12 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="#top" class="nav-name"><span class="mono">~/</span>Joshua Dia</a>
+      <a href="#top" class="nav-name">Joshua Dia</a>
       <div class="nav-right">
         <a href="#experience">experience</a>
         <a href="#skills">skills</a>
         <a href="#projects">projects</a>
-        <a href="#certifications">certs</a>
+        <a href="#certifications">certifications</a>
         <a href="#contact">contact</a>
         <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
       </div>
@@ -273,31 +263,30 @@
   <main class="wrap" id="top">
 
     <header class="hero reveal visible">
-      <div class="hero-grid">
-        <div class="hero-main">
-          <p class="eyebrow mono">Cybersecurity · Cloud · Networking</p>
-          <h1>Joshua Dia<span class="cursor">▌</span></h1>
-
-          <p class="lede">
-            I like taking problems apart. At Trend Micro, I resolve platform and security
-            support cases for enterprise customers: digging through Windows event logs, tracing
-            network failures across proxies and firewalls, and running root-cause analysis until
-            the real answer surfaces.
-          </p>
-          <p class="sub">
-            BS Computer Science, specialized in Digital Forensics. I learn fast on the job,
-            stay composed under pressure, and do my best work with other people. Currently
-            growing in cybersecurity, focused on SOC, security analysis, and incident response,
-            with cloud and networking alongside.
-          </p>
-
-          <p class="status mono"><span class="dot"></span> open to cybersecurity roles · Quezon City, PH · UTC+8</p>
-        </div>
-
-        <img class="portrait" src="joshua-portrait.jpg" alt="Joshua Dia"
-             onerror="this.style.display='none'; document.getElementById('portrait-fb').style.display='flex';" />
-        <div class="portrait-fallback" id="portrait-fb">JD</div>
+      <div class="avatar-wrap f0" id="avatar-wrap" role="button" tabindex="0" title="Click me" aria-label="Change photo and frame">
+        <img class="avatar" id="avatar-img" src="NU%20Graduation%20Pictorial%20Day%205-%20-1404.JPG" alt="Joshua Dia"
+             onerror="this.style.display='none'; document.getElementById('avatar-fb').style.display='flex';" />
+        <div class="avatar-fallback" id="avatar-fb">JD</div>
       </div>
+
+      <p class="eyebrow mono">Cybersecurity · Cloud · Networking</p>
+      <h1>Joshua Dia<span class="cursor">▌</span></h1>
+
+      <p class="lede">
+        I like taking problems apart. For the past year, I resolved platform and security
+        support cases for enterprise customers at a global cybersecurity company: reading
+        Windows event logs, tracing network failures across proxies and firewalls, and running
+        root cause analysis until the real answer surfaced. The moment a messy problem finally
+        makes sense is my favorite part of the job.
+      </p>
+      <p class="sub">
+        BS Computer Science, specialized in Digital Forensics. I learn fast, stay composed
+        under pressure, and do my best work with other people. Currently growing in
+        cybersecurity, focused on SOC, security analysis, and incident response, with cloud
+        and networking alongside.
+      </p>
+
+      <p class="status mono"><span class="ok">●</span> Open to cybersecurity roles · Quezon City, Philippines</p>
 
       <div class="stats">
         <div><b>12+</b><span class="mono">credentials</span></div>
@@ -314,27 +303,27 @@
     </header>
 
     <section id="experience" class="reveal">
-      <p class="sh"><b class="mono">01</b> experience</p>
+      <div class="sh"><span class="num mono">01</span><h2>Experience</h2></div>
+      <div class="sc">
 
-      <div class="timeline">
-        <div class="job">
+        <div class="titem">
           <div class="job-head">
             <h3>DevOps Platform Engineer <span class="co">· Trend Micro</span></h3>
-            <span class="dates mono">Oct 2025 – Present</span>
+            <span class="dates mono">Oct 2025 – Aug 2026</span>
           </div>
           <ul>
-            <li>Resolve platform and security support cases daily for enterprise customers under time-sensitive conditions.</li>
-            <li>Troubleshoot customer Windows environments using system and application logs, Grafana dashboards, and AI-assisted tooling, reducing repeat escalations.</li>
-            <li>Diagnose network issues across enterprise deployments, from agent-to-console connectivity to proxy and firewall configuration.</li>
-            <li>Identify security vulnerabilities and recommend hardening aligned with industry best practices.</li>
-            <li>Completed the New Engineering Program (NEP) and own closed-case quality review and root-cause documentation.</li>
+            <li>Resolved platform and security support cases daily for enterprise customers under time-sensitive conditions.</li>
+            <li>Troubleshot customer Windows environments using system and application logs, Grafana dashboards, and AI-assisted tooling, reducing repeat escalations.</li>
+            <li>Diagnosed network issues across enterprise deployments, from agent-to-console connectivity to proxy and firewall configuration.</li>
+            <li>Identified security vulnerabilities and recommended hardening aligned with industry best practices.</li>
+            <li>Completed the New Engineering Program (NEP) and owned closed-case quality review and root cause documentation.</li>
           </ul>
           <div class="chips mini">
             <span>EDR/XDR</span><span>Log Analysis</span><span>Windows</span><span>Networking</span><span>Grafana</span>
           </div>
         </div>
 
-        <div class="job">
+        <div class="titem">
           <div class="job-head">
             <h3>Full Stack Developer Intern <span class="co">· Kapiton Solutions</span></h3>
             <span class="dates mono">Mar 2025 – Aug 2025</span>
@@ -348,197 +337,192 @@
             <span>Laravel</span><span>Docker</span><span>GitHub</span><span>CI/CD</span>
           </div>
         </div>
+
       </div>
     </section>
 
     <section id="skills" class="reveal">
-      <p class="sh"><b class="mono">02</b> skills</p>
-
-      <div class="skill-group">
-        <p class="label mono">security operations</p>
-        <div class="chips">
-          <span>EDR/XDR</span>
-          <span>SIEM &amp; Log Analysis</span>
-          <span>Root-Cause Analysis</span>
-          <span>Digital Forensics</span>
-          <span>Threat Intelligence</span>
-          <span>Vulnerability Assessment</span>
-          <span>Endpoint Protection</span>
-          <span>Windows Troubleshooting</span>
-          <span>Network Troubleshooting</span>
+      <div class="sh"><span class="num mono">02</span><h2>Skills</h2></div>
+      <div class="sc">
+        <div class="sgroup">
+          <h4>Security &amp; Analysis</h4>
+          <div class="chips">
+            <span>EDR/XDR</span><span>SIEM &amp; Log Analysis</span><span>Root Cause Analysis</span>
+            <span>Digital Forensics</span><span>Threat Intelligence</span><span>Vulnerability Assessment</span>
+            <span>Endpoint Protection</span><span>Network Troubleshooting</span><span>Windows Troubleshooting</span>
+          </div>
         </div>
-      </div>
-
-      <div class="skill-group">
-        <p class="label mono">cloud &amp; infrastructure</p>
-        <div class="chips">
-          <span>AWS</span>
-          <span>Azure</span>
-          <span>Linux</span>
-          <span>Docker</span>
-          <span>Jenkins</span>
-          <span>Grafana</span>
-          <span>Git &amp; CI/CD</span>
+        <div class="sgroup">
+          <h4>Cloud &amp; Infrastructure</h4>
+          <div class="chips">
+            <span>AWS</span><span>Azure</span><span>Linux</span><span>Docker</span>
+            <span>Jenkins</span><span>Grafana</span><span>Git &amp; CI/CD</span>
+          </div>
         </div>
-      </div>
-
-      <div class="skill-group">
-        <p class="label mono">development &amp; data</p>
-        <div class="chips">
-          <span>Python</span>
-          <span>SQL</span>
-          <span>Java</span>
-          <span>PHP / Laravel</span>
-          <span>JavaScript (React, Node)</span>
-          <span>MongoDB / MySQL</span>
-          <span>TensorFlow</span>
-          <span>Power BI</span>
-          <span>AI-assisted workflows</span>
+        <div class="sgroup">
+          <h4>Programming &amp; Data</h4>
+          <div class="chips">
+            <span>Python</span><span>SQL</span><span>Java</span><span>PHP / Laravel</span>
+            <span>JavaScript (React, Node)</span><span>MongoDB / MySQL</span><span>TensorFlow</span>
+            <span>Power BI</span><span>AI-assisted workflows</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="projects" class="reveal">
-      <p class="sh"><b class="mono">03</b> projects</p>
-      <div class="rows">
-        <div class="row">
-          <h3>ClickSmart</h3><span class="tag mono">AI · CYBERSECURITY · CAPSTONE</span>
-          <p>Cybercrime awareness site with an AI chatbot. Fine-tuned a GPT-2 model on Philippine cyber law data using Python and TensorFlow.</p>
-          <a class="ext" href="https://clicksmart-frontend.onrender.com/" target="_blank" rel="noopener">visit ↗</a>
-        </div>
-        <div class="row">
-          <h3>Tienda</h3><span class="tag mono">FULL STACK</span>
-          <p>MERN e-commerce platform with product catalog, cart, authentication, seller tools, and an admin dashboard.</p>
-        </div>
-        <div class="row">
-          <h3>Pesosense</h3><span class="tag mono">MACHINE LEARNING</span>
-          <p>Philippine peso bill identifier using TensorFlow and computer vision.</p>
-        </div>
-        <div class="hidden-block" id="more-projects">
-          <div class="row">
-            <h3>Facial Recognition System</h3><span class="tag mono">COMPUTER VISION</span>
+      <div class="sh"><span class="num mono">03</span><h2>Projects</h2></div>
+      <div class="sc">
+        <div class="pgrid">
+          <div class="pcard wide">
+            <span class="tag mono">AI · CYBERSECURITY · CAPSTONE</span>
+            <h3>ClickSmart</h3>
+            <p>Cybercrime awareness site with an AI chatbot. Fine-tuned a GPT-2 model on Philippine cyber law data using Python and TensorFlow.</p>
+            <a class="ext" href="https://clicksmart-frontend.onrender.com/" target="_blank" rel="noopener">visit ↗</a>
+          </div>
+          <div class="pcard">
+            <span class="tag mono">FULL STACK</span>
+            <h3>Tienda</h3>
+            <p>MERN e-commerce platform with product catalog, cart, authentication, seller tools, and an admin dashboard.</p>
+          </div>
+          <div class="pcard">
+            <span class="tag mono">MACHINE LEARNING</span>
+            <h3>Pesosense</h3>
+            <p>Philippine peso bill identifier using TensorFlow and computer vision.</p>
+          </div>
+          <div class="pcard">
+            <span class="tag mono">COMPUTER VISION</span>
+            <h3>Facial Recognition System</h3>
             <p>Real-time recognition system trained and tested on personal datasets with OpenCV and TensorFlow.</p>
           </div>
-          <div class="row">
-            <h3>Data Visualization Project</h3><span class="tag mono">DATA</span>
+          <div class="pcard">
+            <span class="tag mono">DATA</span>
+            <h3>Data Visualization Project</h3>
             <p>Dashboards and reports with Python, Pandas, Matplotlib, NumPy, and Power BI.</p>
           </div>
-          <div class="row">
-            <h3>Art Gallery App</h3><span class="tag mono">WEB APP</span>
+          <div class="pcard">
+            <span class="tag mono">WEB APP</span>
+            <h3>Art Gallery App</h3>
             <p>Artwork management and showcase app built with PHP, JavaScript, and SQL.</p>
           </div>
-          <div class="row">
-            <h3>Pest Control Record System</h3><span class="tag mono">FRONTEND</span>
+          <div class="pcard">
+            <span class="tag mono">FRONTEND</span>
+            <h3>Pest Control Record System</h3>
             <p>React and Tailwind CSS interface for logging, filtering, and exporting treatment records.</p>
           </div>
         </div>
       </div>
-      <button class="more-btn" data-block="more-projects">+ 4 more projects</button>
     </section>
 
     <section id="certifications" class="reveal">
-      <p class="sh"><b class="mono">04</b> certifications</p>
-      <div class="certs">
-        <div class="cert-row">
-          <span class="c-name">Apex One Certified Professional</span>
-          <span class="c-meta">Trend Micro · 2025 · <a href="16_5_480302_1764595581__LEGACY%20%20Certified%20Professional%20Certificate%20-%20Apex%20One.pdf" target="_blank">view ↗</a></span>
+      <div class="sh"><span class="num mono">04</span><h2>Certifications</h2></div>
+      <div class="sc">
+        <div class="crow">
+          <div><span class="cname">Apex One Certified Professional</span><span class="cissuer">Trend Micro · 2025</span></div>
+          <a class="cview" href="16_5_480302_1764595581__LEGACY%20%20Certified%20Professional%20Certificate%20-%20Apex%20One.pdf" target="_blank">view ↗</a>
         </div>
-        <div class="cert-row">
-          <span class="c-name">Vision One Platform Foundation</span>
-          <span class="c-meta">TrendAI University · 2026 · <a href="lp_154_144_480302_1773567469_2026%20STANDARD%20Achievement%20-%20Foundation%20-%20Generic.pdf" target="_blank">view ↗</a></span>
+        <div class="crow">
+          <div><span class="cname">Vision One Platform Foundation</span><span class="cissuer">2026</span></div>
+          <a class="cview" href="lp_154_144_480302_1773567469_2026%20STANDARD%20Achievement%20-%20Foundation%20-%20Generic.pdf" target="_blank">view ↗</a>
         </div>
-        <div class="cert-row">
-          <span class="c-name">Apex Central Certified Master (ILT, 20 hrs)</span>
-          <span class="c-meta">Trend Micro · 2026 · <a href="Apex%20Central_772_12_480302_1772186417__LEGACY%20%20Certificate%20of%20Attendance%20-%20ILT.pdf" target="_blank">view ↗</a></span>
+        <div class="crow">
+          <div><span class="cname">Apex Central Certified Master</span><span class="cissuer">Trend Micro · ILT, 20 hrs · 2026</span></div>
+          <a class="cview" href="Apex%20Central_772_12_480302_1772186417__LEGACY%20%20Certificate%20of%20Attendance%20-%20ILT.pdf" target="_blank">view ↗</a>
         </div>
-        <div class="cert-row">
-          <span class="c-name">Threat Intelligence Analyst (Foundation)</span>
-          <span class="c-meta">arcX · 2026 · <a href="certificate.pdf" target="_blank">view ↗</a></span>
+        <div class="crow">
+          <div><span class="cname">Threat Intelligence Analyst (Foundation)</span><span class="cissuer">arcX · 2026</span></div>
+          <a class="cview" href="certificate.pdf" target="_blank">view ↗</a>
         </div>
-        <div class="cert-row">
-          <span class="c-name">Endpoint Security</span>
-          <span class="c-meta">Cisco Academy · 2026 · <a href="EndpointSecurityUpdate20260210-32-hgm5dc.pdf" target="_blank">view ↗</a></span>
+        <div class="crow">
+          <div><span class="cname">Endpoint Security</span><span class="cissuer">Cisco Networking Academy · 2026</span></div>
+          <a class="cview" href="EndpointSecurityUpdate20260210-32-hgm5dc.pdf" target="_blank">view ↗</a>
         </div>
-        <div class="cert-row">
-          <span class="c-name">ISO/IEC 27001:2022 Information Security Associate</span>
-          <span class="c-meta">SkillFront · 2025 · <a href="SkillFront-INFORMATION%20SECURITY%20ASSOCIATE%20SKILLFRONT.pdf" target="_blank">view ↗</a></span>
+        <div class="crow">
+          <div><span class="cname">ISO/IEC 27001:2022 Information Security Associate</span><span class="cissuer">SkillFront · 2025</span></div>
+          <a class="cview" href="SkillFront-INFORMATION%20SECURITY%20ASSOCIATE%20SKILLFRONT.pdf" target="_blank">view ↗</a>
         </div>
         <div class="hidden-block" id="more-certs">
-          <div class="cert-row">
-            <span class="c-name">Trend Micro Capture the Flag</span>
-            <span class="c-meta">Trend Micro · 2024 · <a href="joshua_dia_uctf_certificate_20240930085210.pdf" target="_blank">view ↗</a></span>
+          <div class="crow">
+            <div><span class="cname">Trend Micro Capture the Flag</span><span class="cissuer">Trend Micro · 2024</span></div>
+            <a class="cview" href="joshua_dia_uctf_certificate_20240930085210.pdf" target="_blank">view ↗</a>
           </div>
-          <div class="cert-row">
-            <span class="c-name">IBM Cloud Essentials V3</span>
-            <span class="c-meta">IBM · 2025 · <a href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank" rel="noopener">verify ↗</a></span>
+          <div class="crow">
+            <div><span class="cname">IBM Cloud Essentials V3</span><span class="cissuer">IBM · 2025</span></div>
+            <a class="cview" href="https://courses.cognitiveclass.ai/certificates/8cbb07f6b1794ca5b2fe99677e1b2f5f" target="_blank" rel="noopener">verify ↗</a>
           </div>
-          <div class="cert-row">
-            <span class="c-name">Data Analytics on AWS</span>
-            <span class="c-meta">AWS / Coursera · <a href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank" rel="noopener">verify ↗</a></span>
+          <div class="crow">
+            <div><span class="cname">Data Analytics on AWS</span><span class="cissuer">AWS / Coursera</span></div>
+            <a class="cview" href="https://coursera.org/verify/SVXM97I0PYIB" target="_blank" rel="noopener">verify ↗</a>
           </div>
-          <div class="cert-row">
-            <span class="c-name">Intermediate SQL</span>
-            <span class="c-meta">DataCamp · 2025 · <a href="Intermediate%20SQL-Cert.pdf" target="_blank">view ↗</a></span>
+          <div class="crow">
+            <div><span class="cname">Intermediate SQL</span><span class="cissuer">DataCamp · 2025</span></div>
+            <a class="cview" href="Intermediate%20SQL-Cert.pdf" target="_blank">view ↗</a>
           </div>
-          <div class="cert-row">
-            <span class="c-name">Certified Lean Six Sigma White Belt</span>
-            <span class="c-meta">SkillFront · 2025 · <a href="SkillFront-LEAN%20SIX%20SIGMA%20SKILLFRONT.pdf" target="_blank">view ↗</a></span>
+          <div class="crow">
+            <div><span class="cname">Certified Lean Six Sigma White Belt</span><span class="cissuer">SkillFront · 2025</span></div>
+            <a class="cview" href="SkillFront-LEAN%20SIX%20SIGMA%20SKILLFRONT.pdf" target="_blank">view ↗</a>
           </div>
-          <div class="cert-row">
-            <span class="c-name">TOEIC 850</span>
-            <span class="c-meta">English proficiency</span>
+          <div class="crow">
+            <div><span class="cname">TOEIC 850</span><span class="cissuer">English proficiency</span></div>
           </div>
         </div>
+        <button class="more-btn" data-block="more-certs">+ 6 more</button>
       </div>
-      <button class="more-btn" data-block="more-certs">+ 6 more</button>
     </section>
 
     <section id="education" class="reveal">
-      <p class="sh"><b class="mono">05</b> education</p>
-      <div class="edu">
-        <div>
-          <h3 style="font-size:15.5px;">BS Computer Science, Digital Forensics</h3>
-          <p>National University, Manila</p>
+      <div class="sh"><span class="num mono">05</span><h2>Education</h2></div>
+      <div class="sc">
+        <div class="edu">
+          <div>
+            <h3>BS Computer Science, Digital Forensics</h3>
+            <p>National University, Manila</p>
+          </div>
+          <span class="dates mono">2021 – 2025</span>
         </div>
-        <span class="dates mono">2021 – 2025</span>
       </div>
     </section>
 
     <section id="contact" class="reveal">
-      <p class="sh"><b class="mono">06</b> contact</p>
-      <a class="contact-email" href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a>
-      <p class="contact-note">For roles, collaborations, and everything else. Based in Quezon City, PH.</p>
+      <h2 class="c-title">Let's work together.</h2>
+      <p class="c-sub">Open to cybersecurity roles: SOC, security analysis, and incident response. Based in Quezon City, PH.</p>
+      <div class="c-actions">
+        <a class="btn" href="mailto:diajoshua05@gmail.com">Email me</a>
+        <a class="btn ghost" href="CV%20DIA%2C%20JOSHUA%20MALIKSI%20JULY%202026.pdf" download="Joshua-Dia-CV.pdf">Download CV</a>
+      </div>
       <div class="links">
         <a href="https://www.linkedin.com/in/joshua-dia/" target="_blank" rel="noopener">linkedin ↗</a>
         <a href="https://github.com/DiaJoshua" target="_blank" rel="noopener">github ↗</a>
-        <a href="CV%20DIA%2C%20JOSHUA%20MALIKSI%20JULY%202026.pdf" download="Joshua-Dia-CV.pdf">download cv</a>
       </div>
     </section>
 
-    <footer class="mono">
-      © 2026 Joshua Dia<span class="sep">·</span>updated Aug 2026<span class="sep">·</span>plain html/css, no trackers
-    </footer>
   </main>
 
+  <footer>
+    <div class="f-inner">
+      <span>© 2026 Joshua Dia</span>
+      <span class="mono">Quezon City, PH · updated Aug 2026</span>
+      <a href="#top">top ↑</a>
+    </div>
+  </footer>
+
   <script>
-    /* theme toggle + theme-color sync */
+    /* theme toggle */
     var toggleBtn = document.getElementById("theme-toggle");
-    var themeMeta = document.querySelector('meta[name="theme-color"]');
-    function syncTheme() {
+    function syncIcon() {
       var dark = document.documentElement.getAttribute("data-theme") === "dark";
       toggleBtn.textContent = dark ? "☀" : "☾";
-      if (themeMeta) themeMeta.setAttribute("content", dark ? "#0b0c0d" : "#fbfbfa");
     }
     toggleBtn.addEventListener("click", function () {
       var dark = document.documentElement.getAttribute("data-theme") === "dark";
       if (dark) document.documentElement.removeAttribute("data-theme");
       else document.documentElement.setAttribute("data-theme", "dark");
       try { localStorage.setItem("theme", dark ? "light" : "dark"); } catch (e) {}
-      syncTheme();
+      syncIcon();
     });
-    syncTheme();
+    syncIcon();
 
-    /* show more toggles */
+    /* show more toggle */
     document.querySelectorAll(".more-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var target = document.getElementById(btn.getAttribute("data-block"));
@@ -553,13 +537,52 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });
 
-    /* pwa: offline support when served over http(s) */
-    if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
+    /* avatar: click to change photo + frame style together */
+    var frames = ["f0", "f1", "f2", "f3"];
+    var photos = [
+      "NU%20Graduation%20Pictorial%20Day%205-%20-1404.JPG",
+      "Grad%20Pic%20-%20Josh.jpg",
+      "profile.jpg"
+    ];
+    var frameIdx = 0, photoIdx = 0;
+    var avatarWrap = document.getElementById("avatar-wrap");
+    var avatarImg = document.getElementById("avatar-img");
+
+    function applyFrame(i) {
+      frames.forEach(function (f) { avatarWrap.classList.remove(f); });
+      avatarWrap.classList.add(frames[i]);
     }
+    function nextPhoto() {
+      var tried = 0;
+      function attempt(idx) {
+        if (tried >= photos.length - 1) return;
+        tried++;
+        var candidate = photos[idx % photos.length];
+        if (candidate === avatarImg.getAttribute("src")) { attempt(idx + 1); return; }
+        var test = new Image();
+        test.onload = function () {
+          photoIdx = idx % photos.length;
+          avatarImg.src = candidate;
+          avatarImg.style.display = "";
+          document.getElementById("avatar-fb").style.display = "none";
+        };
+        test.onerror = function () { attempt(idx + 1); };
+        test.src = candidate;
+      }
+      attempt(photoIdx + 1);
+    }
+    function avatarTap() {
+      frameIdx = (frameIdx + 1) % frames.length;
+      applyFrame(frameIdx);
+      nextPhoto();
+    }
+    avatarWrap.addEventListener("click", avatarTap);
+    avatarWrap.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); avatarTap(); }
+    });
   </script>
 </body>
 </html>
