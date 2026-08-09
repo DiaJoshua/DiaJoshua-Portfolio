@@ -245,9 +245,26 @@
     #term-sound { font-size: 12px; }
     .term-out { flex: 1; overflow-y: auto; padding: 10px 12px; color: var(--muted); white-space: pre-wrap; word-break: break-word; line-height: 1.55; }
     .term-out .cmdline { color: var(--text); }
+    .term-out .ai-think { color: var(--faint); animation: thinkpulse 1s ease infinite; }
+    @keyframes thinkpulse { 50% { opacity: 0.3; } }
+    .term-out .tchip {
+      display: inline-block; margin: 4px 6px 2px 0; padding: 2px 9px;
+      border: 1px solid var(--chip-border); border-radius: 6px;
+      color: var(--muted); font-size: 11.5px; cursor: pointer; user-select: none;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .term-out .tchip:hover { color: var(--text); border-color: var(--faint); }
     .term-in { display: flex; gap: 8px; padding: 9px 12px; border-top: 1px solid var(--line); align-items: center; }
     .term-in .ps1 { color: var(--faint); }
-    .term-in input { flex: 1; background: none; border: none; outline: none; color: var(--text); font: inherit; }
+    .term-in .in-wrap { position: relative; flex: 1; display: flex; }
+    .term-in input { flex: 1; width: 100%; background: none; border: none; outline: none; color: var(--text); font: inherit; position: relative; z-index: 1; }
+    .term-ghost { position: absolute; inset: 0; display: flex; align-items: center; color: var(--faint); pointer-events: none; white-space: pre; overflow: hidden; }
+    .term-ghost i { font-style: normal; visibility: hidden; }
+    .term-fab.ping { animation: fabping 2.2s ease infinite; }
+    @keyframes fabping {
+      0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+      50% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 10px var(--hover); }
+    }
 
     @media (max-width: 760px) {
       h1 { font-size: 28px; }
@@ -525,9 +542,9 @@
 
   <button class="term-fab" id="term-fab" title="terminal (press `)" aria-label="Open terminal">❯_</button>
   <div class="term" id="term" role="dialog" aria-label="Portfolio terminal">
-    <div class="term-bar"><span>joshua@portfolio:~</span><span class="bar-btns"><button id="term-sound" aria-label="Toggle sound" title="Toggle sound">🔊</button><button id="term-close" aria-label="Close terminal">×</button></span></div>
+    <div class="term-bar"><span>guest@joshua-dia:~</span><span class="bar-btns"><button id="term-sound" aria-label="Toggle sound" title="Toggle sound">🔊</button><button id="term-close" aria-label="Close terminal">×</button></span></div>
     <div class="term-out" id="term-out"></div>
-    <div class="term-in"><span class="ps1">❯</span><input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal input" /></div>
+    <div class="term-in"><span class="ps1">❯</span><span class="in-wrap"><span class="term-ghost" id="term-ghost"></span><input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal input" /></span></div>
   </div>
 
   <script>
@@ -591,15 +608,70 @@
     var term = document.getElementById("term");
     var termOut = document.getElementById("term-out");
     var termInput = document.getElementById("term-input");
+    var termGhost = document.getElementById("term-ghost");
+    var termFab = document.getElementById("term-fab");
     var termHist = [], histIdx = 0;
     var sections = ["experience", "skills", "projects", "certifications", "education", "contact"];
 
+    /* AI-style output: thinking dots, then streamed typing */
+    var tq = [], typing = false, curIv = null, curDiv = null, curTxt = "";
+    function renderNow(node) { termOut.appendChild(node); termOut.scrollTop = termOut.scrollHeight; }
+    function makeChips(list) {
+      var box = document.createElement("div");
+      list.forEach(function (cc) {
+        var s = document.createElement("span");
+        s.className = "tchip"; s.textContent = cc;
+        s.addEventListener("click", function () { runCmd(cc); termInput.focus(); });
+        box.appendChild(s);
+      });
+      return box;
+    }
+    function processQueue() {
+      if (typing || !tq.length) return;
+      var item = tq.shift();
+      if (item.chips) { renderNow(makeChips(item.chips)); processQueue(); return; }
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var d = document.createElement("div"); d.textContent = item.text; renderNow(d); processQueue(); return;
+      }
+      typing = true;
+      curDiv = document.createElement("div");
+      curTxt = item.text;
+      curDiv.className = "ai-think";
+      curDiv.textContent = "· · ·";
+      renderNow(curDiv);
+      setTimeout(function () {
+        if (!typing || !curDiv) return; /* flushed meanwhile */
+        curDiv.className = "";
+        curDiv.textContent = "";
+        var i = 0;
+        curIv = setInterval(function () {
+          i += 2;
+          curDiv.textContent = curTxt.slice(0, i);
+          termOut.scrollTop = termOut.scrollHeight;
+          if (i >= curTxt.length) { clearInterval(curIv); curIv = null; typing = false; curDiv = null; processQueue(); }
+        }, 13);
+      }, 340);
+    }
+    function flushTyping() {
+      if (curIv) clearInterval(curIv);
+      if (typing && curDiv) { curDiv.className = ""; curDiv.textContent = curTxt; }
+      curIv = null; typing = false; curDiv = null;
+      while (tq.length) {
+        var it = tq.shift();
+        if (it.chips) renderNow(makeChips(it.chips));
+        else { var d2 = document.createElement("div"); d2.textContent = it.text; renderNow(d2); }
+      }
+    }
     function tprint(text, isCmd) {
-      var div = document.createElement("div");
-      if (isCmd) { div.className = "cmdline"; div.textContent = "❯ " + text; }
-      else div.textContent = text;
-      termOut.appendChild(div);
-      termOut.scrollTop = termOut.scrollHeight;
+      if (isCmd) {
+        var div = document.createElement("div");
+        div.className = "cmdline";
+        div.textContent = "❯ " + text;
+        renderNow(div);
+      } else {
+        tq.push({ text: text });
+        processQueue();
+      }
     }
     /* terminal sounds (Web Audio, no files) — toggleable */
     var soundOn = true;
@@ -646,7 +718,11 @@
       term.classList.add("open");
       termInput.focus();
       sOpen();
-      if (!termOut.childNodes.length) tprint("Hi, I'm Joshua's portfolio. Type 'help' to look around.");
+      termFab.classList.remove("ping");
+      try { localStorage.setItem("termSeen", "1"); } catch (e) {}
+      if (!termOut.childNodes.length) {
+        tprint("Hi! I'm Joshua's portfolio. Ask me anything about him, or type 'help'.");
+      }
     }
     function termClose() {
       if (!term.classList.contains("open")) return;
@@ -654,9 +730,10 @@
       sClose();
     }
 
-    document.getElementById("term-fab").addEventListener("click", function () {
+    termFab.addEventListener("click", function () {
       term.classList.contains("open") ? termClose() : termOpen();
     });
+    try { if (localStorage.getItem("termSeen") !== "1") termFab.classList.add("ping"); } catch (e) {}
     document.getElementById("term-close").addEventListener("click", termClose);
     document.getElementById("term-link").addEventListener("click", function (e) { e.preventDefault(); termOpen(); });
     document.addEventListener("keydown", function (e) {
@@ -664,43 +741,118 @@
       if (e.key === "Escape") termClose();
     });
 
+    var cmdList = ["help", "whoami", "skills", "experience", "projects", "certs", "education", "contact", "goto", "cv", "linkedin", "github", "theme", "sound", "ls", "clear", "exit", "sudo hire joshua"];
+    var ghostPool = cmdList.concat(
+      sections.map(function (s) { return "goto " + s; }),
+      ["who are you", "download cv", "dark mode", "are you hiring", "where are you based", "clicksmart"]
+    );
+    function currentSuggestion() {
+      var v = termInput.value.toLowerCase();
+      if (!v) return "";
+      for (var i = 0; i < ghostPool.length; i++) {
+        if (ghostPool[i].indexOf(v) === 0 && ghostPool[i] !== v) return ghostPool[i];
+      }
+      return "";
+    }
+    function updateGhost() {
+      var v = termInput.value, s = currentSuggestion();
+      if (s) termGhost.innerHTML = "<i>" + v.replace(/</g, "&lt;") + "</i>" + s.slice(v.length);
+      else termGhost.textContent = "";
+    }
+    termInput.addEventListener("input", updateGhost);
+
+    function tchips(list) { tq.push({ chips: list }); processQueue(); }
+    function lev(a, b) {
+      var m = [], i, j;
+      for (i = 0; i <= b.length; i++) m[i] = [i];
+      for (j = 0; j <= a.length; j++) m[0][j] = j;
+      for (i = 1; i <= b.length; i++)
+        for (j = 1; j <= a.length; j++)
+          m[i][j] = Math.min(m[i - 1][j] + 1, m[i][j - 1] + 1, m[i - 1][j - 1] + (b.charAt(i - 1) === a.charAt(j - 1) ? 0 : 1));
+      return m[b.length][a.length];
+    }
+    function scrollToSection(s) {
+      var el = document.getElementById(s);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+
     function runCmd(raw) {
       var cmd = raw.trim();
       if (!cmd) return;
+      flushTyping();
       tprint(cmd, true);
-      var c = cmd.toLowerCase();
-      if (c === "help") tprint("commands: whoami · skills · certs · goto <section> · cv · contact · linkedin · github · theme · sound · clear · exit\nsections: " + sections.join(", "));
-      else if (c === "whoami") tprint("Joshua Dia — cybersecurity (SOC · security analysis · incident response). BS Computer Science, Digital Forensics. Quezon City, PH.");
-      else if (c === "skills") tprint("EDR/XDR · SIEM & log analysis · root cause analysis · digital forensics · network troubleshooting · AWS · Azure · Linux · Docker · Python · SQL");
-      else if (c === "certs" || c === "certifications") tprint("12 credentials — Apex One Certified Professional, Vision One Platform Foundation, Threat Intelligence Analyst (arcX), Cisco Endpoint Security, ISO 27001 Associate, and more. See section 04.");
-      else if (c.indexOf("goto ") === 0) {
-        var s = c.slice(5).trim();
-        if (s === "certs") s = "certifications";
-        var el = document.getElementById(s);
-        if (sections.indexOf(s) > -1 && el) { el.scrollIntoView({ behavior: "smooth" }); tprint("→ " + s); }
-        else tprint("unknown section. try: " + sections.join(", "));
+      var c = cmd.toLowerCase().replace(/\s+/g, " ").replace(/["']/g, "").replace(/[?!.]+$/, "");
+
+      /* plain english understanding */
+      if (/^(hi|hello|hey|yo|sup|kumusta)\b/.test(c)) { tprint("Hey! Ask me anything, or try:"); tchips(["whoami", "skills", "projects", "cv"]); return; }
+      if (c.indexOf("thank") > -1) { tprint("Anytime. diajoshua05@gmail.com if you want to talk."); return; }
+      if (c === "sudo hire joshua" || c === "hire joshua") { sWin(); tprint("[sudo] access granted ✓ expect a fast reply: diajoshua05@gmail.com"); return; }
+      if (/(hire|job|opening|vacancy|recruit)/.test(c)) { sWin(); tprint("Good instinct. Joshua is open to cybersecurity roles: SOC, security analysis, incident response.\nemail: diajoshua05@gmail.com"); tchips(["cv", "contact", "linkedin"]); return; }
+      if (/clicksmart/.test(c)) { window.open("https://clicksmart-frontend.onrender.com/", "_blank"); tprint("ClickSmart: AI chatbot for cybercrime awareness, GPT-2 fine-tuned on Philippine cyber law. opening…"); return; }
+      if (/(where|location|based|live)/.test(c) && !/^(goto|open|show|go to)/.test(c)) { tprint("Quezon City, Philippines. Hybrid or remote both work."); return; }
+      if (/(available|start|when can)/.test(c)) { tprint("Available now. Open to SOC, security analysis, and incident response roles."); tchips(["cv", "contact"]); return; }
+      if (/how (long|many years)|years of/.test(c)) { tprint("1 year of enterprise security support at Trend Micro, plus a full stack internship and a Digital Forensics degree."); return; }
+      if (/(aws|azure|cloud)/.test(c) && c !== "skills") { scrollToSection("skills"); tprint("Cloud: AWS and Azure fundamentals, Docker, Jenkins, Grafana, Linux."); return; }
+      if (/view.?source|built (this|with)|how.*made/.test(c)) { tprint("Hand-built. One HTML file, no frameworks. Ctrl+U to peek."); return; }
+      if (/social/.test(c)) { tprint("Find Joshua here:"); tchips(["linkedin", "github"]); return; }
+      if (/who are you|about (you|joshua)|tell me about/.test(c)) c = "whoami";
+      else if (/resume|download/.test(c)) c = "cv";
+      else if (/mail|reach|in touch|message/.test(c)) c = "contact";
+      else if (/degree|study|school|university/.test(c)) c = "education";
+      else if (/trend micro|last job|previous (job|role)/.test(c)) c = "experience";
+      else if (/dark ?mode|light ?mode|switch theme/.test(c)) c = "theme";
+      else if (/what can you do|command|menu|^\?$/.test(c)) c = "help";
+
+      if (c === "help") {
+        tprint("here's what I can help with:");
+        tchips(["whoami", "skills", "experience", "projects", "certs", "education", "cv", "contact", "linkedin", "github", "theme", "sound", "clear", "exit"]);
+        tprint("tips: tab completes · arrows recall history · typos get auto-corrected · plain english works");
       }
-      else if (c === "cv" || c === "resume") {
+      else if (c === "whoami") { tprint("Joshua Dia: cybersecurity (SOC · security analysis · incident response). BS Computer Science, Digital Forensics. Quezon City, PH."); tchips(["skills", "experience", "cv"]); }
+      else if (c === "skills") { scrollToSection("skills"); tprint("→ skills: EDR/XDR · SIEM & log analysis · root cause analysis · digital forensics · networking · AWS · Azure · Linux · Docker · Python · SQL"); }
+      else if (c === "experience" || c === "work") { scrollToSection("experience"); tprint("→ experience: Trend Micro (DevOps Platform Engineer, Oct 2025 to Aug 2026) · Kapiton Solutions (Full Stack Developer Intern, 2025)"); tchips(["projects", "certs", "cv"]); }
+      else if (c === "projects") { scrollToSection("projects"); tprint("→ projects: ClickSmart (AI cybercrime awareness), Tienda, Pesosense, +4 more"); }
+      else if (c === "certs" || c === "certifications") { scrollToSection("certifications"); tprint("→ 12 credentials: Apex One Certified Professional, Vision One Foundation, arcX Threat Intel, Cisco Endpoint Security, ISO 27001, and more"); tchips(["cv", "contact"]); }
+      else if (c === "education") { scrollToSection("education"); tprint("→ BS Computer Science, Digital Forensics. National University, Manila (2021 to 2025)"); }
+      else if (c === "contact") { scrollToSection("contact"); tprint("diajoshua05@gmail.com · open to cybersecurity roles"); tchips(["linkedin", "github", "cv"]); }
+      else if (/^(goto|open|show|go to) /.test(c)) {
+        var s = c.replace(/^(goto|open|show|go to) /, "").trim();
+        if (s === "certs") s = "certifications";
+        var hits = sections.filter(function (x) { return x.indexOf(s) === 0; });
+        if (hits.length === 1) { scrollToSection(hits[0]); tprint("→ " + hits[0]); }
+        else { tprint("sections:"); tchips(sections); }
+      }
+      else if (c === "cv") {
         var a = document.createElement("a");
         a.href = "CV%20DIA%2C%20JOSHUA%20MALIKSI%20JULY%202026.pdf";
         a.download = "Joshua-Dia-CV.pdf";
         document.body.appendChild(a); a.click(); a.remove();
         tprint("downloading cv…");
       }
-      else if (c === "contact" || c === "email") tprint("diajoshua05@gmail.com — open to cybersecurity roles.");
       else if (c === "linkedin") { window.open("https://www.linkedin.com/in/joshua-dia/", "_blank"); tprint("opening linkedin…"); }
       else if (c === "github") { window.open("https://github.com/DiaJoshua", "_blank"); tprint("opening github…"); }
-      else if (c === "theme") { toggleBtn.click(); tprint("theme switched."); }
-      else if (c === "ls") tprint(sections.join("  "));
+      else if (c === "theme") { switchTheme(); tprint("theme switched."); }
+      else if (c === "ls") tchips(sections);
       else if (c === "sound" || c === "mute" || c === "unmute" || c === "sound on" || c === "sound off") {
         var on = c === "unmute" || c === "sound on" ? true : c === "mute" || c === "sound off" ? false : !soundOn;
         setSound(on);
         tprint("sound: " + (on ? "on" : "off"));
       }
-      else if (c === "clear") termOut.innerHTML = "";
-      else if (c === "exit" || c === "quit") termClose();
-      else if (c === "sudo hire joshua" || c === "hire joshua") { sWin(); tprint("[sudo] access granted ✓ — expect a fast reply: diajoshua05@gmail.com"); }
-      else { sError(); tprint("command not found: " + cmd + " — root cause: probably a typo. try 'help'."); }
+      else if (c === "clear" || c === "cls") termOut.innerHTML = "";
+      else if (c === "exit" || c === "quit" || c === "bye") termClose();
+      else {
+        /* fuzzy auto-correct */
+        var best = null, bd = 3;
+        cmdList.forEach(function (k) { var d = lev(c, k); if (d < bd) { bd = d; best = k; } });
+        if (best && best !== c && bd <= 2 && c.length > 1) {
+          tprint("(assuming you meant '" + best + "')");
+          runCmd(best);
+        } else {
+          sError();
+          tprint("hmm, I don't know '" + cmd + "'. root cause: probably a typo. try:");
+          tchips(["help", "whoami", "skills", "projects", "cv"]);
+        }
+      }
     }
     termInput.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
@@ -708,14 +860,20 @@
         var v = termInput.value;
         if (v.trim()) { termHist.push(v); histIdx = termHist.length; }
         termInput.value = "";
+        updateGhost();
         runCmd(v);
+      } else if (e.key === "Tab" || (e.key === "ArrowRight" && termInput.selectionStart === termInput.value.length)) {
+        var sug = currentSuggestion();
+        if (sug) { e.preventDefault(); termInput.value = sug; updateGhost(); }
+        else if (e.key === "Tab") e.preventDefault();
       } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
         sKey();
       } else if (e.key === "ArrowUp") {
-        if (termHist.length && histIdx > 0) { histIdx--; termInput.value = termHist[histIdx]; e.preventDefault(); }
+        if (termHist.length && histIdx > 0) { histIdx--; termInput.value = termHist[histIdx]; updateGhost(); e.preventDefault(); }
       } else if (e.key === "ArrowDown") {
         if (histIdx < termHist.length - 1) { histIdx++; termInput.value = termHist[histIdx]; }
         else { histIdx = termHist.length; termInput.value = ""; }
+        updateGhost();
       }
     });
   </script>
