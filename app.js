@@ -1,14 +1,3 @@
-const CACHE_RESET_KEY = 'jd-cache-reset-20260904-3';
-try {
-  if (!localStorage.getItem(CACHE_RESET_KEY)) {
-    navigator.serviceWorker?.getRegistrations().then(registrations => registrations.forEach(registration => registration.unregister()));
-    globalThis.caches?.keys().then(keys => Promise.all(keys.map(key => caches.delete(key))));
-    localStorage.setItem(CACHE_RESET_KEY, 'done');
-  }
-} catch (error) {
-  // Storage can be unavailable in strict privacy modes; the portfolio still works without this reset.
-}
-
 const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 const root = document.documentElement;
@@ -159,12 +148,14 @@ $$('[data-theme-mode]').forEach(button => button.addEventListener('click', event
     const transition = document.startViewTransition(update);
     transition.finished.finally(() => root.classList.remove('theme-transitioning'));
   } else update();
-  playTone(next === 'dark' ? 430 : next === 'light' ? 670 : 550, .07, .026);
+  playSound(next === 'dark' ? 'theme-dark' : next === 'light' ? 'theme-light' : 'theme-system');
 }));
 
 let soundEnabled = false;
 let audioContext;
-let lastTone = 0;
+let soundOutput;
+let lastHoverSound = 0;
+const hoveredControls = new WeakMap();
 try { soundEnabled = localStorage.getItem('jd-sound') === 'on'; } catch (error) {}
 
 function syncSoundButton() {
@@ -176,39 +167,134 @@ function syncSoundButton() {
   });
 }
 
-function playTone(frequency = 440, duration = .045, volume = .018) {
-  if (!soundEnabled) return;
-  const now = performance.now();
-  if (now - lastTone < 60) return;
-  lastTone = now;
+function getAudioEngine() {
   try {
     audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
+    if (!soundOutput) {
+      const compressor = audioContext.createDynamicsCompressor();
+      compressor.threshold.value = -24;
+      compressor.knee.value = 16;
+      compressor.ratio.value = 5;
+      compressor.attack.value = .003;
+      compressor.release.value = .15;
+      soundOutput = audioContext.createGain();
+      soundOutput.gain.value = .72;
+      soundOutput.connect(compressor).connect(audioContext.destination);
+    }
+    if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
+    return audioContext;
+  } catch (error) {
+    return null;
+  }
+}
+
+function scheduleTone({ frequency, endFrequency = frequency, delay = 0, duration = .055, volume = .012, type = 'sine' }) {
+  const context = getAudioEngine();
+  if (!context || !soundOutput) return;
+  try {
+    const start = context.currentTime + delay;
+    const stop = start + duration;
     const oscillator = audioContext.createOscillator();
     const gain = audioContext.createGain();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-    gain.gain.setValueAtTime(volume, audioContext.currentTime);
-    gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + duration);
-    oscillator.connect(gain).connect(audioContext.destination);
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + duration);
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, start);
+    oscillator.frequency.exponentialRampToValueAtTime(Math.max(endFrequency, 1), stop);
+    gain.gain.setValueAtTime(.0001, start);
+    gain.gain.exponentialRampToValueAtTime(volume, start + Math.min(.009, duration * .22));
+    gain.gain.exponentialRampToValueAtTime(.0001, stop);
+    oscillator.connect(gain).connect(soundOutput);
+    oscillator.start(start);
+    oscillator.stop(stop + .01);
   } catch (error) {}
+}
+
+const soundCues = {
+  hover: [
+    { frequency: 430, endFrequency: 475, duration: .032, volume: .006, type: 'sine' },
+    { frequency: 860, endFrequency: 910, delay: .006, duration: .026, volume: .0025, type: 'triangle' }
+  ],
+  press: [
+    { frequency: 210, endFrequency: 155, duration: .045, volume: .009, type: 'sine' },
+    { frequency: 620, endFrequency: 530, duration: .038, volume: .004, type: 'triangle' }
+  ],
+  navigate: [
+    { frequency: 390, endFrequency: 500, duration: .055, volume: .008, type: 'sine' },
+    { frequency: 620, endFrequency: 740, delay: .025, duration: .05, volume: .005, type: 'triangle' }
+  ],
+  select: [
+    { frequency: 460, endFrequency: 520, duration: .04, volume: .007, type: 'sine' },
+    { frequency: 690, endFrequency: 760, delay: .018, duration: .035, volume: .004, type: 'triangle' }
+  ],
+  open: [
+    { frequency: 350, endFrequency: 470, duration: .07, volume: .008, type: 'sine' },
+    { frequency: 560, endFrequency: 710, delay: .028, duration: .065, volume: .005, type: 'triangle' }
+  ],
+  success: [
+    { frequency: 520, endFrequency: 570, duration: .06, volume: .008, type: 'sine' },
+    { frequency: 780, endFrequency: 860, delay: .04, duration: .075, volume: .006, type: 'triangle' }
+  ],
+  enable: [
+    { frequency: 420, endFrequency: 480, duration: .06, volume: .009, type: 'sine' },
+    { frequency: 620, endFrequency: 690, delay: .045, duration: .07, volume: .007, type: 'triangle' },
+    { frequency: 840, endFrequency: 920, delay: .09, duration: .08, volume: .005, type: 'sine' }
+  ],
+  disable: [
+    { frequency: 720, endFrequency: 620, duration: .06, volume: .007, type: 'triangle' },
+    { frequency: 470, endFrequency: 350, delay: .045, duration: .08, volume: .008, type: 'sine' }
+  ],
+  'theme-light': [
+    { frequency: 520, endFrequency: 600, duration: .055, volume: .008, type: 'sine' },
+    { frequency: 760, endFrequency: 860, delay: .035, duration: .07, volume: .005, type: 'triangle' }
+  ],
+  'theme-dark': [
+    { frequency: 620, endFrequency: 540, duration: .06, volume: .007, type: 'triangle' },
+    { frequency: 390, endFrequency: 330, delay: .035, duration: .08, volume: .008, type: 'sine' }
+  ],
+  'theme-system': [
+    { frequency: 470, endFrequency: 540, duration: .055, volume: .007, type: 'sine' },
+    { frequency: 660, endFrequency: 610, delay: .035, duration: .065, volume: .005, type: 'triangle' }
+  ]
+};
+
+function playSound(name) {
+  if (!soundEnabled) return;
+  soundCues[name]?.forEach(scheduleTone);
 }
 
 syncSoundButton();
 $$('[data-sound-toggle]').forEach(button => button.addEventListener('click', () => {
-  soundEnabled = !soundEnabled;
+  if (soundEnabled) {
+    playSound('disable');
+    soundEnabled = false;
+  } else {
+    soundEnabled = true;
+    getAudioEngine();
+    playSound('enable');
+  }
   try { localStorage.setItem('jd-sound', soundEnabled ? 'on' : 'off'); } catch (error) {}
   syncSoundButton();
-  if (soundEnabled) playTone(720, .08, .032);
   showToast(soundEnabled ? 'Interface sounds on.' : 'Interface sounds off.');
 }));
 
 document.addEventListener('pointerover', event => {
-  if (event.target.closest('a, button, input') && !event.relatedTarget?.closest?.('a, button, input')) playTone(350, .035, .01);
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const control = event.target.closest('a, button, input');
+  if (!control || control.matches(':disabled') || control.contains(event.relatedTarget)) return;
+  const now = performance.now();
+  if (now - lastHoverSound < 85 || now - (hoveredControls.get(control) || 0) < 220) return;
+  lastHoverSound = now;
+  hoveredControls.set(control, now);
+  playSound('hover');
 });
+
 document.addEventListener('pointerdown', event => {
-  if (event.target.closest('a, button')) playTone(520, .05, .018);
+  if (event.button !== undefined && event.button !== 0) return;
+  const control = event.target.closest('a, button');
+  if (!control || control.matches(':disabled, [data-sound-toggle], [data-theme-mode]')) return;
+  if (control.matches('[data-cert-filter], [data-resource-filter]')) playSound('select');
+  else if (control.matches('[data-project-detail], [data-open-proof]')) playSound('open');
+  else if (control.matches('a[href]')) playSound('navigate');
+  else playSound('press');
 });
 
 function updateManilaTime() {
@@ -296,6 +382,7 @@ $$('[data-project-detail]').forEach(button => button.addEventListener('click', (
 $$('[data-copy-email]').forEach(button => button.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText('diajoshua05@gmail.com');
+    playSound('success');
     showToast('Email copied.');
   } catch (error) {
     showToast('diajoshua05@gmail.com');
