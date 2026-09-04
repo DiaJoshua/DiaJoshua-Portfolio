@@ -47,7 +47,7 @@ class SiteRail extends HTMLElement {
           <button class="utility-button" type="button" data-sound-toggle aria-label="Turn interface sounds on" aria-pressed="false" title="Sounds off">⌁</button>
         </div>
         <div class="rail-contact">
-          <span>For junior roles and technical conversations.</span>
+          <span>Open for inquiries, collaborations, and opportunities.</span>
           <a href="mailto:diajoshua05@gmail.com">diajoshua05@gmail.com</a>
           <span class="rail-clock" data-manila-time>Manila · —</span>
         </div>
