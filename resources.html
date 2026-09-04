@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Joshua Dia’s curated shelf of official cybersecurity, SOC, cloud, networking, and application-security learning resources.">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Resources — Joshua Dia</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script>try{const m=localStorage.getItem('jd-theme-mode')||'system';if(m==='dark'||(m==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css?v=20260904.3">
+  <script src="app.js?v=20260904.3" defer></script>
+</head>
+<body data-page="resources">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="page-progress" aria-hidden="true"><span data-page-progress></span></div>
+  <div class="pointer-aura" aria-hidden="true"></div>
+  <site-rail page="resources"></site-rail>
+
+  <main class="site-main" id="content">
+    <div class="page-shell">
+      <header class="page-heading reveal">
+        <div><p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Desk / learning shelf</p><h1>Resources<span class="page-title-mark">.</span></h1></div>
+        <p>Official references and hands-on platforms I can use to strengthen the foundations expected in junior security, SOC, cloud, and infrastructure roles.</p>
+      </header>
+
+      <div class="page-toolbar reveal" aria-label="Filter resources">
+        <div class="filter-group">
+          <button class="filter-button is-active" type="button" data-resource-filter="all">All</button>
+          <button class="filter-button" type="button" data-resource-filter="foundation">Foundations</button>
+          <button class="filter-button" type="button" data-resource-filter="soc">SOC labs</button>
+          <button class="filter-button" type="button" data-resource-filter="cloud">Cloud</button>
+          <button class="filter-button" type="button" data-resource-filter="web">Web</button>
+        </div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Search resources</span><input type="search" data-resource-search placeholder="Search the shelf"></label>
+      </div>
+
+      <div class="directory">
+        <section class="directory-group reveal" data-resource-group>
+          <div class="directory-heading"><h2>Security foundations</h2><span class="small-label">Start with a map</span></div>
+          <div class="directory-list">
+            <a class="resource-card" data-resource-card data-category="foundation" data-search="isc2 cc certified cybersecurity security principles network operations" href="https://www.isc2.org/certifications/cc" target="_blank" rel="noopener"><span class="resource-monogram">CC</span><span><h3>ISC2 Certified in Cybersecurity</h3><p>Official CC overview and certification domains.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="foundation" data-search="cisco introduction cybersecurity beginner networking academy" href="https://skillsforall.com/course/introduction-to-cybersecurity?courseLang=en-US" target="_blank" rel="noopener"><span class="resource-monogram">CS</span><span><h3>Cisco: Introduction to Cybersecurity</h3><p>A beginner course from Cisco Skills for All.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="foundation" data-search="cisco junior cybersecurity analyst career path threat intelligence network risk" href="https://skillsforall.com/career-path/cybersecurity" target="_blank" rel="noopener"><span class="resource-monogram">JA</span><span><h3>Cisco: Junior Cybersecurity Analyst</h3><p>A structured path covering core defensive topics.</p></span><span class="arrow">↗</span></a>
+          </div>
+        </section>
+
+        <section class="directory-group reveal" data-resource-group>
+          <div class="directory-heading"><h2>SOC &amp; blue-team practice</h2><span class="small-label">Work the evidence</span></div>
+          <div class="directory-list">
+            <a class="resource-card" data-resource-card data-category="soc" data-search="tryhackme soc level 1 siem incidents endpoints blue team" href="https://tryhackme.com/path/outline/blueteam" target="_blank" rel="noopener"><span class="resource-monogram">THM</span><span><h3>TryHackMe: SOC Level 1</h3><p>Guided practice in SOC tools, alerts, endpoints, and incidents.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="soc" data-search="cyberdefenders blue team labs dfir forensics threat hunting malware" href="https://cyberdefenders.org/blue-team-labs/" target="_blank" rel="noopener"><span class="resource-monogram">CD</span><span><h3>CyberDefenders Blue Team Labs</h3><p>Browser-based investigation practice across defensive domains.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="soc" data-search="letsdefend soc analyst learning path alert triage incident malware logs" href="https://app.letsdefend.io/path/soc-analyst-learning-path" target="_blank" rel="noopener"><span class="resource-monogram">LD</span><span><h3>LetsDefend: SOC Analyst Path</h3><p>A structured blue-team path with analyst topics and simulations.</p></span><span class="arrow">↗</span></a>
+          </div>
+        </section>
+
+        <section class="directory-group reveal" data-resource-group>
+          <div class="directory-heading"><h2>Cloud, identity &amp; security</h2><span class="small-label">Build the context</span></div>
+          <div class="directory-list">
+            <a class="resource-card" data-resource-card data-category="cloud" data-search="microsoft learn security hub defender sentinel identity cloud azure" href="https://learn.microsoft.com/en-us/security/" target="_blank" rel="noopener"><span class="resource-monogram">MS</span><span><h3>Microsoft Learn Security Hub</h3><p>Official Microsoft security learning and documentation.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="cloud" data-search="sc-900 security compliance identity microsoft entra zero trust" href="https://learn.microsoft.com/en-us/training/paths/describe-concepts-of-security-compliance-identity/" target="_blank" rel="noopener"><span class="resource-monogram">900</span><span><h3>SC-900 Concepts Learning Path</h3><p>Security, compliance, identity, and Zero Trust fundamentals.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="cloud" data-search="aws security learning plan skill builder cloud identity incident" href="https://aws.amazon.com/training/learn-about/security/" target="_blank" rel="noopener"><span class="resource-monogram">AWS</span><span><h3>AWS Security Learning</h3><p>Official AWS security training routes and learning plans.</p></span><span class="arrow">↗</span></a>
+          </div>
+        </section>
+
+        <section class="directory-group reveal" data-resource-group>
+          <div class="directory-heading"><h2>Web &amp; application security</h2><span class="small-label">Understand the surface</span></div>
+          <div class="directory-list">
+            <a class="resource-card" data-resource-card data-category="web" data-search="portswigger web security academy application vulnerabilities labs burp" href="https://portswigger.net/web-security" target="_blank" rel="noopener"><span class="resource-monogram">WSA</span><span><h3>PortSwigger Web Security Academy</h3><p>Free application-security learning material and labs.</p></span><span class="arrow">↗</span></a>
+            <a class="resource-card" data-resource-card data-category="web" data-search="portswigger web security learning paths step by step" href="https://portswigger.net/web-security/learning-paths" target="_blank" rel="noopener"><span class="resource-monogram">LP</span><span><h3>Web Security Learning Paths</h3><p>Structured routes through the Academy’s topic catalog.</p></span><span class="arrow">↗</span></a>
+          </div>
+        </section>
+      </div>
+
+      <p class="empty-results" data-resource-empty hidden>No resources match that filter. Try a shorter search.</p>
+      <div class="truth-note reveal"><span class="feature-mark">i</span><p><strong>What this page means.</strong> These are useful starting points and references. Inclusion does not claim that I have completed every course or lab.</p></div>
+
+      <footer class="site-footer"><span>© <span data-year></span> Joshua Dia</span><a href="index.html">← Home</a><a href="#content">Back to top ↑</a></footer>
+    </div>
+  </main>
+</body>
+</html>
