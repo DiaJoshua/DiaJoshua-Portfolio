@@ -1478,6 +1478,25 @@ dialog::backdrop { background: rgba(5,7,10,.48); backdrop-filter: blur(14px); an
 }
 
 .proof-fallback:hover { text-decoration: underline; }
+.proof-fallback + .proof-fallback { margin-left: 16px; }
+
+.proof-error {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+  background: var(--soft);
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.proof-error code {
+  padding: 2px 5px;
+  border-radius: 6px;
+  background: var(--paper-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .8em;
+}
 
 .toast {
   position: fixed;

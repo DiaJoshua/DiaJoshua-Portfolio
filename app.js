@@ -664,6 +664,7 @@ function openProof(trigger) {
     proofTitle,
     proofLabel,
     proofNote,
+    proofExternal,
   } = trigger.dataset;
   if (!proofSrc) return;
 
@@ -672,6 +673,7 @@ function openProof(trigger) {
     trigger.closest("[data-cert-card]")?.querySelector("h3")?.textContent ||
     "Certificate";
   const safeTitle = escapeHtml(title);
+  const safeSrc = escapeHtml(proofSrc);
 
   if (proofLabelEl) proofLabelEl.textContent = proofLabel || "Proof";
   if (proofTitleEl) proofTitleEl.textContent = title;
@@ -680,13 +682,28 @@ function openProof(trigger) {
     proofCopyEl.toggleAttribute("hidden", !proofNote);
   }
 
+  const externalLink = proofExternal
+    ? `<a class="proof-fallback" href="${escapeHtml(proofExternal)}" target="_blank" rel="noopener">Verify online ↗</a>`
+    : "";
+
   if (proofBodyEl) {
     if (proofType === "pdf") {
       proofBodyEl.innerHTML = `
-        <iframe class="proof-frame" src="${proofSrc}" title="${safeTitle} — proof document" loading="lazy"></iframe>
-        <a class="proof-fallback" href="${proofSrc}" target="_blank" rel="noopener">Open PDF in a new tab ↗</a>`;
+        <iframe class="proof-frame" src="${safeSrc}" title="${safeTitle} — proof document" loading="lazy"></iframe>
+        <a class="proof-fallback" href="${safeSrc}" target="_blank" rel="noopener">Open PDF in a new tab ↗</a>
+        ${externalLink}`;
     } else {
-      proofBodyEl.innerHTML = `<img class="proof-image" src="${proofSrc}" alt="${safeTitle} — supporting proof" loading="lazy" />`;
+      proofBodyEl.innerHTML = `<img class="proof-image" src="${safeSrc}" alt="${safeTitle} — supporting proof" loading="lazy" />${externalLink}`;
+      const img = $("img", proofBodyEl);
+      if (img) {
+        img.addEventListener("error", () => {
+          img.remove();
+          proofBodyEl.insertAdjacentHTML(
+            "afterbegin",
+            `<p class="proof-error">Couldn't load the image at <code>${safeSrc}</code>. Check that the file is committed at that exact path and name (case-sensitive on GitHub Pages).${proofExternal ? " You can verify it online instead." : ""}</p>`,
+          );
+        });
+      }
     }
   }
 
