@@ -1076,6 +1076,8 @@ body.is-ready .site-main { opacity: 1; transform: none; }
 .cert-card.featured::after {
   content: "CC";
   position: absolute;
+  z-index: 0;
+  pointer-events: none;
   right: -12px;
   bottom: -70px;
   color: rgba(255,255,255,.08);
