@@ -21,8 +21,8 @@
           document.documentElement.dataset.theme = "dark";
       } catch (e) {}
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260904.3" />
-    <script src="app.js?v=20260904.3" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260905.1" />
+    <script src="app.js?v=20260905.1" defer></script>
   </head>
   <body data-page="certifications">
     <a class="skip-link" href="#content">Skip to content</a>
@@ -45,7 +45,7 @@
           <p>
             Foundational credentials and completed learning across security,
             endpoint platforms, cloud, and data. Proof is linked whenever it is
-            available.
+            available — select "View proof" or "Verify" to open it here.
           </p>
         </header>
 
@@ -113,12 +113,18 @@
               <p>CC exam passed · August 25, 2026</p>
               <footer>
                 <span class="proof-state">Exam record</span
-                ><a
-                  href="assets/certificates/isc2-passed.png"
-                  target="_blank"
-                  rel="noopener"
-                  >View proof ↗
-                </a>
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="image"
+                  data-proof-src="assets/proofs/isc2-cc-exam-pass.png"
+                  data-proof-title="ISC2 Certified in Cybersecurity (CC)"
+                  data-proof-label="ISC2 / examination record"
+                  data-proof-note="Joshua passed the CC exam on August 25, 2026. The image below is the available supporting examination record."
+                >
+                  View proof ↗
+                </button>
               </footer>
             </article>
 
@@ -133,12 +139,17 @@
               <p>Trend Micro · Dec 2025–Dec 2027</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/apex-one-certified-professional.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Verify ↗
-                </a>
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/apex-one-certified-professional.pdf"
+                  data-proof-title="Apex One Certified Professional"
+                  data-proof-label="Trend Micro / certificate"
+                >
+                  Verify ↗
+                </button>
               </footer>
             </article>
 
@@ -153,12 +164,17 @@
               <p>Trend Micro · March 2026</p>
               <footer>
                 <span class="proof-state">Achievement PDF</span
-                ><a
-                  href="assets/certificates/vision-one-platform-foundation.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Verify ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/vision-one-platform-foundation.pdf"
+                  data-proof-title="Vision One Platform Foundation"
+                  data-proof-label="Trend Micro / achievement"
                 >
+                  Verify ↗
+                </button>
               </footer>
             </article>
 
@@ -173,12 +189,17 @@
               <p>Trend Micro · February 2026</p>
               <footer>
                 <span class="proof-state">Training record</span
-                ><a
-                  href="assets/certificates/apex-central-training-record.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >View record ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/apex-central-training-record.pdf"
+                  data-proof-title="Apex Central Certified Master"
+                  data-proof-label="Trend Micro / training record"
                 >
+                  View record ↗
+                </button>
               </footer>
             </article>
 
@@ -192,8 +213,18 @@
               <h3>Fundamentals of Malware Analysis</h3>
               <p>Trend Micro · December 2025</p>
               <footer>
-                <span class="proof-state">Résumé-listed</span
-                ><span class="proof-state">Proof not linked</span>
+                <span class="proof-state">Certificate image</span
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="image"
+                  data-proof-src="assets/proofs/Fundamentals-of-Malware-Analysis.jpg"
+                  data-proof-title="Fundamentals of Malware Analysis"
+                  data-proof-label="Trend Micro / certificate"
+                >
+                  View proof ↗
+                </button>
               </footer>
             </article>
 
@@ -208,12 +239,17 @@
               <p>Cisco Networking Academy · 2026</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/endpoint-security-cisco.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Verify ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/endpoint-security-cisco.pdf"
+                  data-proof-title="Endpoint Security"
+                  data-proof-label="Cisco Networking Academy / certificate"
                 >
+                  Verify ↗
+                </button>
               </footer>
             </article>
 
@@ -228,12 +264,17 @@
               <p>SkillFront · 2025</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/iso-27001-associate-skillfront.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Verify ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/iso-27001-associate-skillfront.pdf"
+                  data-proof-title="ISO/IEC 27001:2022 Associate"
+                  data-proof-label="SkillFront / certificate"
                 >
+                  Verify ↗
+                </button>
               </footer>
             </article>
 
@@ -248,12 +289,17 @@
               <p>arcX · 2026</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/threat-intelligence-analyst-foundation.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >View proof ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/threat-intelligence-analyst-foundation.pdf"
+                  data-proof-title="Threat Intelligence Analyst Foundation"
+                  data-proof-label="arcX / certificate"
                 >
+                  View proof ↗
+                </button>
               </footer>
             </article>
           </div>
@@ -280,12 +326,17 @@
               <p>DataCamp · 2025</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/intermediate-sql-datacamp.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Verify ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/intermediate-sql-datacamp.pdf"
+                  data-proof-title="Intermediate SQL"
+                  data-proof-label="DataCamp / certificate"
                 >
+                  Verify ↗
+                </button>
               </footer>
             </article>
 
@@ -352,12 +403,17 @@
               <p>SkillFront · 2025</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/lean-six-sigma-white-belt.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Verify ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/lean-six-sigma-white-belt.pdf"
+                  data-proof-title="Lean Six Sigma White Belt"
+                  data-proof-label="SkillFront / certificate"
                 >
+                  Verify ↗
+                </button>
               </footer>
             </article>
 
@@ -372,12 +428,17 @@
               <p>Trend Micro · Participant · 2024</p>
               <footer>
                 <span class="proof-state">Certificate PDF</span
-                ><a
-                  href="assets/certificates/trend-micro-university-ctf.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >View proof ↗</a
+                ><button
+                  type="button"
+                  class="proof-trigger"
+                  data-open-proof
+                  data-proof-type="pdf"
+                  data-proof-src="assets/certificates/trend-micro-university-ctf.pdf"
+                  data-proof-title="University Capture the Flag"
+                  data-proof-label="Trend Micro / certificate"
                 >
+                  View proof ↗
+                </button>
               </footer>
             </article>
           </div>
@@ -417,7 +478,7 @@
     <dialog id="proof-dialog" aria-labelledby="proof-title">
       <div class="dialog-body">
         <div class="dialog-top">
-          <p class="small-label">ISC2 / examination record</p>
+          <p class="small-label" data-proof-label>Proof</p>
           <button
             class="dialog-close"
             type="button"
@@ -427,20 +488,11 @@
             ×
           </button>
         </div>
-        <h2 class="dialog-heading" id="proof-title">
-          Certified in Cybersecurity (CC)
+        <h2 class="dialog-heading" id="proof-title" data-proof-title>
+          Certificate
         </h2>
-        <p class="dialog-copy">
-          Joshua passed the CC exam on August 25, 2026. The image below is the
-          available supporting examination record.
-        </p>
-        <img
-          class="proof-image"
-          src="assets/proofs/isc2-cc-exam-pass.png"
-          alt="ISC2 course and exam record showing CC Exam passed on August 25, 2026"
-          width="1029"
-          height="297"
-        />
+        <p class="dialog-copy" data-proof-copy hidden></p>
+        <div class="proof-body" data-proof-body></div>
       </div>
     </dialog>
   </body>

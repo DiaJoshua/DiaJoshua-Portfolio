@@ -1060,6 +1060,10 @@ body.is-ready .site-main { opacity: 1; transform: none; }
 .cert-card footer button { padding: 0; border: 0; background: none; color: var(--accent); cursor: pointer; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .69rem; text-transform: uppercase; letter-spacing: .06em; }
 .proof-state { color: var(--faint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .64rem; text-transform: uppercase; letter-spacing: .06em; }
 
+.proof-trigger { transition: color 180ms ease, transform 220ms var(--ease); }
+.proof-trigger:hover { color: var(--ink); transform: translateY(-1px); }
+.cert-card.featured .proof-trigger:hover { color: white; }
+
 .cert-card.featured {
   grid-column: span 2;
   min-height: 300px;
@@ -1411,8 +1415,8 @@ body.is-ready .site-main { opacity: 1; transform: none; }
 .quote-placeholder .card-actions { justify-content: center; }
 
 dialog {
-  width: min(720px, calc(100vw - 32px));
-  max-height: min(760px, calc(100vh - 32px));
+  width: min(760px, calc(100vw - 32px));
+  max-height: min(800px, calc(100vh - 32px));
   padding: 0;
   border: 1px solid var(--line-strong);
   border-radius: 26px;
@@ -1429,7 +1433,7 @@ dialog::backdrop { background: rgba(5,7,10,.48); backdrop-filter: blur(14px); an
 @keyframes dialog-in { from { opacity: 0; transform: translateY(24px) scale(.96); } }
 @keyframes backdrop-in { from { opacity: 0; } }
 
-.dialog-body { max-height: min(760px, calc(100vh - 32px)); overflow: auto; padding: 30px; }
+.dialog-body { max-height: min(800px, calc(100vh - 32px)); overflow: auto; padding: 30px; }
 .dialog-top { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 27px; }
 .dialog-close {
   display: grid;
@@ -1446,12 +1450,34 @@ dialog::backdrop { background: rgba(5,7,10,.48); backdrop-filter: blur(14px); an
 .dialog-heading { font-size: clamp(1.8rem, 5vw, 3.1rem); }
 .dialog-copy { color: var(--muted); }
 
+.proof-body { margin-top: 22px; }
+
 .proof-image {
-  margin-top: 22px;
+  width: 100%;
   border: 1px solid var(--line);
   border-radius: 15px;
   background: white;
 }
+
+.proof-frame {
+  width: 100%;
+  height: min(70vh, 620px);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: white;
+}
+
+.proof-fallback {
+  display: inline-flex;
+  margin-top: 14px;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.proof-fallback:hover { text-decoration: underline; }
 
 .toast {
   position: fixed;
@@ -1601,6 +1627,7 @@ dialog::backdrop { background: rgba(5,7,10,.48); backdrop-filter: blur(14px); an
   .timeline-card header { display: grid; gap: 8px; }
   .timeline-date { text-align: left; }
   .dialog-body { padding: 22px 18px; }
+  .proof-frame { height: min(56vh, 460px); }
   .directory-heading { display: grid; gap: 5px; }
   .resource-card { grid-template-columns: 42px 1fr auto; gap: 11px; }
   .resource-card p { display: none; }

@@ -634,10 +634,74 @@ $$("[data-copy-email]").forEach((button) =>
   }),
 );
 
+// Proof viewer — opens a certificate/exam record (image or PDF) in a
+// centered dialog instead of navigating away from the page.
 const proofDialog = $("#proof-dialog");
+const proofLabelEl = $("[data-proof-label]", proofDialog);
+const proofTitleEl = $("[data-proof-title]", proofDialog);
+const proofCopyEl = $("[data-proof-copy]", proofDialog);
+const proofBodyEl = $("[data-proof-body]", proofDialog);
+
+function escapeHtml(value) {
+  return value.replace(
+    /[&<>"']/g,
+    (char) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[char],
+  );
+}
+
+function openProof(trigger) {
+  if (!proofDialog) return;
+  const {
+    proofType = "image",
+    proofSrc,
+    proofTitle,
+    proofLabel,
+    proofNote,
+  } = trigger.dataset;
+  if (!proofSrc) return;
+
+  const title =
+    proofTitle ||
+    trigger.closest("[data-cert-card]")?.querySelector("h3")?.textContent ||
+    "Certificate";
+  const safeTitle = escapeHtml(title);
+
+  if (proofLabelEl) proofLabelEl.textContent = proofLabel || "Proof";
+  if (proofTitleEl) proofTitleEl.textContent = title;
+  if (proofCopyEl) {
+    proofCopyEl.textContent = proofNote || "";
+    proofCopyEl.toggleAttribute("hidden", !proofNote);
+  }
+
+  if (proofBodyEl) {
+    if (proofType === "pdf") {
+      proofBodyEl.innerHTML = `
+        <iframe class="proof-frame" src="${proofSrc}" title="${safeTitle} — proof document" loading="lazy"></iframe>
+        <a class="proof-fallback" href="${proofSrc}" target="_blank" rel="noopener">Open PDF in a new tab ↗</a>`;
+    } else {
+      proofBodyEl.innerHTML = `<img class="proof-image" src="${proofSrc}" alt="${safeTitle} — supporting proof" loading="lazy" />`;
+    }
+  }
+
+  if (typeof proofDialog.showModal === "function") proofDialog.showModal();
+}
+
 $$("[data-open-proof]").forEach((button) =>
-  button.addEventListener("click", () => proofDialog?.showModal()),
+  button.addEventListener("click", () => openProof(button)),
 );
+
+// Clear the injected proof content on close so hidden PDFs/images stop
+// loading in the background.
+proofDialog?.addEventListener("close", () => {
+  if (proofBodyEl) proofBodyEl.innerHTML = "";
+});
 
 const certCards = $$("[data-cert-card]");
 const certSearch = $("[data-cert-search]");
