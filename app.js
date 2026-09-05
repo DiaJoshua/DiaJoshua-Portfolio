@@ -637,10 +637,10 @@ $$("[data-copy-email]").forEach((button) =>
 // Proof viewer — opens a certificate/exam record (image or PDF) in a
 // centered dialog instead of navigating away from the page.
 const proofDialog = $("#proof-dialog");
-const proofLabelEl = $("[data-proof-label]", proofDialog);
-const proofTitleEl = $("[data-proof-title]", proofDialog);
-const proofCopyEl = $("[data-proof-copy]", proofDialog);
-const proofBodyEl = $("[data-proof-body]", proofDialog);
+const proofLabelEl = proofDialog ? $("[data-proof-label]", proofDialog) : null;
+const proofTitleEl = proofDialog ? $("[data-proof-title]", proofDialog) : null;
+const proofCopyEl = proofDialog ? $("[data-proof-copy]", proofDialog) : null;
+const proofBodyEl = proofDialog ? $("[data-proof-body]", proofDialog) : null;
 
 function escapeHtml(value) {
   return value.replace(
