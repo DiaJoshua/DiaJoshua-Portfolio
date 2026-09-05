@@ -29,10 +29,10 @@ class SiteRail extends HTMLElement {
           <div class="rail-group">
             <p class="rail-group-label">Portfolio</p>
             ${link("home", "index.html", "⌂", "Home")}
-            ${link("projects", "projects.html", "◇", "Projects")}
             ${link("experience", "experience.html", "↳", "Experience")}
-            ${link("stack", "stack.html", "#", "Stack")}
             ${link("certifications", "certifications.html", "✓", "Certifications")}
+            ${link("projects", "projects.html", "◇", "Projects")}
+            ${link("stack", "stack.html", "#", "Stack")}
             ${link("resume", "assets/resume/RESUME_JD_SEPT_2026.pdf", "↓", "Résumé", 'download="RESUME_JD_SEPT_2026.pdf"')}
           </div>
         </nav>
