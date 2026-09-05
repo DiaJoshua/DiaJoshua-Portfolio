@@ -466,7 +466,7 @@ body.is-ready .site-main { opacity: 1; transform: none; }
   transition: filter 500ms ease, transform 750ms var(--ease);
 }
 
-.portrait-stage:hover img { filter: grayscale(.9) contrast(1.05) saturate(.82); transform: scale(1.025); }
+.portrait-stage:hover img { filter: contrast(1.05) saturate(.82); transform: scale(1.025); }
 
 .portrait-badge {
   position: absolute;
