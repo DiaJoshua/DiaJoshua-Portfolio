@@ -31,8 +31,8 @@ class SiteRail extends HTMLElement {
             ${link("home", "index.html", "⌂", "Home")}
             ${link("experience", "experience.html", "↳", "Experience")}
             ${link("certifications", "certifications.html", "✓", "Certifications")}
-            ${link("projects", "projects.html", "◇", "Projects")}
             ${link("stack", "stack.html", "#", "Stack")}
+            ${link("projects", "projects.html", "◇", "Projects")}
             ${link("resume", "assets/resume/RESUME_JD_SEPT_2026.pdf", "↓", "Résumé", 'download="RESUME_JD_SEPT_2026.pdf"')}
           </div>
         </nav>
